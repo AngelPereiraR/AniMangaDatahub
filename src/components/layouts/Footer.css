@@ -1,0 +1,41 @@
+footer {
+  width: 100%;
+  background-color: var(--primary-700);
+  color: var(--neutral-100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 1023px) {
+    font-size: var(--font-size-subtitle-mobile);
+  }
+
+  @media (min-width: 1024px) {
+    font-size: var(--font-size-subtitle-desktop);
+  }
+}
+
+footer div {
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-family: var(--heading-font-family);
+}
+
+footer .credits a,
+footer .contact {
+  color: var(--neutral-100);
+  font-family: var(--heading-font-family);
+  transition: all 1000ms;
+}
+
+footer .credits a {
+  text-decoration: underline;
+}
+
+footer .credits a:hover,
+footer .contact:hover {
+  color: var(--secondary-100);
+  text-decoration: underline;
+}
