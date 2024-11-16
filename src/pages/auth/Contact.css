@@ -1,0 +1,53 @@
+.contact-container {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("./../../assets/contact.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 32px;
+  box-sizing: border-box;
+}
+
+.contact-container h2 {
+  color: var(--secondary-50);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-top: 20px;
+}
+
+@media (max-width: 1023px) {
+  h2 {
+    font-size: var(--font-size-menu-mobile);
+    font-weight: var(--font-weight-menu-mobile);
+  }
+}
+
+@media (min-width: 1024px) {
+  h2 {
+    font-size: var(--font-size-menu-desktop);
+    font-weight: var(--font-weight-menu-desktop);
+  }
+}
+
+.error-message {
+  color: var(--primary-50);
+  font-weight: var(--font-weight-title-desktop);
+}
+
+/* Error en Rating */
+.rating-error {
+  color: var(--primary-50);
+  font-weight: var(--font-weight-title-desktop);
+}

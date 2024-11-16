@@ -3,7 +3,7 @@ import "./Dropdown.css";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const Dropdown = ({ onChange }) => {
-  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+  const { darkMode } = useContext(ThemeContext);
 
   return (
     <div className="dropdown-container">

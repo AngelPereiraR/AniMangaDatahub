@@ -7,7 +7,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [dropdownValue, setDropdownValue] = useState("todo");
-  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+  const { darkMode } = useContext(ThemeContext);
   const navigate = useNavigate();
 
   const search = (e) => {

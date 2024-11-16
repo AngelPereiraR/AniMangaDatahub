@@ -14,7 +14,7 @@ import Manga from "../pages/info/Manga";
 import SearchManga from "../pages/results/SearchManga";
 import TopMangas from "../pages/results/TopMangas";
 import MangasBySeason from "../pages/results/MangasBySeason";
-import Contact from "../pages/info/Contact";
+import Contact from "../pages/auth/Contact";
 import Seiyuu from "../pages/info/Seiyuu";
 import Character from "../pages/info/Character";
 

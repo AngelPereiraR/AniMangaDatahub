@@ -58,17 +58,17 @@
   --font-size-normal-desktop: 13px;
   --font-size-title-mobile: 24px;
   --font-size-menu-mobile: 20px;
-  --font-size-subtitle-mobile: 20px;
+  --font-size-subtitle-mobile: 18px;
   --font-size-normal-mobile: 12px;
 
   /* Font weights */
   --font-weight-title-desktop: bold;
   --font-weight-menu-desktop: 600;
-  --font-weight-subtitle-desktop: medium;
+  --font-weight-subtitle-desktop: 500;
   --font-weight-big-normal-desktop: 400;
   --font-weight-normal-desktop: 400;
   --font-weight-title-mobile: bold;
-  --font-weight-menu-mobile: medium;
+  --font-weight-menu-mobile: 500;
   --font-weight-subtitle-mobile: 400;
   --font-weight-normal-mobile: 400;
 }
