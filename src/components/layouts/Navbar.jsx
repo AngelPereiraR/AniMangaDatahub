@@ -19,7 +19,7 @@ const Navbar = () => {
           <h1>AniMangaDatahub</h1>
         </NavLink>
 
-        <div className="top-row">
+        <div className="row">
           <div className="dark-mode-switch" onClick={toggleDarkMode}>
             <div className={`switch ${darkMode ? "switch-dark" : ""}`}>
               <div className="switch-icon">
