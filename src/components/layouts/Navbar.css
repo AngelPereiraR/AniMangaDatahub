@@ -90,8 +90,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 25px;
+  width: 60px;
+  height: 35px;
   background-color: var(--switch-bg, #ccc);
   border-radius: 25px;
   cursor: pointer;
@@ -107,8 +107,8 @@
 
 .dark-mode-switch .switch {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   background-color: var(--switch-circle, #fff);
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -132,7 +132,7 @@
 }
 
 .dark-mode-switch .switch .switch-icon {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--switch-icon, #000);
   display: flex;
   align-self: center;

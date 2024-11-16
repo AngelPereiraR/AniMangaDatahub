@@ -87,9 +87,9 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Formulario enviado", formData);
+      console.log("Correo de contacto enviado", formData);
 
-      toast.success("Formulario enviado con éxito", {
+      toast.success("Correo de contacto enviado con éxito", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
