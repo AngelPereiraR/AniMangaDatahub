@@ -1,10 +1,12 @@
-import React from "react";
-import "./Footer.css";
-import { NavLink } from "react-router-dom";
+import React from "react"; // Importación de React
+import "./Footer.css"; // Importación de los estilos CSS específicos del pie de página
+import { NavLink } from "react-router-dom"; // Importación de NavLink para navegación interna
 
+// Componente Footer
 const Footer = () => {
   return (
     <footer>
+      {/* Sección de créditos */}
       <div className="credits">
         <a href="/" target="_blank">
           AniMangaDatahub
@@ -25,6 +27,7 @@ const Footer = () => {
           Font Awesome
         </a>
       </div>
+      {/* Enlace interno para la página de contacto */}
       <div>
         <NavLink className="contact" to="/contact">
           Contacto
@@ -34,4 +37,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer; // Exportación del componente para su uso en otros archivos

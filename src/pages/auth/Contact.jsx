@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import Input from "../../components/auth/Input";
-import Rating from "../../components/shared/Rating";
-import Button from "../../components/shared/Button";
-import { Bounce, toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "./Contact.css";
+import React, { useState } from "react"; // Importación de React y useState
+import Input from "../../components/auth/Input"; // Componente Input para campos de formulario
+import Rating from "../../components/shared/Rating"; // Componente Rating para mostrar la calificación
+import Button from "../../components/shared/Button"; // Componente Button para el botón de enviar
+import { Bounce, toast, ToastContainer } from "react-toastify"; // Librería para notificaciones
+import "react-toastify/dist/ReactToastify.css"; // Estilos para las notificaciones
+import "./Contact.css"; // Estilos para la página de contacto
 
 const Contact = () => {
+  // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
@@ -15,6 +16,7 @@ const Contact = () => {
     rating: 0,
   });
 
+  // Estado para manejar los errores de validación
   const [errors, setErrors] = useState({
     name: "",
     surname: "",
@@ -23,6 +25,7 @@ const Contact = () => {
     rating: "",
   });
 
+  // Maneja el cambio en los campos del formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -31,6 +34,7 @@ const Contact = () => {
     });
   };
 
+  // Función de validación para cada campo individual
   const validateField = (name, value) => {
     const newErrors = { ...errors };
     if (name === "name") {
@@ -57,26 +61,24 @@ const Contact = () => {
     setErrors(newErrors);
   };
 
+  // Maneja el evento de pérdida de foco (blur) en los campos para validar
   const handleBlur = (e) => {
     const { name, value } = e.target;
     validateField(name, value);
   };
 
+  // Función que valida todos los campos del formulario antes de enviar
   const validateForm = () => {
     const newErrors = {};
 
     if (!formData.name.trim()) newErrors.name = "El nombre es obligatorio";
-
     if (!formData.surname.trim())
       newErrors.surname = "Los apellidos son obligatorios";
-
     if (!formData.email.trim()) newErrors.email = "El correo es obligatorio";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = "El correo electrónico no tiene un formato válido";
-
     if (!formData.message.trim())
       newErrors.message = "El mensaje no puede estar vacío";
-
     if (formData.rating === 0)
       newErrors.rating = "Debes seleccionar una valoración";
 
@@ -84,11 +86,13 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Función que se ejecuta al enviar el formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
       console.log("Correo de contacto enviado", formData);
 
+      // Muestra una notificación de éxito usando react-toastify
       toast.success("Correo de contacto enviado con éxito", {
         position: "bottom-right",
         autoClose: 5000,
@@ -98,7 +102,7 @@ const Contact = () => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        transition: Bounce,
+        transition: Bounce, // Transición para la notificación
       });
     }
   };
@@ -107,6 +111,7 @@ const Contact = () => {
     <div className="contact-container">
       <h2>Contacto</h2>
       <form onSubmit={handleSubmit}>
+        {/* Campos del formulario */}
         <Input
           label="Nombre"
           type="text"
@@ -147,6 +152,7 @@ const Contact = () => {
           onBlur={handleBlur}
           name="message"
         />
+        {/* Componente de calificación */}
         <div className="input-container">
           <label>Valoración</label>
           <Rating
@@ -156,12 +162,15 @@ const Contact = () => {
               validateField("rating", rating);
             }}
           />
-          {errors.rating && <p className="error-message">{errors.rating}</p>}
+          {errors.rating && <p className="error-message">{errors.rating}</p>}{" "}
+          {/* Muestra error si la calificación no es válida */}
         </div>
 
+        {/* Botón de envío */}
         <Button label="Enviar" onClick={handleSubmit} variant="primary" />
       </form>
 
+      {/* Contenedor para las notificaciones */}
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
@@ -173,7 +182,7 @@ const Contact = () => {
         draggable
         pauseOnHover
         theme="light"
-        transition={Bounce}
+        transition={Bounce} // Define la transición de la notificación
       />
     </div>
   );

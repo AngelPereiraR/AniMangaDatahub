@@ -1,8 +1,10 @@
-import React from "react";
-import "./Button.css"; // Asegúrate de que la ruta sea correcta
+import React from "react"; // Importación de React
+import "./Button.css"; // Importación de los estilos específicos del componente
 
+// Componente Button que renderiza un botón con diferentes variantes
 const Button = ({ label, onClick, variant = "primary", className = "" }) => {
-  const buttonClass = `button ${variant} } ${className}`;
+  // Definición de la clase del botón. Se le añaden la variante y la clase adicional si las hay
+  const buttonClass = `button ${variant} ${className}`;
 
   return (
     <button className={buttonClass} onClick={onClick}>
@@ -11,4 +13,4 @@ const Button = ({ label, onClick, variant = "primary", className = "" }) => {
   );
 };
 
-export default Button;
+export default Button; // Exportación del componente para su uso en otros archivos

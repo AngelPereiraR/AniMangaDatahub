@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+// Importación de componentes y páginas necesarias para las rutas
 import LayoutPublic from "../layouts/LayoutPublic";
 import Error404 from "../pages/errors/Error404";
 import Home from "../pages/Home";
@@ -18,90 +19,91 @@ import Contact from "../pages/auth/Contact";
 import Seiyuu from "../pages/info/Seiyuu";
 import Character from "../pages/info/Character";
 
+// Definición del router con las rutas principales y anidadas
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <LayoutPublic />,
+    path: "/", // Ruta raíz
+    element: <LayoutPublic />, // Componente de diseño principal para las rutas públicas
     errorElement: (
       <LayoutPublic>
-        <Error404 />
+        <Error404 /> {/* Página de error 404 en caso de ruta no encontrada */}
       </LayoutPublic>
     ),
     children: [
       {
-        index: true,
-        element: <Home />,
+        index: true, // Ruta por defecto para "/"
+        element: <Home />, // Componente de la página de inicio
       },
       {
-        path: "/login",
+        path: "/login", // Ruta para iniciar sesión
         element: <Login />,
       },
       {
-        path: "/register",
+        path: "/register", // Ruta para registrarse
         element: <Register />,
       },
       {
-        path: "/profile",
+        path: "/profile", // Ruta para el perfil del usuario
         element: <Profile />,
         children: [
           {
-            path: "/profile/edit",
+            path: "/profile/edit", // Subruta para editar el perfil
             element: <EditProfile />,
           },
         ],
       },
       {
-        path: "/contact",
+        path: "/contact", // Ruta para la página de contacto
         element: <Contact />,
       },
       {
-        path: "/anime",
+        path: "/anime", // Rutas relacionadas con animes
         children: [
           {
-            path: "/anime/:id",
+            path: "/anime/:id", // Ruta para información de un anime específico
             element: <Anime />,
           },
           {
-            path: "/anime/search",
+            path: "/anime/search", // Ruta para buscar animes
             element: <SearchAnime />,
           },
           {
-            path: "/anime/top",
+            path: "/anime/top", // Ruta para ver los animes más populares
             element: <TopAnimes />,
           },
           {
-            path: "/anime/season",
+            path: "/anime/season", // Ruta para animes por temporada
             element: <AnimesBySeason />,
           },
         ],
       },
       {
-        path: "/manga",
+        path: "/manga", // Rutas relacionadas con mangas
         children: [
           {
-            path: "/manga/:id",
+            path: "/manga/:id", // Ruta para información de un manga específico
             element: <Manga />,
           },
           {
-            path: "/manga/search",
+            path: "/manga/search", // Ruta para buscar mangas
             element: <SearchManga />,
           },
           {
-            path: "/manga/top",
+            path: "/manga/top", // Ruta para ver los mangas más populares
             element: <TopMangas />,
           },
           {
-            path: "/manga/season",
+            path: "/manga/season", // Ruta para mangas por temporada
             element: <MangasBySeason />,
           },
         ],
       },
       {
-        path: "/seiyuu/:id",
+        path: "/seiyuu/:id", // Ruta para información de un actor de voz específico
         element: <Seiyuu />,
       },
       {
-        path: "/character/:id",
+        path: "/character/:id", // Ruta para información de un personaje específico
         element: <Character />,
       },
     ],
