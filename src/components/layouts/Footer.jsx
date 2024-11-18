@@ -30,7 +30,8 @@ const Footer = () => {
       {/* Enlace interno para la página de contacto */}
       <div>
         <NavLink className="contact" to="/contact">
-          Contacto
+          <i className="fa-solid fa-address-book"></i>
+          <span>Contacto</span>
         </NavLink>
       </div>
     </footer>
