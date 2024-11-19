@@ -1,5 +1,5 @@
 .logo {
-  height: 45px;
+  height: 2.8125rem;
 }
 
 .top-row,
@@ -98,25 +98,20 @@
   justify-content: center;
   width: 4.25rem;
   height: 2.5rem;
-  background-color: var(--switch-bg, #ccc);
+  background-color: var(--switch-bg);
   border-radius: 1.5625rem;
   cursor: pointer;
   position: relative;
-  transition: all 0.3s ease;
   margin-left: 1rem;
   margin-right: 0.5rem;
   border: 0.25rem solid var(--neutral-900);
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
 }
 
 .dark-mode-switch .switch {
   position: absolute;
   width: 1.75rem;
   height: 1.75rem;
-  background-color: var(--switch-circle, #fff);
+  background-color: var(--switch-circle);
   border-radius: 50%;
   transition: all 0.3s ease;
   transform: translateX(-0.625rem);
@@ -131,23 +126,23 @@
 
 .dark-mode-switch .switch.switch-dark {
   transform: translateX(0.625rem);
-  background-color: var(--switch-circle-dark, #444);
+  background-color: var(--switch-circle-dark);
   -webkit-transform: translateX(0.625rem);
   -moz-transform: translateX(0.625rem);
   -ms-transform: translateX(0.625rem);
   -o-transform: translateX(0.625rem);
 }
 
-.dark-mode-switch .switch .switch-icon {
+.dark-mode-switch .switch {
   font-size: 1rem;
-  color: var(--switch-icon, #000);
+  color: var(--switch-icon);
   display: flex;
   align-self: center;
   justify-content: center;
 }
 
-.dark-mode-switch .switch.switch-dark .switch-icon {
-  color: var(--switch-icon-dark, #fff);
+.dark-mode-switch .switch.switch-dark {
+  color: var(--switch-icon-dark);
 }
 
 .dropdown {

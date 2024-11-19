@@ -30,13 +30,11 @@ const Navbar = () => {
           {/* Interruptor de modo oscuro */}
           <div className="dark-mode-switch" onClick={toggleDarkMode}>
             <div className={`switch ${darkMode ? "switch-dark" : ""}`}>
-              <div className="switch-icon">
-                <i
-                  className={`fa-solid ${
-                    darkMode ? "fa-moon" : "fa-sun"
-                  } toggle-icon`} // Ícono que cambia entre luna y sol según el tema
-                ></i>
-              </div>
+              <i
+                className={`fa-solid ${
+                  darkMode ? "fa-moon" : "fa-sun"
+                } toggle-icon`} // Ícono que cambia entre luna y sol según el tema
+              ></i>
             </div>
           </div>
           {/* Enlaces de inicio de sesión y registro */}
