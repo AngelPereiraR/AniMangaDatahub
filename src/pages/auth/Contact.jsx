@@ -1,12 +1,19 @@
-import React, { useState } from "react"; // Importación de React y useState
+import React, { useContext, useEffect, useState } from "react"; // Importación de React y useState
 import Input from "../../components/auth/Input"; // Componente Input para campos de formulario
 import Rating from "../../components/shared/Rating"; // Componente Rating para mostrar la calificación
 import Button from "../../components/shared/Button"; // Componente Button para el botón de enviar
-import { Bounce, toast, ToastContainer } from "react-toastify"; // Librería para notificaciones
+import { Bounce, toast } from "react-toastify"; // Librería para notificaciones
 import "react-toastify/dist/ReactToastify.css"; // Estilos para las notificaciones
 import "./Contact.css"; // Estilos para la página de contacto
+import { FormModeContext } from "../../context/FormModeContext";
 
 const Contact = () => {
+  const { updateFormMode } = useContext(FormModeContext);
+
+  useEffect(() => {
+    updateFormMode(false);
+  });
+
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
     name: "",
@@ -110,7 +117,7 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <h2>Contacto</h2>
-      <form onSubmit={handleSubmit}>
+      <form>
         {/* Campos del formulario */}
         <Input
           label="Nombre"
@@ -169,21 +176,6 @@ const Contact = () => {
         {/* Botón de envío */}
         <Button label="Enviar" onClick={handleSubmit} variant="primary" />
       </form>
-
-      {/* Contenedor para las notificaciones */}
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Bounce} // Define la transición de la notificación
-      />
     </div>
   );
 };

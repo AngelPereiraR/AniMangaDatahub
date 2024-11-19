@@ -7,11 +7,13 @@ footer {
   align-items: center;
 }
 
+.footer-login {
+  position: fixed;
+  bottom: 0;
+}
+
 footer div {
-  padding-left: 27px;
-  padding-right: 27px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding: 14px 27px;
   font-family: var(--heading-font-family);
 }
 
@@ -24,6 +26,7 @@ footer .contact {
 
 footer .contact {
   display: flex;
+  align-items: center;
 }
 
 footer .contact span {

@@ -1,5 +1,5 @@
 .search-bar {
-  width: 330px;
+  width: 360px;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 9px;
@@ -63,7 +63,7 @@
   }
 
   .search-bar {
-    width: 240px;
+    width: 270px;
   }
 }
 

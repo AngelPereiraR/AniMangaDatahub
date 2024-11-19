@@ -1,11 +1,14 @@
 import React from "react"; // Importación de React
 import "./Footer.css"; // Importación de los estilos CSS específicos del pie de página
-import { NavLink } from "react-router-dom"; // Importación de NavLink para navegación interna
+import { NavLink, useLocation } from "react-router-dom"; // Importación de NavLink para navegación interna
 
 // Componente Footer
 const Footer = () => {
+  const location = useLocation();
+
+  const footerClass = location.pathname === "/login" ? "footer-login" : "";
   return (
-    <footer>
+    <footer className={footerClass}>
       {/* Sección de créditos */}
       <div className="credits">
         <a href="/" target="_blank">

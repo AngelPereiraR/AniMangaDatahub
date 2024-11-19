@@ -1,4 +1,5 @@
 .button {
+  width: 50%;
   padding: 10px 20px;
   font-size: var(--font-size-subtitle-desktop);
   font-weight: var(--font-weight-subtitle-desktop);

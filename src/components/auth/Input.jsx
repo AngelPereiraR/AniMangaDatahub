@@ -1,4 +1,4 @@
-import React from "react"; // Importación de React
+import React, { useState } from "react"; // Importación de React
 import "./Input.css"; // Importación de los estilos específicos del componente
 
 // Componente Input que renderiza un input o textarea dependiendo del tipo
@@ -12,6 +12,13 @@ const Input = ({
   onBlur, // Función que se ejecuta cuando el campo pierde el foco
   name, // Nombre del campo (usado en el id y name del input)
 }) => {
+  const [showPassword, setShowPassword] = useState(false); // Estado para alternar visibilidad de contraseña
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev); // Cambia el estado de visibilidad
+  };
+
+  const isPasswordType = type === "password"; // Verifica si el tipo es "password"
   return (
     <div className="input-container">
       {/* Etiqueta del input, asociada con el atributo 'name' */}
@@ -28,6 +35,36 @@ const Input = ({
           name={name}
           className={`input ${errorMessage ? "input-error" : ""}`}
         />
+      ) : type === "password" ? (
+        <div className="input-wrapper">
+          <input
+            id={name}
+            type={isPasswordType && !showPassword ? "password" : "text"} // Alterna entre "password" y "text"
+            placeholder={placeholder}
+            value={value || ""}
+            onChange={onChange}
+            onBlur={onBlur}
+            name={name}
+            className={`input ${errorMessage ? "input-error" : ""}`}
+          />
+
+          {isPasswordType && (
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="toggle-password"
+              aria-label={
+                showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
+              }
+            >
+              {showPassword ? (
+                <i className="fa-solid fa-eye-slash"></i>
+              ) : (
+                <i className="fa-solid fa-eye"></i>
+              )}
+            </button>
+          )}
+        </div>
       ) : (
         <input
           id={name}

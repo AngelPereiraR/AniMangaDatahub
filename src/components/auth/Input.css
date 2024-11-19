@@ -1,5 +1,9 @@
 .input-container {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 label {
@@ -7,6 +11,7 @@ label {
   font-size: var(--font-size-subtitle-desktop);
   font-weight: var(--font-weight-subtitle-desktop);
   font-family: var(--heading-font-family);
+  display: block;
 }
 
 .input {
@@ -14,7 +19,6 @@ label {
   border: 1px solid var(--neutral-200);
   border-radius: 4px;
   width: 100%;
-  min-width: 420px;
   margin-top: 5px;
   background-color: var(--neutral-50);
   color: var(--primary-800);
@@ -23,18 +27,6 @@ label {
   font-size: var(--font-size-big-normal-desktop);
   font-weight: var(--font-weight-big-normal-desktop);
   font-family: var(--heading-font-family);
-}
-
-@media (max-width: 1023px) {
-  .input {
-    font-size: var(--font-size-normal-mobile);
-    font-weight: var(--font-weight-normal-mobile);
-  }
-
-  label {
-    font-size: var(--font-size-subtitle-mobile);
-    font-weight: var(--font-weight-subtitle-mobile);
-  }
 }
 
 textarea {
@@ -58,4 +50,41 @@ textarea {
 .input:focus {
   outline: none;
   border-color: var(--primary-300);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 33%;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--primary-800);
+}
+
+.toggle-password:hover {
+  color: var(--primary-400);
+}
+
+.toggle-password:focus {
+  outline: none;
+}
+
+@media (max-width: 1023px) {
+  .input {
+    font-size: var(--font-size-normal-mobile);
+    font-weight: var(--font-weight-normal-mobile);
+  }
+
+  label {
+    font-size: var(--font-size-subtitle-mobile);
+    font-weight: var(--font-weight-subtitle-mobile);
+  }
 }

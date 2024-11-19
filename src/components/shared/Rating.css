@@ -1,7 +1,6 @@
 .rating-container {
-  display: flex;
+  display: flexbox;
   justify-content: space-between;
-  max-width: 300px;
   margin-top: 5px;
 }
 
