@@ -1,5 +1,5 @@
 .input-container {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   width: 50%;
   display: flex;
   justify-content: center;
@@ -15,11 +15,11 @@ label {
 }
 
 .input {
-  padding: 10px;
-  border: 1px solid var(--neutral-200);
-  border-radius: 4px;
+  padding: 0.625rem;
+  border: 0.0625rem solid var(--neutral-200);
+  border-radius: 0.25rem;
   width: 100%;
-  margin-top: 5px;
+  margin-top: 0.3125rem;
   background-color: var(--neutral-50);
   color: var(--primary-800);
   transition: all 0.3s ease;
@@ -27,10 +27,14 @@ label {
   font-size: var(--font-size-big-normal-desktop);
   font-weight: var(--font-weight-big-normal-desktop);
   font-family: var(--heading-font-family);
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
 }
 
 textarea {
-  min-height: 200px;
+  min-height: 12.5rem;
 }
 
 .input-error {
@@ -38,8 +42,8 @@ textarea {
 }
 
 .error-message {
-  font-size: 12px;
-  margin-top: 5px;
+  font-size: 0.75rem;
+  margin-top: 0.3125rem;
   color: var(--primary-700);
 }
 
@@ -61,7 +65,7 @@ textarea {
 .toggle-password {
   position: absolute;
   top: 33%;
-  right: 10px;
+  right: 0.625rem;
   background: none;
   border: none;
   font-size: 1.2rem;

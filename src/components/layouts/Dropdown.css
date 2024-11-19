@@ -5,23 +5,27 @@
 }
 
 .search-dropdown {
-  margin-right: 20px;
-  padding: 8px;
+  margin-right: 1.25rem;
+  padding: 0.5rem;
   color: var(--primary-800);
   background-color: var(--secondary-50);
-  border: 3px solid var(--neutral-900);
-  border-radius: 8px;
+  border: 0.1875rem solid var(--neutral-900);
+  border-radius: 0.5rem;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   position: relative;
   width: 100%;
-  box-shadow: 1px 4px 5px 4px var(--secondary-500);
+  box-shadow: 0.0625rem 0.25rem 0.3125rem 0.25rem var(--secondary-500);
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
 }
 
 .search-dropdown option {
@@ -31,7 +35,7 @@
 .search-dropdown-dark {
   background-color: var(--neutral-900);
   color: var(--secondary-50);
-  border: 3px solid #000000;
+  border: 0.1875rem solid #000000;
 }
 
 .search-dropdown:focus {
@@ -41,7 +45,7 @@
 .dropdown-icon {
   position: absolute;
   top: 50%;
-  right: 36px;
+  right: 2.25rem;
   transform: translateY(-50%);
   pointer-events: none;
   color: var(--primary-800);
@@ -57,7 +61,7 @@
 
 @media (max-width: 1023px) {
   .search-dropdown {
-    width: 150px;
+    width: 9.375rem;
     font-size: var(--font-size-subtitle-mobile);
     font-weight: var(--font-weight-subtitle-mobile);
   }
@@ -69,7 +73,7 @@
 
 @media (min-width: 1024px) {
   .search-dropdown {
-    width: 180px;
+    width: 11.25rem;
     font-size: var(--font-size-subtitle-desktop);
     font-weight: var(--font-weight-subtitle-desktop);
   }

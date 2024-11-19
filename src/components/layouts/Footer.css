@@ -13,7 +13,7 @@ footer {
 }
 
 footer div {
-  padding: 14px 27px;
+  padding: 0.875rem 1.6875rem;
   font-family: var(--heading-font-family);
 }
 
@@ -44,7 +44,7 @@ footer .contact:hover {
 }
 
 footer a i {
-  margin-right: 8px;
+  margin-right: 0.5rem;
 }
 
 @media (max-width: 1023px) {

@@ -1,11 +1,11 @@
 .rating-container {
   display: flexbox;
   justify-content: space-between;
-  margin-top: 5px;
+  margin-top: 0.3125rem;
 }
 
 .star {
-  font-size: 30px;
+  font-size: 1.875rem;
   color: #ccc;
   cursor: pointer;
   transition: color 0.3s ease;
