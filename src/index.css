@@ -100,9 +100,10 @@ h4,
 h5,
 h6,
 .link-text,
-.search-link,
+.navbar__search-link,
 .search-bar input,
-.search-dropdown {
+.list_link,
+.dropdown__select {
   font-family: var(--heading-font-family);
 }
 

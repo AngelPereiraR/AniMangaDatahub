@@ -1,4 +1,4 @@
-.login-container {
+.login {
   padding: 1.25rem;
   margin: 3rem;
   margin-bottom: 10rem;
@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 
-.login-container h2 {
+.login__heading {
   color: var(--secondary-50);
   text-align: center;
   margin-bottom: 1.25rem;
@@ -20,30 +20,30 @@
   margin-top: 6.25rem;
 }
 
-form {
+.login__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.links-login {
+.form__links {
   margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
 
-.links-login a {
+.links__list {
   display: block;
   width: 100%;
-  color: var(--secondary-50);
   font-family: var(--heading-font-family);
   text-decoration: none;
   margin: 0 0.5rem;
-}
-
-.links-login ul {
   align-items: center;
   list-style-type: none;
+}
+
+.list_link {
+  color: var(--secondary-50);
 }
 
 .error-message {
@@ -51,37 +51,31 @@ form {
   font-weight: var(--font-weight-title-desktop);
 }
 
-/* Error en Rating */
-.rating-error {
-  color: var(--primary-50);
-  font-weight: var(--font-weight-title-desktop);
-}
-
 @media (max-width: 1023px) {
-  h2 {
+  .login__heading {
     font-size: var(--font-size-menu-mobile);
     font-weight: var(--font-weight-menu-mobile);
   }
 
-  .links-login ul {
+  .links__list {
     display: flex;
     flex-direction: column;
     font-size: var(--font-size-normal-mobile);
     font-weight: var(--font-weight-normal-mobile);
   }
 
-  .links-login a {
+  .links__list {
     margin-top: 0.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-  h2 {
+  .login__heading {
     font-size: var(--font-size-menu-desktop);
     font-weight: var(--font-weight-menu-desktop);
   }
 
-  .links-login ul {
+  .links__list {
     display: flex;
     justify-content: space-between;
     font-size: var(--font-size-normal-desktop);

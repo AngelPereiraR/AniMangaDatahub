@@ -2,28 +2,22 @@
   margin-bottom: 1rem;
   width: 50%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   padding: 0.5rem;
   border-radius: 0.25rem;
-  -webkit-border-radius: 0.25rem;
-  -moz-border-radius: 0.25rem;
-  -ms-border-radius: 0.25rem;
-  -o-border-radius: 0.25rem;
 }
 
-legend {
+.input-container__legend {
   color: var(--secondary-50);
   margin-left: 0.5rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0 0.5rem;
   font-size: var(--font-size-subtitle-desktop);
   font-weight: var(--font-weight-subtitle-desktop);
   font-family: var(--heading-font-family);
-  display: block;
 }
 
-.input {
+.input-container__field {
   padding: 0.625rem;
   border: 0.0625rem solid var(--neutral-200);
   border-radius: 0.25rem;
@@ -36,42 +30,34 @@ legend {
   font-size: var(--font-size-big-normal-desktop);
   font-weight: var(--font-weight-big-normal-desktop);
   font-family: var(--heading-font-family);
-  -webkit-border-radius: 0.25rem;
-  -moz-border-radius: 0.25rem;
-  -ms-border-radius: 0.25rem;
-  -o-border-radius: 0.25rem;
 }
 
-textarea {
+.input-container__field--textarea {
   min-height: 12.5rem;
 }
 
-.input-error {
+.input-container__field--error {
   border-color: var(--primary-500);
 }
 
-.error-message {
+.input-container__error-message {
   font-size: 0.75rem;
   margin-top: 0.3125rem;
   color: var(--primary-700);
 }
 
-.label-dark {
-  color: var(--dark-text);
-}
-
-.input:focus {
+.input-container__field--focus:focus {
   outline: none;
   border-color: var(--primary-300);
 }
 
-.input-wrapper {
+.input-container__wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.toggle-password {
+.input-container__toggle-password {
   position: absolute;
   top: 33%;
   right: 0.625rem;
@@ -82,21 +68,21 @@ textarea {
   color: var(--primary-800);
 }
 
-.toggle-password:hover {
+.input-container__toggle-password:hover {
   color: var(--primary-400);
 }
 
-.toggle-password:focus {
+.input-container__toggle-password:focus {
   outline: none;
 }
 
 @media (max-width: 1023px) {
-  .input {
+  .input-container__field {
     font-size: var(--font-size-normal-mobile);
     font-weight: var(--font-weight-normal-mobile);
   }
 
-  legend {
+  .input-container__legend {
     font-size: var(--font-size-subtitle-mobile);
     font-weight: var(--font-weight-subtitle-mobile);
   }

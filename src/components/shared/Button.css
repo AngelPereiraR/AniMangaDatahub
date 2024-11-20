@@ -10,31 +10,27 @@
   display: inline-block;
   text-align: center;
   transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
 }
 
-.button.primary {
+.button--primary {
   background-color: var(--secondary-50);
   color: var(--primary-800);
   box-shadow: 0.0625rem 0.125rem 0.3125rem 0.3125rem var(--primary-800);
 }
 
-.button.primary:hover {
+.button--primary:hover {
   background-color: var(--primary-800);
   color: var(--secondary-50);
   box-shadow: 0.0625rem 0.125rem 0.3125rem 0.3125rem var(--secondary-500);
 }
 
-.button.secondary {
+.button--secondary {
   background-color: var(--primary-800);
   color: var(--secondary-50);
   box-shadow: 0.0625rem 0.125rem 0.3125rem 0.3125rem var(--secondary-500);
 }
 
-.button.secondary:hover {
+.button--secondary:hover {
   background-color: var(--secondary-50);
   color: var(--primary-800);
   box-shadow: 0.0625rem 0.125rem 0.3125rem 0.3125rem var(--primary-800);
@@ -42,7 +38,6 @@
 
 @media (max-width: 1023px) {
   .button {
-    font-size: var(--font-size-subtitle-mobile);
     font-size: var(--font-size-subtitle-mobile);
   }
 }

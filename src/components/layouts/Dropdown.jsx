@@ -8,24 +8,33 @@ const Dropdown = ({ onChange }) => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <section className="dropdown-container">
-      {" "}
-      {/* Contenedor principal del dropdown */}
+    <section className="dropdown">
       <select
-        className={`search-dropdown ${darkMode ? "search-dropdown-dark" : ""}`} // Clase condicional según el tema actual
-        onChange={onChange} // Llama a la función `onChange` cuando cambia la selección
+        className={`dropdown__select ${
+          darkMode ? "dropdown__select--dark" : ""
+        }`}
+        onChange={onChange}
       >
-        {/* Opciones del menú desplegable */}
-        <option value="todo">Todo</option>
-        <option value="animes">Animes</option>
-        <option value="mangas">Mangas</option>
-        <option value="personajes">Personajes</option>
-        <option value="personas">Personas</option>
+        <option className="dropdown__option" value="todo">
+          Todo
+        </option>
+        <option className="dropdown__option" value="animes">
+          Animes
+        </option>
+        <option className="dropdown__option" value="mangas">
+          Mangas
+        </option>
+        <option className="dropdown__option" value="personajes">
+          Personajes
+        </option>
+        <option className="dropdown__option" value="personas">
+          Personas
+        </option>
       </select>
       <i
-        className={`fa-solid fa-caret-down dropdown-icon ${
-          darkMode ? "dropdown-icon-dark" : ""
-        }`} // Ícono con clases condicionales basadas en el tema
+        className={`fa-solid fa-caret-down dropdown__icon ${
+          darkMode ? "dropdown__icon--dark" : ""
+        }`}
       ></i>
     </section>
   );

@@ -6,33 +6,19 @@ import { NavLink, useLocation } from "react-router-dom"; // Importación de NavL
 const Footer = () => {
   const location = useLocation();
 
-  const footerClass = location.pathname === "/login" ? "footer-login" : "";
+  const footerClass = location.pathname === "/login" ? "footer--login" : "";
   return (
-    <footer className={footerClass}>
+    <footer className={`footer ${footerClass}`}>
       {/* Sección de créditos */}
-      <section className="credits">
-        <a href="/" target="_blank">
-          AniMangaDatahub
-        </a>{" "}
-        © 2024 by{" "}
-        <a href="https://portfolio-angelpereira.netlify.app/" target="_blank">
-          Ángel Pereira
-        </a>{" "}
-        is licensed under{" "}
-        <a
-          href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1"
-          target="_blank"
-        >
-          CC BY-NC-SA 4.0
-        </a>
-        . Icons by{" "}
+      <section className="footer__section footer__credits">
+        Icons by{" "}
         <a href="https://fontawesome.com/" target="_blank">
           Font Awesome
         </a>
       </section>
       {/* Enlace interno para la página de contacto */}
-      <nav aria-label="Footer navigation">
-        <NavLink className="contact" to="/contact">
+      <nav aria-label="Footer navigation" className="footer__nav">
+        <NavLink className="footer__contact" to="/contact">
           <i className="fa-solid fa-address-book"></i>
           <span>Contacto</span>
         </NavLink>

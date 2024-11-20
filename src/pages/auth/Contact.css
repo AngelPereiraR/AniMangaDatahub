@@ -1,4 +1,4 @@
-.contact-container {
+.contact {
   padding: 1.25rem;
   margin: 3rem;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
@@ -6,41 +6,35 @@
   background-size: cover;
   background-position: center;
   border-radius: 2rem;
-  box-sizing: border-box;
 }
 
-.contact-container h2 {
+.contact__heading {
   color: var(--secondary-50);
   text-align: center;
   margin-bottom: 1.25rem;
 }
 
-form {
+.contact__form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.input-container__error-message {
+  color: var(--primary-50);
+  font-weight: var(--font-weight-title-desktop);
 }
 
 @media (max-width: 1023px) {
-  h2 {
+  .contact__heading {
     font-size: var(--font-size-menu-mobile);
     font-weight: var(--font-weight-menu-mobile);
   }
 }
 
 @media (min-width: 1024px) {
-  h2 {
+  .contact__heading {
     font-size: var(--font-size-menu-desktop);
     font-weight: var(--font-weight-menu-desktop);
   }
-}
-
-.error-message {
-  color: var(--primary-50);
-  font-weight: var(--font-weight-title-desktop);
-}
-
-/* Error en Rating */
-.rating-error {
-  color: var(--primary-50);
-  font-weight: var(--font-weight-title-desktop);
 }

@@ -49,18 +49,25 @@ const SearchBar = () => {
   return (
     <section className="search-container">
       {/* Componente Dropdown que permite seleccionar el filtro */}
-      <Dropdown onChange={handleDropdownChange} />
+      <Dropdown
+        onChange={handleDropdownChange}
+        className="search-bar__dropdown"
+      />
 
       {/* Contenedor de la barra de búsqueda */}
-      <div className={`search-bar ${darkMode ? "search-bar-dark" : ""}`}>
+      <div className={`search-bar ${darkMode ? "search-bar--dark" : ""}`}>
         <input
           type="text"
-          placeholder={`Escribe tu búsqueda...`}
+          placeholder="Escribe tu búsqueda..."
+          className="search-bar__input"
           onKeyDown={handleKeyDown}
           onInput={handleInput}
         />
         {/* Ícono de búsqueda */}
-        <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
+        <i
+          className="fa-solid fa-magnifying-glass search-bar__icon"
+          onClick={search}
+        ></i>
       </div>
     </section>
   );

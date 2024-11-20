@@ -131,9 +131,9 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact-container">
-      <h2>Contacto</h2>
-      <form onSubmit={handleSubmit}>
+    <section className="contact">
+      <h2 className="contact__heading">Contacto</h2>
+      <form className="contact__form" onSubmit={handleSubmit}>
         {/* Campos del formulario */}
         <Input
           label="Nombre"
@@ -177,7 +177,7 @@ const Contact = () => {
         />
         {/* Componente de calificación */}
         <fieldset className="input-container">
-          <legend>Valoración</legend>
+          <legend className="input-container__legend">Valoración</legend>
           <Rating
             value={formData.rating}
             onChange={(rating) => {
@@ -185,7 +185,9 @@ const Contact = () => {
               validateField("rating", rating);
             }}
           />
-          {errors.rating && <p className="error-message">{errors.rating}</p>}{" "}
+          {errors.rating && (
+            <p className="input-container__error-message">{errors.rating}</p>
+          )}{" "}
           {/* Muestra error si la calificación no es válida */}
         </fieldset>
 

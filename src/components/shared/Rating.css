@@ -4,29 +4,31 @@
   margin-top: 0.3125rem;
 }
 
-.star {
+.rating-container__star {
+  display: inline-block;
+  margin: 0 1rem;
   font-size: 1.875rem;
   color: #ccc;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.star.filled {
+.rating-container__star--filled {
   color: gold;
 }
 
-.star.hovered {
+.rating-container__star--hovered {
   color: #ffdf00;
 }
 
-.rating-dark .star {
+.rating-container--dark .rating-container__star {
   color: #888;
 }
 
-.rating-dark .star.filled {
+.rating-container--dark .rating-container__star--filled {
   color: #ffdf00;
 }
 
-.rating-dark .star.hovered {
+.rating-container--dark .rating-container__star--hovered {
   color: #ffd700;
 }

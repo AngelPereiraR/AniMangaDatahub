@@ -21,10 +21,8 @@ const Input = ({
   const isPasswordType = type === "password"; // Verifica si el tipo es "password"
   return (
     <fieldset className="input-container">
-      {/* Etiqueta del input, asociada con el atributo 'name' */}
-      <legend>{label}</legend>
+      <legend className="input-container__legend">{label}</legend>
 
-      {/* Condicional para renderizar un input o un textarea según el tipo */}
       {type === "textarea" ? (
         <textarea
           id={name}
@@ -33,37 +31,38 @@ const Input = ({
           onChange={onChange}
           onBlur={onBlur}
           name={name}
-          className={`input ${errorMessage ? "input-error" : ""}`}
+          className={`input-container__field input-container__field--textarea ${
+            errorMessage ? "input-container__field--error" : ""
+          }`}
         />
       ) : type === "password" ? (
-        <div className="input-wrapper">
+        <div className="input-container__wrapper">
           <input
             id={name}
-            type={isPasswordType && !showPassword ? "password" : "text"} // Alterna entre "password" y "text"
+            type={isPasswordType && !showPassword ? "password" : "text"}
             placeholder={placeholder}
             value={value || ""}
             onChange={onChange}
             onBlur={onBlur}
             name={name}
-            className={`input ${errorMessage ? "input-error" : ""}`}
+            className={`input-container__field ${
+              errorMessage ? "input-container__field--error" : ""
+            }`}
           />
-
-          {isPasswordType && (
-            <button
-              type="button"
-              onClick={togglePasswordVisibility}
-              className="toggle-password"
-              aria-label={
-                showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
-              }
-            >
-              {showPassword ? (
-                <i className="fa-solid fa-eye-slash"></i>
-              ) : (
-                <i className="fa-solid fa-eye"></i>
-              )}
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={togglePasswordVisibility}
+            className="input-container__toggle-password"
+            aria-label={
+              showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
+            }
+          >
+            {showPassword ? (
+              <i className="fa-solid fa-eye-slash"></i>
+            ) : (
+              <i className="fa-solid fa-eye"></i>
+            )}
+          </button>
         </div>
       ) : (
         <input
@@ -74,12 +73,15 @@ const Input = ({
           onChange={onChange}
           onBlur={onBlur}
           name={name}
-          className={`input ${errorMessage ? "input-error" : ""}`}
+          className={`input-container__field ${
+            errorMessage ? "input-container__field--error" : ""
+          }`}
         />
       )}
 
-      {/* Si hay un mensaje de error, se renderiza debajo del input */}
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && (
+        <p className="input-container__error-message">{errorMessage}</p>
+      )}
     </fieldset>
   );
 };

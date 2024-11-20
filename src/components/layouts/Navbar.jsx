@@ -14,13 +14,16 @@ const Navbar = () => {
   const { formMode } = useContext(FormModeContext);
 
   return (
-    <header>
+    <header className="navbar">
       {/* Fila superior de la barra de navegación */}
-      <div className="top-row">
+      <div className="navbar__top-row">
         {/* Enlace al inicio con el logo y el título */}
-        <NavLink className={`home ${darkMode ? "home-dark" : ""}`} to="/">
+        <NavLink
+          className={`navbar__home ${darkMode ? "navbar__home--dark" : ""}`}
+          to="/"
+        >
           <img
-            className="logo"
+            className="navbar__logo"
             src="../favicon.svg" // Logo del sitio
             alt="Logo de AniMangaDatahub"
           />
@@ -28,14 +31,18 @@ const Navbar = () => {
         </NavLink>
 
         {/* Contenedor para el interruptor de tema y los enlaces de usuario */}
-        <div className="row">
+        <div className="navbar__row">
           {/* Interruptor de modo oscuro */}
           <button
-            className="dark-mode-switch"
+            className="navbar__dark-mode-switch"
             onClick={toggleDarkMode}
             aria-label={`Activar modo ${darkMode ? "claro" : "oscuro"}`}
           >
-            <div className={`switch ${darkMode ? "switch-dark" : ""}`}>
+            <div
+              className={`navbar__switch ${
+                darkMode ? "navbar__switch--dark" : ""
+              }`}
+            >
               <i
                 className={`fa-solid ${
                   darkMode ? "fa-moon" : "fa-sun"
@@ -46,25 +53,29 @@ const Navbar = () => {
           {/* Enlaces de inicio de sesión y registro */}
           {!formMode && (
             <nav
-              className={` ${!isWideScreen && "hidden"}`}
+              className={` ${!isWideScreen && "navbar__hidden"}`}
               aria-label="Enlaces de usuario"
             >
-              <ul className="links">
+              <ul className="navbar__links">
                 <li>
                   <NavLink
-                    className={`link ${darkMode ? "link-dark" : ""}`}
+                    className={`navbar__link ${
+                      darkMode ? "navbar__link--dark" : ""
+                    }`}
                     to="/login"
                   >
-                    <i className="fa-solid fa-user link-icon"></i>
+                    <i className="fa-solid fa-user navbar__link-icon"></i>
                     <span className="link-text">Inicio</span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    className={`link ${darkMode ? "link-dark" : ""}`}
+                    className={`navbar__link ${
+                      darkMode ? "navbar__link--dark" : ""
+                    }`}
                     to="/register"
                   >
-                    <i className="fa-solid fa-user-plus link-icon"></i>
+                    <i className="fa-solid fa-user-plus navbar__link-icon"></i>
                     <span className="link-text">Registro</span>
                   </NavLink>
                 </li>
@@ -76,21 +87,21 @@ const Navbar = () => {
 
       {/* Fila inferior de la barra de navegación */}
       {!formMode && (
-        <div className="bottom-row">
+        <div className="navbar__bottom-row">
           <nav aria-label="Navegación de contenido">
             {/* Enlaces desplegables para animes y mangas */}
-            <ul className="links">
+            <ul className="navbar__links">
               {/* Dropdown para animes */}
-              <li className="dropdown">
+              <li className="navbar__dropdown">
                 <NavLink
-                  className={`search-link ${
-                    darkMode ? "search-link-dark" : ""
+                  className={`navbar__search-link ${
+                    darkMode ? "navbar__search-link--dark" : ""
                   }`}
                   to="/anime/search"
                 >
                   Animes
                 </NavLink>
-                <ul className="dropdown-menu">
+                <ul className="navbar__dropdown-menu">
                   {/* Opciones del dropdown */}
                   <li>
                     <NavLink to="/anime/search">Búsqueda de Animes</NavLink>
@@ -104,16 +115,16 @@ const Navbar = () => {
                 </ul>
               </li>
               {/* Dropdown para mangas */}
-              <li className="dropdown">
+              <li className="navbar__dropdown">
                 <NavLink
-                  className={`search-link ${
-                    darkMode ? "search-link-dark" : ""
+                  className={`navbar__search-link ${
+                    darkMode ? "navbar__search-link--dark" : ""
                   }`}
                   to="/manga/search"
                 >
                   Mangas
                 </NavLink>
-                <ul className="dropdown-menu">
+                <ul className="navbar__dropdown-menu">
                   {/* Opciones del dropdown */}
                   <li>
                     <NavLink to="/manga/search">Búsqueda de Mangas</NavLink>
@@ -131,22 +142,26 @@ const Navbar = () => {
 
           {!isWideScreen && (
             <nav aria-label="Enlaces de usuario">
-              <ul className="links">
+              <ul className="navbar__links">
                 <li>
                   <NavLink
-                    className={`link ${darkMode ? "link-dark" : ""}`}
+                    className={`navbar__link ${
+                      darkMode ? "navbar__link-dark" : ""
+                    }`}
                     to="/login"
                   >
-                    <i className="fa-solid fa-user link-icon"></i>
+                    <i className="fa-solid fa-user navbar__link-icon"></i>
                     <span className="link-text">Inicio</span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    className={`link ${darkMode ? "link-dark" : ""}`}
+                    className={`navbar__link ${
+                      darkMode ? "navbar__link-dark" : ""
+                    }`}
                     to="/register"
                   >
-                    <i className="fa-solid fa-user-plus link-icon"></i>
+                    <i className="fa-solid fa-user-plus navbar__link-icon"></i>
                     <span className="link-text">Registro</span>
                   </NavLink>
                 </li>

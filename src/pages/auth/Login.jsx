@@ -103,9 +103,9 @@ const Login = () => {
   };
 
   return (
-    <section className="login-container">
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
+    <section className="login">
+      <h2 className="login__heading">Iniciar sesión</h2>
+      <form className="login__form" onSubmit={handleSubmit}>
         <Input
           label="Correo electrónico"
           type="email"
@@ -128,13 +128,17 @@ const Login = () => {
         />
         {/* Botón de envío */}
         <Button label="Enviar" type="submit" variant="primary" />
-        <nav className="links-login">
-          <ul>
+        <nav className="form__links">
+          <ul className="links__list">
             <li>
-              <NavLink to="/register">¿No estás registrado? Regístrate</NavLink>
+              <NavLink className="list_link" to="/register">
+                ¿No estás registrado? Regístrate
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/">Volver a la pantalla principal</NavLink>
+              <NavLink className="list_link" to="/">
+                Volver a la pantalla principal
+              </NavLink>
             </li>
           </ul>
         </nav>
