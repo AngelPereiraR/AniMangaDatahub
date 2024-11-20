@@ -47,7 +47,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="search-container">
+    <section className="search-container">
       {/* Componente Dropdown que permite seleccionar el filtro */}
       <Dropdown onChange={handleDropdownChange} />
 
@@ -62,7 +62,7 @@ const SearchBar = () => {
         {/* Ícono de búsqueda */}
         <i className="fa-solid fa-magnifying-glass" onClick={search}></i>
       </div>
-    </div>
+    </section>
   );
 };
 

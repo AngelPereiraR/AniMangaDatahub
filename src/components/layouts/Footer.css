@@ -12,7 +12,8 @@ footer {
   bottom: 0;
 }
 
-footer div {
+footer section,
+footer nav {
   padding: 0.875rem 1.6875rem;
   font-family: var(--heading-font-family);
 }

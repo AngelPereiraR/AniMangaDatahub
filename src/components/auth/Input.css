@@ -4,10 +4,19 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
 }
 
-label {
+legend {
   color: var(--secondary-50);
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   font-size: var(--font-size-subtitle-desktop);
   font-weight: var(--font-weight-subtitle-desktop);
   font-family: var(--heading-font-family);

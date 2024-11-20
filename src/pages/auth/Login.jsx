@@ -103,19 +103,19 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <section className="login-container">
       <h2>Iniciar sesión</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input
           label="Correo electrónico"
-          type="text"
+          type="email"
           placeholder="correo@dominio.com"
           value={formData.email}
           errorMessage={errors.email}
           onChange={handleChange}
           onBlur={handleBlur}
           name="email"
-        ></Input>
+        />
         <Input
           label="Contraseña"
           type="password"
@@ -125,16 +125,21 @@ const Login = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           name="password"
-        ></Input>
-
+        />
         {/* Botón de envío */}
-        <Button label="Enviar" onClick={handleSubmit} variant="primary" />
-        <div className="links-login">
-          <NavLink to="/register">¿No estás registrado? Regístrate</NavLink>
-          <NavLink to="/">Volver a la pantalla principal</NavLink>
-        </div>
+        <Button label="Enviar" type="submit" variant="primary" />
+        <nav className="links-login">
+          <ul>
+            <li>
+              <NavLink to="/register">¿No estás registrado? Regístrate</NavLink>
+            </li>
+            <li>
+              <NavLink to="/">Volver a la pantalla principal</NavLink>
+            </li>
+          </ul>
+        </nav>
       </form>
-    </div>
+    </section>
   );
 };
 

@@ -30,6 +30,11 @@
   align-items: center;
 }
 
+.links,
+.dropdown-menu {
+  list-style-type: none;
+}
+
 .links .link,
 .links .search-link {
   display: inline-block;

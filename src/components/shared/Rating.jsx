@@ -29,7 +29,7 @@ const Rating = ({ value, onChange, darkMode }) => {
   };
 
   return (
-    <div className={`rating-container ${darkMode ? "rating-dark" : ""}`}>
+    <section className={`rating-container ${darkMode ? "rating-dark" : ""}`}>
       {/* Crea un array de 10 elementos (para 10 estrellas), y por cada elemento renderiza una estrella */}
       {[...Array(10)].map((_, index) => (
         <span
@@ -42,7 +42,7 @@ const Rating = ({ value, onChange, darkMode }) => {
           <i className="fa-solid fa-star"></i> {/* Icono de estrella */}
         </span>
       ))}
-    </div>
+    </section>
   );
 };
 

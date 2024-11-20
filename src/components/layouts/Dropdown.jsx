@@ -8,7 +8,7 @@ const Dropdown = ({ onChange }) => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <div className="dropdown-container">
+    <section className="dropdown-container">
       {" "}
       {/* Contenedor principal del dropdown */}
       <select
@@ -27,7 +27,7 @@ const Dropdown = ({ onChange }) => {
           darkMode ? "dropdown-icon-dark" : ""
         }`} // Ícono con clases condicionales basadas en el tema
       ></i>
-    </div>
+    </section>
   );
 };
 

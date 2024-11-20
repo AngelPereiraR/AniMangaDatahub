@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className={footerClass}>
       {/* Sección de créditos */}
-      <div className="credits">
+      <section className="credits">
         <a href="/" target="_blank">
           AniMangaDatahub
         </a>{" "}
@@ -29,14 +29,14 @@ const Footer = () => {
         <a href="https://fontawesome.com/" target="_blank">
           Font Awesome
         </a>
-      </div>
+      </section>
       {/* Enlace interno para la página de contacto */}
-      <div>
+      <nav aria-label="Footer navigation">
         <NavLink className="contact" to="/contact">
           <i className="fa-solid fa-address-book"></i>
           <span>Contacto</span>
         </NavLink>
-      </div>
+      </nav>
     </footer>
   );
 };

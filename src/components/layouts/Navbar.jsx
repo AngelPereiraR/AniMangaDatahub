@@ -12,7 +12,7 @@ const Navbar = () => {
   const { formMode } = useContext(FormModeContext);
 
   return (
-    <nav>
+    <header>
       {/* Fila superior de la barra de navegación */}
       <div className="top-row">
         {/* Enlace al inicio con el logo y el título */}
@@ -28,7 +28,11 @@ const Navbar = () => {
         {/* Contenedor para el interruptor de tema y los enlaces de usuario */}
         <div className="row">
           {/* Interruptor de modo oscuro */}
-          <div className="dark-mode-switch" onClick={toggleDarkMode}>
+          <button
+            className="dark-mode-switch"
+            onClick={toggleDarkMode}
+            aria-label={`Activar modo ${darkMode ? "claro" : "oscuro"}`}
+          >
             <div className={`switch ${darkMode ? "switch-dark" : ""}`}>
               <i
                 className={`fa-solid ${
@@ -36,25 +40,31 @@ const Navbar = () => {
                 } toggle-icon`} // Ícono que cambia entre luna y sol según el tema
               ></i>
             </div>
-          </div>
+          </button>
           {/* Enlaces de inicio de sesión y registro */}
           {!formMode && (
-            <ul className="links">
-              <NavLink
-                className={`link ${darkMode ? "link-dark" : ""}`}
-                to="/login"
-              >
-                <i className="fa-solid fa-user link-icon"></i>
-                <span className="link-text">Inicio</span>
-              </NavLink>
-              <NavLink
-                className={`link ${darkMode ? "link-dark" : ""}`}
-                to="/register"
-              >
-                <i className="fa-solid fa-user-plus link-icon"></i>
-                <span className="link-text">Registro</span>
-              </NavLink>
-            </ul>
+            <nav aria-label="Enlaces de usuario">
+              <ul className="links">
+                <li>
+                  <NavLink
+                    className={`link ${darkMode ? "link-dark" : ""}`}
+                    to="/login"
+                  >
+                    <i className="fa-solid fa-user link-icon"></i>
+                    <span className="link-text">Inicio</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={`link ${darkMode ? "link-dark" : ""}`}
+                    to="/register"
+                  >
+                    <i className="fa-solid fa-user-plus link-icon"></i>
+                    <span className="link-text">Registro</span>
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
           )}
         </div>
       </div>
@@ -62,45 +72,63 @@ const Navbar = () => {
       {/* Fila inferior de la barra de navegación */}
       {!formMode && (
         <div className="bottom-row">
-          {/* Enlaces desplegables para animes y mangas */}
-          <ul className="links">
-            {/* Dropdown para animes */}
-            <div className="dropdown">
-              <NavLink
-                className={`search-link ${darkMode ? "search-link-dark" : ""}`}
-                to="/anime/search"
-              >
-                Animes
-              </NavLink>
-              <div className="dropdown-menu">
-                {/* Opciones del dropdown */}
-                <NavLink to="/anime/search">Búsqueda de Animes</NavLink>
-                <NavLink to="/anime/top">Top Animes</NavLink>
-                <NavLink to="/anime/season">Por temporada</NavLink>
-              </div>
-            </div>
-            {/* Dropdown para mangas */}
-            <div className="dropdown">
-              <NavLink
-                className={`search-link ${darkMode ? "search-link-dark" : ""}`}
-                to="/manga/search"
-              >
-                Mangas
-              </NavLink>
-              <div className="dropdown-menu">
-                {/* Opciones del dropdown */}
-                <NavLink to="/manga/search">Búsqueda de Mangas</NavLink>
-                <NavLink to="/manga/top">Top Mangas</NavLink>
-                <NavLink to="/manga/season">Por temporada</NavLink>
-              </div>
-            </div>
-          </ul>
+          <nav aria-label="Navegación de contenido">
+            {/* Enlaces desplegables para animes y mangas */}
+            <ul className="links">
+              {/* Dropdown para animes */}
+              <li className="dropdown">
+                <NavLink
+                  className={`search-link ${
+                    darkMode ? "search-link-dark" : ""
+                  }`}
+                  to="/anime/search"
+                >
+                  Animes
+                </NavLink>
+                <ul className="dropdown-menu">
+                  {/* Opciones del dropdown */}
+                  <li>
+                    <NavLink to="/anime/search">Búsqueda de Animes</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/anime/top">Top Animes</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/anime/season">Por temporada</NavLink>
+                  </li>
+                </ul>
+              </li>
+              {/* Dropdown para mangas */}
+              <li className="dropdown">
+                <NavLink
+                  className={`search-link ${
+                    darkMode ? "search-link-dark" : ""
+                  }`}
+                  to="/manga/search"
+                >
+                  Mangas
+                </NavLink>
+                <ul className="dropdown-menu">
+                  {/* Opciones del dropdown */}
+                  <li>
+                    <NavLink to="/manga/search">Búsqueda de Mangas</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/manga/top">Top Mangas</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/manga/season">Por temporada</NavLink>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
 
           {/* Barra de búsqueda */}
           <SearchBar />
         </div>
       )}
-    </nav>
+    </header>
   );
 };
 

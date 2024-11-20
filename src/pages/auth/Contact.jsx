@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"; // Importación de React y useState
+import React, { useContext, useEffect, useState } from "react"; // Importación de React y hooks
 import Input from "../../components/auth/Input"; // Componente Input para campos de formulario
 import Rating from "../../components/shared/Rating"; // Componente Rating para mostrar la calificación
 import Button from "../../components/shared/Button"; // Componente Button para el botón de enviar
@@ -6,9 +6,12 @@ import { Bounce, toast } from "react-toastify"; // Librería para notificaciones
 import "react-toastify/dist/ReactToastify.css"; // Estilos para las notificaciones
 import "./Contact.css"; // Estilos para la página de contacto
 import { FormModeContext } from "../../context/FormModeContext";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const { updateFormMode } = useContext(FormModeContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     updateFormMode(false);
@@ -111,13 +114,26 @@ const Contact = () => {
         theme: "light",
         transition: Bounce, // Transición para la notificación
       });
+
+      // Limpia el formulario y regresa a la página de inicio
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          surname: "",
+          email: "",
+          message: "",
+          rating: "",
+        });
+        updateFormMode(false);
+        navigate("/");
+      }, 200);
     }
   };
 
   return (
-    <div className="contact-container">
+    <section className="contact-container">
       <h2>Contacto</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         {/* Campos del formulario */}
         <Input
           label="Nombre"
@@ -160,8 +176,8 @@ const Contact = () => {
           name="message"
         />
         {/* Componente de calificación */}
-        <div className="input-container">
-          <label>Valoración</label>
+        <fieldset className="input-container">
+          <legend>Valoración</legend>
           <Rating
             value={formData.rating}
             onChange={(rating) => {
@@ -171,12 +187,12 @@ const Contact = () => {
           />
           {errors.rating && <p className="error-message">{errors.rating}</p>}{" "}
           {/* Muestra error si la calificación no es válida */}
-        </div>
+        </fieldset>
 
         {/* Botón de envío */}
-        <Button label="Enviar" onClick={handleSubmit} variant="primary" />
+        <Button label="Enviar" type="submit" variant="primary" />
       </form>
-    </div>
+    </section>
   );
 };
 

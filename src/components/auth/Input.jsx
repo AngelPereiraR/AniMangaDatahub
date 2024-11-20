@@ -20,9 +20,9 @@ const Input = ({
 
   const isPasswordType = type === "password"; // Verifica si el tipo es "password"
   return (
-    <div className="input-container">
+    <fieldset className="input-container">
       {/* Etiqueta del input, asociada con el atributo 'name' */}
-      <label htmlFor={name}>{label}</label>
+      <legend>{label}</legend>
 
       {/* Condicional para renderizar un input o un textarea según el tipo */}
       {type === "textarea" ? (
@@ -80,7 +80,7 @@ const Input = ({
 
       {/* Si hay un mensaje de error, se renderiza debajo del input */}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-    </div>
+    </fieldset>
   );
 };
 

@@ -50,6 +50,10 @@
   outline: none;
 }
 
+.search-bar i {
+  cursor: pointer;
+}
+
 .search-container {
   display: flex;
   align-items: center;

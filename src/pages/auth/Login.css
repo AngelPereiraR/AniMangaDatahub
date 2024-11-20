@@ -26,16 +26,23 @@ form {
   align-items: center;
 }
 
-.links-login a {
+.links-login {
   margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.links-login a {
+  display: block;
+  width: 100%;
   color: var(--secondary-50);
   font-family: var(--heading-font-family);
   text-decoration: none;
+  margin: 0 0.5rem;
 }
 
-.links-login {
+.links-login ul {
   align-items: center;
-  margin-bottom: 2rem;
+  list-style-type: none;
 }
 
 .error-message {
@@ -55,12 +62,15 @@ form {
     font-weight: var(--font-weight-menu-mobile);
   }
 
-  .links-login {
-    width: 100%;
+  .links-login ul {
     display: flex;
     flex-direction: column;
     font-size: var(--font-size-normal-mobile);
     font-weight: var(--font-weight-normal-mobile);
+  }
+
+  .links-login a {
+    margin-top: 0.5rem;
   }
 }
 
@@ -70,8 +80,7 @@ form {
     font-weight: var(--font-weight-menu-desktop);
   }
 
-  .links-login {
-    width: 50%;
+  .links-login ul {
     display: flex;
     justify-content: space-between;
     font-size: var(--font-size-normal-desktop);
