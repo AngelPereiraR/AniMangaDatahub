@@ -4,11 +4,13 @@ import SearchBar from "./SearchBar"; // Importación del componente SearchBar
 import { ThemeContext } from "../../context/ThemeContext"; // Contexto para gestionar el tema oscuro
 import "./Navbar.css"; // Estilos específicos del componente Navbar
 import { FormModeContext } from "../../context/FormModeContext";
+import { ScreenWidthContext } from "../../context/ScreenWidthContext";
 
 // Componente Navbar
 const Navbar = () => {
   // Acceso al contexto de tema para obtener el estado del modo oscuro y la función para alternarlo
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+  const { isWideScreen } = useContext(ScreenWidthContext);
   const { formMode } = useContext(FormModeContext);
 
   return (
@@ -43,7 +45,10 @@ const Navbar = () => {
           </button>
           {/* Enlaces de inicio de sesión y registro */}
           {!formMode && (
-            <nav aria-label="Enlaces de usuario">
+            <nav
+              className={` ${!isWideScreen && "hidden"}`}
+              aria-label="Enlaces de usuario"
+            >
               <ul className="links">
                 <li>
                   <NavLink
@@ -123,6 +128,31 @@ const Navbar = () => {
               </li>
             </ul>
           </nav>
+
+          {!isWideScreen && (
+            <nav aria-label="Enlaces de usuario">
+              <ul className="links">
+                <li>
+                  <NavLink
+                    className={`link ${darkMode ? "link-dark" : ""}`}
+                    to="/login"
+                  >
+                    <i className="fa-solid fa-user link-icon"></i>
+                    <span className="link-text">Inicio</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={`link ${darkMode ? "link-dark" : ""}`}
+                    to="/register"
+                  >
+                    <i className="fa-solid fa-user-plus link-icon"></i>
+                    <span className="link-text">Registro</span>
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+          )}
 
           {/* Barra de búsqueda */}
           <SearchBar />

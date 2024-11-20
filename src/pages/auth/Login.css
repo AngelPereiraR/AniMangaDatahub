@@ -1,6 +1,7 @@
 .login-container {
   padding: 1.25rem;
   margin: 3rem;
+  margin-bottom: 10rem;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
     url("./../../assets/login.png");
   background-size: cover;

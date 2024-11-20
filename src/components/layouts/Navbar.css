@@ -188,6 +188,10 @@
   color: var(--neutral-900);
 }
 
+.hidden {
+  display: none;
+}
+
 @media (max-width: 1023px) {
   .links .search-link {
     margin-right: 1rem;
@@ -216,10 +220,6 @@
   .search {
     width: 100%;
     margin-top: 1rem;
-  }
-
-  .link-text {
-    display: none;
   }
 
   .dark-mode-toggle {

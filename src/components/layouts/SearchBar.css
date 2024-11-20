@@ -62,12 +62,12 @@
 
 @media (max-width: 1023px) {
   .search-bar input {
-    width: 13.75rem;
-    font-size: var(--font-size-subtitle-mobile);
+    width: 10.75rem;
+    font-size: var(--font-size-normal-mobile);
   }
 
   .search-bar {
-    width: 16.875rem;
+    width: 13.875rem;
   }
 }
 
@@ -80,6 +80,6 @@
 @media (min-width: 1024px) {
   .search-bar input {
     width: 18.75rem;
-    font-size: var(--font-size-subtitle-desktop);
+    font-size: var(--font-size-big-normal-desktop);
   }
 }

@@ -96,7 +96,7 @@ textarea {
     font-weight: var(--font-weight-normal-mobile);
   }
 
-  label {
+  legend {
     font-size: var(--font-size-subtitle-mobile);
     font-weight: var(--font-weight-subtitle-mobile);
   }
