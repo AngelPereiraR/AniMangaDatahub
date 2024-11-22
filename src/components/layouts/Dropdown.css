@@ -51,7 +51,7 @@
   font-family: var(--heading-font-family);
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 950px) {
   .dropdown__select {
     width: 9.375rem;
     font-size: var(--font-size-normal-mobile);
@@ -63,7 +63,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 951px) {
   .dropdown__select {
     width: 11.25rem;
     font-size: var(--font-size-big-normal-desktop);

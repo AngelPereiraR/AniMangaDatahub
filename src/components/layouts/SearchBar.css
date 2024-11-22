@@ -51,24 +51,22 @@
   color: var(--primary-400);
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 950px) {
+  .search-container {
+    margin-top: 1rem;
+  }
+
   .search-bar__input {
-    width: 10.75rem;
+    width: 10.45rem;
     font-size: var(--font-size-normal-mobile);
   }
 
   .search-bar {
-    width: 13.875rem;
+    width: 13.375rem;
   }
 }
 
-@media (max-width: 676px) {
-  .search-container {
-    margin-top: 1rem;
-  }
-}
-
-@media (min-width: 1024px) {
+@media (min-width: 951px) {
   .search-bar__input {
     width: 18.75rem;
     font-size: var(--font-size-big-normal-desktop);

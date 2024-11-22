@@ -180,13 +180,19 @@
   display: none;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 950px) {
   .navbar__links .navbar__search-link {
     margin-right: 1rem;
   }
 
   .navbar__links .navbar__link {
     margin-left: 0.5rem;
+  }
+
+  .navbar__nav {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 50%;
   }
 
   .navbar__links .navbar__link {
@@ -223,7 +229,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 951px) {
   .navbar__links .navbar__search-link {
     margin-right: 2rem;
   }

@@ -25,14 +25,14 @@
   font-weight: var(--font-weight-title-desktop);
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 950px) {
   .contact__heading {
     font-size: var(--font-size-menu-mobile);
     font-weight: var(--font-weight-menu-mobile);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 951px) {
   .contact__heading {
     font-size: var(--font-size-menu-desktop);
     font-weight: var(--font-weight-menu-desktop);

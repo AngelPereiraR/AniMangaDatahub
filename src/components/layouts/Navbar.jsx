@@ -141,12 +141,12 @@ const Navbar = () => {
           </nav>
 
           {!isWideScreen && (
-            <nav aria-label="Enlaces de usuario">
+            <nav className="navbar__nav" aria-label="Enlaces de usuario">
               <ul className="navbar__links">
                 <li>
                   <NavLink
                     className={`navbar__link ${
-                      darkMode ? "navbar__link-dark" : ""
+                      darkMode ? "navbar__link--dark" : ""
                     }`}
                     to="/login"
                   >
@@ -157,7 +157,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     className={`navbar__link ${
-                      darkMode ? "navbar__link-dark" : ""
+                      darkMode ? "navbar__link--dark" : ""
                     }`}
                     to="/register"
                   >

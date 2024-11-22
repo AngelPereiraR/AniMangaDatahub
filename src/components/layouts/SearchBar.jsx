@@ -59,7 +59,9 @@ const SearchBar = () => {
         <input
           type="text"
           placeholder="Escribe tu búsqueda..."
-          className="search-bar__input"
+          className={`search-bar__input ${
+            darkMode ? "search-bar__input--dark" : ""
+          }`}
           onKeyDown={handleKeyDown}
           onInput={handleInput}
         />
