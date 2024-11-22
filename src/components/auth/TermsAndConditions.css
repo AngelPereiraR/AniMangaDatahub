@@ -1,0 +1,32 @@
+.termsAndConditions {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-bottom: 4rem;
+  color: var(--secondary-50);
+}
+
+.termsAndConditions__checkbox {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.termsAndConditions__error-message {
+  color: var(--primary-50);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 950px) {
+  .termsAndConditions__error-message {
+    font-size: var(--font-size-normal-mobile);
+    font-weight: var(--font-weight-normal-mobile);
+  }
+}
+
+@media (min-width: 951px) {
+  .termsAndConditions__error-message {
+    font-size: var(--font-size-normal-desktop);
+    font-weight: var(--font-weight-normal-desktop);
+  }
+}

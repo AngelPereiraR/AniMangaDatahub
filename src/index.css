@@ -45,6 +45,12 @@
   --shades-50: #ffffff;
   --shades-100: #333333;
 
+  /* Checkbox colors */
+  --checkbox-checked-bg: #d4f4dd;
+  --checkbox-checked-color: #4caf50;
+  --checkbox-crossed-bg: #f4d4d4;
+  --checkbox-crossed-color: #f44336;
+
   /* Font families */
   --heading-font-family: "Shantell Sans", "Times New Roman", "Arial", sans-serif;
   --normal-text-font-family: "Lucida Sans", "Lucida Sans Regular",

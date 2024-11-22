@@ -5,6 +5,8 @@ import { ThemeContext } from "../../context/ThemeContext"; // Contexto para gest
 import "./Navbar.css"; // Estilos específicos del componente Navbar
 import { FormModeContext } from "../../context/FormModeContext";
 import { ScreenWidthContext } from "../../context/ScreenWidthContext";
+import { UserContext } from "../../context/UserContext";
+import { logout } from "../../config/Firebase";
 
 // Componente Navbar
 const Navbar = () => {
@@ -12,6 +14,7 @@ const Navbar = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const { isWideScreen } = useContext(ScreenWidthContext);
   const { formMode } = useContext(FormModeContext);
+  const { user } = useContext(UserContext);
 
   return (
     <header className="navbar">
@@ -58,26 +61,50 @@ const Navbar = () => {
             >
               <ul className="navbar__links">
                 <li>
-                  <NavLink
-                    className={`navbar__link ${
-                      darkMode ? "navbar__link--dark" : ""
-                    }`}
-                    to="/login"
-                  >
-                    <i className="fa-solid fa-user navbar__link-icon"></i>
-                    <span className="link-text">Inicio</span>
-                  </NavLink>
+                  {user === null ? (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      to="/login"
+                    >
+                      <i className="fa-solid fa-user navbar__link-icon"></i>
+                      <span className="link-text">Inicio</span>
+                    </NavLink>
+                  ) : (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      onClick={logout}
+                    >
+                      <i className="fa-solid fa-right-from-bracket navbar__link-icon"></i>
+                      <span className="link-text">Cerrar sesión</span>
+                    </NavLink>
+                  )}
                 </li>
                 <li>
-                  <NavLink
-                    className={`navbar__link ${
-                      darkMode ? "navbar__link--dark" : ""
-                    }`}
-                    to="/register"
-                  >
-                    <i className="fa-solid fa-user-plus navbar__link-icon"></i>
-                    <span className="link-text">Registro</span>
-                  </NavLink>
+                  {user === null ? (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      to="/register"
+                    >
+                      <i className="fa-solid fa-user-plus navbar__link-icon"></i>
+                      <span className="link-text">Registro</span>
+                    </NavLink>
+                  ) : (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      to="/profile"
+                    >
+                      <i className="fa-solid fa-user navbar__link-icon"></i>
+                      <span className="link-text">Ver perfil</span>
+                    </NavLink>
+                  )}
                 </li>
               </ul>
             </nav>
@@ -105,7 +132,11 @@ const Navbar = () => {
                 >
                   Animes
                 </NavLink>
-                <ul className="navbar__dropdown-menu">
+                <ul
+                  className={`navbar__dropdown-menu ${
+                    darkMode ? "navbar__dropdown-menu--dark" : ""
+                  }`}
+                >
                   {/* Opciones del dropdown */}
                   <li>
                     <NavLink to="/anime/search">Búsqueda de Animes</NavLink>
@@ -128,7 +159,11 @@ const Navbar = () => {
                 >
                   Mangas
                 </NavLink>
-                <ul className="navbar__dropdown-menu">
+                <ul
+                  className={`navbar__dropdown-menu ${
+                    darkMode ? "navbar__dropdown-menu--dark" : ""
+                  }`}
+                >
                   {/* Opciones del dropdown */}
                   <li>
                     <NavLink to="/manga/search">Búsqueda de Mangas</NavLink>
@@ -148,26 +183,50 @@ const Navbar = () => {
             <nav className="navbar__nav" aria-label="Enlaces de usuario">
               <ul className="navbar__links">
                 <li>
-                  <NavLink
-                    className={`navbar__link ${
-                      darkMode ? "navbar__link--dark" : ""
-                    }`}
-                    to="/login"
-                  >
-                    <i className="fa-solid fa-user navbar__link-icon"></i>
-                    <span className="link-text">Inicio</span>
-                  </NavLink>
+                  {user === null ? (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      to="/login"
+                    >
+                      <i className="fa-solid fa-user navbar__link-icon"></i>
+                      <span className="link-text">Inicio</span>
+                    </NavLink>
+                  ) : (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      onClick={logout}
+                    >
+                      <i className="fa-solid fa-right-from-bracket navbar__link-icon"></i>
+                      <span className="link-text">Cerrar</span>
+                    </NavLink>
+                  )}
                 </li>
                 <li>
-                  <NavLink
-                    className={`navbar__link ${
-                      darkMode ? "navbar__link--dark" : ""
-                    }`}
-                    to="/register"
-                  >
-                    <i className="fa-solid fa-user-plus navbar__link-icon"></i>
-                    <span className="link-text">Registro</span>
-                  </NavLink>
+                  {user === null ? (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      to="/register"
+                    >
+                      <i className="fa-solid fa-user-plus navbar__link-icon"></i>
+                      <span className="link-text">Registro</span>
+                    </NavLink>
+                  ) : (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      to="/profile"
+                    >
+                      <i className="fa-solid fa-user navbar__link-icon"></i>
+                      <span className="link-text">Ver perfil</span>
+                    </NavLink>
+                  )}
                 </li>
               </ul>
             </nav>

@@ -5,6 +5,7 @@ import Input from "../../components/auth/Input";
 import Button from "../../components/shared/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { login } from "../../config/Firebase";
 
 const Login = () => {
   const { updateFormMode } = useContext(FormModeContext);
@@ -75,10 +76,10 @@ const Login = () => {
   };
 
   // Función que se ejecuta al enviar el formulario
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Login correcto", formData);
+      await login({ email: formData.email, password: formData.password });
 
       // Muestra una notificación de éxito usando react-toastify
       toast.success("Login completado con éxito", {
@@ -128,7 +129,7 @@ const Login = () => {
             name="password"
           />
           {/* Botón de envío */}
-          <Button label="Enviar" type="submit" variant="primary" />
+          <Button label="Iniciar sesión" type="submit" variant="primary" />
           <nav className="form__links">
             <ul className="links__list">
               <li>

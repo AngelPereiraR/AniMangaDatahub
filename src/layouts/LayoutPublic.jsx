@@ -6,30 +6,33 @@ import { ThemeProvider } from "../context/ThemeContext";
 import { FormModeProvider } from "../context/FormModeContext";
 import { Bounce, ToastContainer } from "react-toastify";
 import { ScreenWidthProvider } from "../context/ScreenWidthContext";
+import { UserProvider } from "../context/UserContext";
 
 const LayoutPublic = ({ children }) => {
   return (
     <FormModeProvider>
       <ScreenWidthProvider>
         <ThemeProvider>
-          <Navbar />
-          {children ? children : <Outlet></Outlet>}
+          <UserProvider>
+            <Navbar />
+            {children ? children : <Outlet></Outlet>}
 
-          {/* Contenedor para las notificaciones */}
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Bounce} // Define la transición de la notificación
-          />
-          <Footer />
+            {/* Contenedor para las notificaciones */}
+            <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              transition={Bounce} // Define la transición de la notificación
+            />
+            <Footer />
+          </UserProvider>
         </ThemeProvider>
       </ScreenWidthProvider>
     </FormModeProvider>
