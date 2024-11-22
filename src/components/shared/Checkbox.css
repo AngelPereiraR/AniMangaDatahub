@@ -1,0 +1,25 @@
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+.checkbox--checked {
+  background-color: var(--checkbox-checked-bg);
+  border-color: var(--checkbox-checked-color);
+  color: var(--checkbox-checked-color);
+}
+
+.checkbox--crossed {
+  background-color: var(--checkbox-crossed-bg);
+  border-color: var(--checkbox-crossed-color);
+  color: var(--checkbox-crossed-color);
+}

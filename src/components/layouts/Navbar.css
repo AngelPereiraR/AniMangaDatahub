@@ -163,6 +163,10 @@
   min-width: 9.375rem;
 }
 
+.navbar__dropdown-menu--dark {
+  background-color: var(--neutral-900);
+}
+
 .navbar__dropdown:hover .navbar__dropdown-menu {
   display: block;
 }
@@ -191,6 +195,10 @@
 
   .navbar__links .navbar__link {
     margin-left: 0.5rem;
+  }
+
+  .navbar__link {
+    color: var(--secondary-50);
   }
 
   .navbar__nav {
