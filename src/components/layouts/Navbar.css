@@ -22,6 +22,10 @@
   flex-wrap: wrap;
 }
 
+.navbar__bottom-row--dark {
+  background-color: var(--neutral-900);
+}
+
 .navbar__row {
   display: flex;
   justify-content: center;

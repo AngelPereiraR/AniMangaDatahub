@@ -87,7 +87,11 @@ const Navbar = () => {
 
       {/* Fila inferior de la barra de navegación */}
       {!formMode && (
-        <div className="navbar__bottom-row">
+        <div
+          className={`navbar__bottom-row ${
+            darkMode ? "navbar__bottom-row--dark" : ""
+          }`}
+        >
           <nav aria-label="Navegación de contenido">
             {/* Enlaces desplegables para animes y mangas */}
             <ul className="navbar__links">

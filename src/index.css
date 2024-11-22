@@ -119,3 +119,21 @@ html.dark {
   background-color: var(--neutral-800);
   color: var(--neutral-50);
 }
+
+@media (max-width: 950px) {
+  .login-main {
+    min-height: 80.5vh;
+  }
+}
+
+@media (min-width: 951px) {
+  .login-main {
+    min-height: 78.7vh;
+  }
+}
+
+@media (min-width: 1921px) {
+  .login-main {
+    min-height: 82.48vh;
+  }
+}

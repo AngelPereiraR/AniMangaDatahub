@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.footer--dark {
+  background-color: var(--neutral-900);
+}
+
 .footer--login {
   position: fixed;
   bottom: 0;

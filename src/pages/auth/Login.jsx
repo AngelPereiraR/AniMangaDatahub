@@ -103,47 +103,49 @@ const Login = () => {
   };
 
   return (
-    <section className="login">
-      <h2 className="login__heading">Iniciar sesión</h2>
-      <form className="login__form" onSubmit={handleSubmit}>
-        <Input
-          label="Correo electrónico"
-          type="email"
-          placeholder="correo@dominio.com"
-          value={formData.email}
-          errorMessage={errors.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          name="email"
-        />
-        <Input
-          label="Contraseña"
-          type="password"
-          placeholder="contraseña"
-          value={formData.password}
-          errorMessage={errors.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          name="password"
-        />
-        {/* Botón de envío */}
-        <Button label="Enviar" type="submit" variant="primary" />
-        <nav className="form__links">
-          <ul className="links__list">
-            <li>
-              <NavLink className="list_link" to="/register">
-                ¿No estás registrado? Regístrate
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="list_link" to="/">
-                Volver a la pantalla principal
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </form>
-    </section>
+    <main className="login-main">
+      <section className="login">
+        <h2 className="login__heading">Iniciar sesión</h2>
+        <form className="login__form" onSubmit={handleSubmit}>
+          <Input
+            label="Correo electrónico"
+            type="email"
+            placeholder="correo@dominio.com"
+            value={formData.email}
+            errorMessage={errors.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            name="email"
+          />
+          <Input
+            label="Contraseña"
+            type="password"
+            placeholder="contraseña"
+            value={formData.password}
+            errorMessage={errors.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            name="password"
+          />
+          {/* Botón de envío */}
+          <Button label="Enviar" type="submit" variant="primary" />
+          <nav className="form__links">
+            <ul className="links__list">
+              <li>
+                <NavLink className="list_link" to="/register">
+                  ¿No estás registrado? Regístrate
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="list_link" to="/">
+                  Volver a la pantalla principal
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        </form>
+      </section>
+    </main>
   );
 };
 
