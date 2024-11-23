@@ -7,14 +7,17 @@ import "react-toastify/dist/ReactToastify.css"; // Estilos para las notificacion
 import "./Contact.css"; // Estilos para la página de contacto
 import { FormModeContext } from "../../context/FormModeContext";
 import { useNavigate } from "react-router-dom";
+import { EditScreenContext } from "../../context/EditScreenContext";
 
 const Contact = () => {
   const { updateFormMode } = useContext(FormModeContext);
+  const { updateEditScreen } = useContext(EditScreenContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     updateFormMode(false);
+    updateEditScreen(false);
   });
 
   // Estado para almacenar los datos del formulario
@@ -131,70 +134,72 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact">
-      <h2 className="contact__heading">Contacto</h2>
-      <form className="contact__form" onSubmit={handleSubmit}>
-        {/* Campos del formulario */}
-        <Input
-          label="Nombre"
-          type="text"
-          placeholder="Escribe tu nombre"
-          value={formData.name}
-          errorMessage={errors.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          name="name"
-        />
-        <Input
-          label="Apellidos"
-          type="text"
-          placeholder="Escribe tus apellidos"
-          value={formData.surname}
-          errorMessage={errors.surname}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          name="surname"
-        />
-        <Input
-          label="Correo Electrónico"
-          type="text"
-          placeholder="Escribe tu correo"
-          value={formData.email}
-          errorMessage={errors.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          name="email"
-        />
-        <Input
-          label="Mensaje"
-          type="textarea"
-          placeholder="Escribe tu mensaje"
-          value={formData.message}
-          errorMessage={errors.message}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          name="message"
-        />
-        {/* Componente de calificación */}
-        <fieldset className="input-container">
-          <legend className="input-container__legend">Valoración</legend>
-          <Rating
-            value={formData.rating}
-            onChange={(rating) => {
-              setFormData({ ...formData, rating });
-              validateField("rating", rating);
-            }}
+    <main>
+      <section className="contact">
+        <h2 className="contact__heading">Contacto</h2>
+        <form className="contact__form" onSubmit={handleSubmit}>
+          {/* Campos del formulario */}
+          <Input
+            label="Nombre"
+            type="text"
+            placeholder="Escribe tu nombre"
+            value={formData.name}
+            errorMessage={errors.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            name="name"
           />
-          {errors.rating && (
-            <p className="input-container__error-message">{errors.rating}</p>
-          )}{" "}
-          {/* Muestra error si la calificación no es válida */}
-        </fieldset>
+          <Input
+            label="Apellidos"
+            type="text"
+            placeholder="Escribe tus apellidos"
+            value={formData.surname}
+            errorMessage={errors.surname}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            name="surname"
+          />
+          <Input
+            label="Correo Electrónico"
+            type="text"
+            placeholder="Escribe tu correo"
+            value={formData.email}
+            errorMessage={errors.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            name="email"
+          />
+          <Input
+            label="Mensaje"
+            type="textarea"
+            placeholder="Escribe tu mensaje"
+            value={formData.message}
+            errorMessage={errors.message}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            name="message"
+          />
+          {/* Componente de calificación */}
+          <fieldset className="input-container">
+            <legend className="input-container__legend">Valoración</legend>
+            <Rating
+              value={formData.rating}
+              onChange={(rating) => {
+                setFormData({ ...formData, rating });
+                validateField("rating", rating);
+              }}
+            />
+            {errors.rating && (
+              <p className="input-container__error-message">{errors.rating}</p>
+            )}{" "}
+            {/* Muestra error si la calificación no es válida */}
+          </fieldset>
 
-        {/* Botón de envío */}
-        <Button label="Enviar" type="submit" variant="primary" />
-      </form>
-    </section>
+          {/* Botón de envío */}
+          <Button label="Enviar" type="submit" variant="primary" />
+        </form>
+      </section>
+    </main>
   );
 };
 

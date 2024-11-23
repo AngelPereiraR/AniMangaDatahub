@@ -7,6 +7,7 @@ import { FormModeContext } from "../../context/FormModeContext";
 import { ScreenWidthContext } from "../../context/ScreenWidthContext";
 import { UserContext } from "../../context/UserContext";
 import { logout } from "../../config/Firebase";
+import { EditScreenContext } from "../../context/EditScreenContext";
 
 // Componente Navbar
 const Navbar = () => {
@@ -15,6 +16,7 @@ const Navbar = () => {
   const { isWideScreen } = useContext(ScreenWidthContext);
   const { formMode } = useContext(FormModeContext);
   const { user } = useContext(UserContext);
+  const { editScreen } = useContext(EditScreenContext);
 
   return (
     <header className="navbar">
@@ -93,6 +95,16 @@ const Navbar = () => {
                     >
                       <i className="fa-solid fa-user-plus navbar__link-icon"></i>
                       <span className="link-text">Registro</span>
+                    </NavLink>
+                  ) : editScreen ? (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      to="/profile/edit"
+                    >
+                      <i className="fa-solid fa-pen-to-square navbar__link-icon"></i>
+                      <span className="link-text">Editar perfil</span>
                     </NavLink>
                   ) : (
                     <NavLink
@@ -215,6 +227,16 @@ const Navbar = () => {
                     >
                       <i className="fa-solid fa-user-plus navbar__link-icon"></i>
                       <span className="link-text">Registro</span>
+                    </NavLink>
+                  ) : editScreen ? (
+                    <NavLink
+                      className={`navbar__link ${
+                        darkMode ? "navbar__link--dark" : ""
+                      }`}
+                      to="/profile/edit"
+                    >
+                      <i className="fa-solid fa-pen-to-square navbar__link-icon"></i>
+                      <span className="link-text">Editar</span>
                     </NavLink>
                   ) : (
                     <NavLink
