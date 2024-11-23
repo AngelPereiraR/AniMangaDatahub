@@ -7,34 +7,37 @@ import { FormModeProvider } from "../context/FormModeContext";
 import { Bounce, ToastContainer } from "react-toastify";
 import { ScreenWidthProvider } from "../context/ScreenWidthContext";
 import { UserProvider } from "../context/UserContext";
+import { EditScreenProvider } from "../context/EditScreenContext";
 
 const LayoutPublic = ({ children }) => {
   return (
     <FormModeProvider>
-      <ScreenWidthProvider>
-        <ThemeProvider>
-          <UserProvider>
-            <Navbar />
-            {children ? children : <Outlet></Outlet>}
+      <EditScreenProvider>
+        <ScreenWidthProvider>
+          <ThemeProvider>
+            <UserProvider>
+              <Navbar />
+              {children ? children : <Outlet></Outlet>}
 
-            {/* Contenedor para las notificaciones */}
-            <ToastContainer
-              position="bottom-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-              transition={Bounce} // Define la transición de la notificación
-            />
-            <Footer />
-          </UserProvider>
-        </ThemeProvider>
-      </ScreenWidthProvider>
+              {/* Contenedor para las notificaciones */}
+              <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce} // Define la transición de la notificación
+              />
+              <Footer />
+            </UserProvider>
+          </ThemeProvider>
+        </ScreenWidthProvider>
+      </EditScreenProvider>
     </FormModeProvider>
   );
 };

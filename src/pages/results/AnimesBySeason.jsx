@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { EditScreenContext } from "../../context/EditScreenContext";
 
 const AnimesBySeason = () => {
+  const { updateEditScreen } = useContext(EditScreenContext);
+
+  useEffect(() => {
+    updateEditScreen(false);
+  });
   return <div>AnimesBySeason</div>;
 };
 

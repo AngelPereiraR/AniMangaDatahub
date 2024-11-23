@@ -44,8 +44,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile", // Ruta para el perfil del usuario
-        element: <Profile />,
         children: [
+          {
+            index: true,
+            element: <Profile />,
+          },
           {
             path: "/profile/edit", // Subruta para editar el perfil
             element: <EditProfile />,
