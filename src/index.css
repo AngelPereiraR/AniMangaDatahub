@@ -57,11 +57,13 @@
     "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 
   /* Font sizes */
+  --font-size-error404-desktop: 6.5rem;
   --font-size-title-desktop: 2.5rem;
   --font-size-menu-desktop: 2rem;
   --font-size-subtitle-desktop: 1.5rem;
   --font-size-big-normal-desktop: 1rem;
   --font-size-normal-desktop: 0.8125rem;
+  --font-size-error404-mobile: 3.5rem;
   --font-size-title-mobile: 1.5rem;
   --font-size-menu-mobile: 1.25rem;
   --font-size-subtitle-mobile: 1.125rem;
