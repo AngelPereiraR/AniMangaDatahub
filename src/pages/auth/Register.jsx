@@ -7,6 +7,7 @@ import Button from "../../components/shared/Button";
 import "./Register.css";
 import { register } from "../../config/Firebase";
 import TermsAndConditions from "../../components/auth/TermsAndConditions";
+import { UserContext } from "../../context/UserContext";
 
 const Register = () => {
   const { updateFormMode } = useContext(FormModeContext);
