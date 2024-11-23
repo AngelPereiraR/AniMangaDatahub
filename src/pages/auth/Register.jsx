@@ -10,12 +10,16 @@ import TermsAndConditions from "../../components/auth/TermsAndConditions";
 
 const Register = () => {
   const { updateFormMode } = useContext(FormModeContext);
+  const { user } = useContext(UserContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     updateFormMode(true);
-  }, []);
+    if (user !== null) {
+      navigate("/");
+    }
+  }, [user]);
 
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({

@@ -6,15 +6,20 @@ import Button from "../../components/shared/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { login } from "../../config/Firebase";
+import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
   const { updateFormMode } = useContext(FormModeContext);
+  const { user } = useContext(UserContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     updateFormMode(true);
-  }, []);
+    if (user !== null) {
+      navigate("/");
+    }
+  }, [user]);
 
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({

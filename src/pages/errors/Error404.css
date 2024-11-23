@@ -1,0 +1,75 @@
+.error__main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-50);
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("./../../assets/error404.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.main__title {
+  margin-bottom: 2rem;
+}
+
+.main__button {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.main__aside {
+  margin-left: 4rem;
+}
+
+@media (max-width: 950px) {
+  .main__title {
+    font-size: var(--font-size-error404-mobile);
+    font-weight: var(--font-weight-title-mobile);
+  }
+
+  .error__main {
+    display: flex;
+    flex-direction: column;
+    min-height: 71.9vh;
+    padding: 3rem;
+  }
+
+  .main__section {
+    width: 100%;
+  }
+
+  .main__aside {
+    display: flex;
+    justify-content: center;
+  }
+
+  .aside__image {
+    max-width: 100%;
+    object-fit: contain;
+    width: 50%;
+  }
+}
+
+@media (min-width: 951px) {
+  .main__title {
+    font-size: var(--font-size-error404-desktop);
+    font-weight: var(--font-weight-title-desktop);
+  }
+
+  .error__main {
+    min-height: 75vh;
+  }
+
+  .main__message {
+    font-size: var(--font-size-subtitle-desktop);
+    font-weight: var(--font-weight-subtitle-desktop);
+  }
+}
+
+@media (min-width: 1921px) {
+  .error__main {
+    min-height: 79.45vh;
+  }
+}
