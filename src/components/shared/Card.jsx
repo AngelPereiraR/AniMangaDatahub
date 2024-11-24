@@ -12,11 +12,13 @@ const Card = ({ image, title, mal_id, type }) => {
   };
 
   return (
-    <div
-      className={`card ${darkMode ? "card--dark" : "card--light"}`}
-      onClick={handleCardClick}
-    >
-      <img src={image} alt={title} className="card__image" />
+    <div className={`card ${darkMode ? "card--dark" : "card--light"}`}>
+      <img
+        src={image}
+        alt={title}
+        onClick={handleCardClick}
+        className="card__image"
+      />
       <p className="card__title">{title}</p>
     </div>
   );

@@ -186,7 +186,7 @@ const Navbar = () => {
                     <NavLink to="/manga/top">Top Mangas</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/manga/season">Por temporada</NavLink>
+                    <NavLink to="/manga/season">En publicación</NavLink>
                   </li>
                 </ul>
               </li>
