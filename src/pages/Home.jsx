@@ -27,7 +27,7 @@ const Home = () => {
     data: animeData,
     loading: animeLoading,
     error: animeError,
-  } = useFetch("https://api.jikan.moe/v4/seasons/now");
+  } = useFetch("https://api.jikan.moe/v4/seasons/now?continuing");
 
   const {
     data: mangaData,
