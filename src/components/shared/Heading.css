@@ -15,6 +15,15 @@
 .heading__more {
   color: var(--primary-800);
   padding: 0 1rem;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+.heading__more:hover {
+  color: var(--neutral-900);
 }
 
 .heading--dark .heading__more {
@@ -23,6 +32,15 @@
 
 .heading__deploy-button {
   cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+.heading__deploy-button:hover {
+  color: var(--neutral-900);
 }
 
 @media (max-width: 950px) {
