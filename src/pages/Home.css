@@ -1,12 +1,14 @@
 .home-main {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
     url("./../assets/home.jpg");
   background-size: cover;
   background-position: center;
+  margin-top: 25vh;
 }
 
 .main-intro {
@@ -40,6 +42,7 @@
 
   .home-main {
     height: 35vh;
+    margin-top: 22vh;
   }
 }
 
@@ -55,5 +58,6 @@
 
   .home-main {
     height: 55vh;
+    margin-top: 18vh;
   }
 }

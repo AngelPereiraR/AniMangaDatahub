@@ -32,8 +32,9 @@
   .error__main {
     display: flex;
     flex-direction: column;
-    min-height: 71.9vh;
+    min-height: 74.5vh;
     padding: 3rem;
+    margin-top: 20vh;
   }
 
   .main__section {
@@ -60,6 +61,7 @@
 
   .error__main {
     min-height: 75vh;
+    margin-top: 18.4vh;
   }
 
   .main__message {

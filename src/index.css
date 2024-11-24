@@ -66,7 +66,7 @@
   --font-size-error404-mobile: 3.5rem;
   --font-size-title-mobile: 1.5rem;
   --font-size-menu-mobile: 1.25rem;
-  --font-size-subtitle-mobile: 1.125rem;
+  --font-size-subtitle-mobile: 1rem;
   --font-size-normal-mobile: 0.75rem;
 
   font-size: 16px;
@@ -130,18 +130,18 @@ html.dark {
 
 @media (max-width: 950px) {
   .login-main {
-    min-height: 80.5vh;
+    min-height: 84.5vh;
   }
 }
 
 @media (min-width: 951px) {
   .login-main {
-    min-height: 78.7vh;
+    min-height: 83.3vh;
   }
 }
 
 @media (min-width: 1921px) {
   .login-main {
-    min-height: 82.48vh;
+    min-height: 84.5vh;
   }
 }

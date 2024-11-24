@@ -21,7 +21,9 @@ const Navbar = () => {
   return (
     <header className="navbar">
       {/* Fila superior de la barra de navegación */}
-      <div className="navbar__top-row">
+      <div
+        className={`navbar__top-row ${darkMode ? "navbar__top-row--dark" : ""}`}
+      >
         {/* Enlace al inicio con el logo y el título */}
         <NavLink
           className={`navbar__home ${darkMode ? "navbar__home--dark" : ""}`}

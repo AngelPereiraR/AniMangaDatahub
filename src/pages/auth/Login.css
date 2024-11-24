@@ -8,6 +8,7 @@
   background-position: center;
   border-radius: 2rem;
   box-sizing: border-box;
+  margin-top: 10vh;
 }
 
 .login__heading {
