@@ -82,7 +82,7 @@ const Home = () => {
         className="heading-subtitle"
         hasMore={true}
         isDeployable={false}
-        url="/anime/season"
+        url="/manga/season"
       />
       <Carousel
         data={mangaData}

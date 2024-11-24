@@ -39,3 +39,9 @@
     font-weight: var(--font-weight-menu-desktop);
   }
 }
+
+@media (min-width: 1921px) {
+  .contact {
+    margin-top: 20vh;
+  }
+}
