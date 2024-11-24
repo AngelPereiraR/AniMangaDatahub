@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../context/ThemeContext";
+import "./Card.css";
 
-const Card = () => {
-  return <div>Card</div>;
+const Card = ({ image, title, mal_id, type }) => {
+  const { darkMode } = useContext(ThemeContext);
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/${type}/${mal_id}`);
+  };
+
+  return (
+    <div
+      className={`card ${darkMode ? "card--dark" : "card--light"}`}
+      onClick={handleCardClick}
+    >
+      <img src={image} alt={title} className="card__image" />
+      <p className="card__title">{title}</p>
+    </div>
+  );
 };
 
 export default Card;
