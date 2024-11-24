@@ -30,6 +30,10 @@
   color: var(--secondary-50);
 }
 
+.heading--dark .heading__more:hover {
+  color: var(--neutral-500);
+}
+
 .heading__deploy-button {
   cursor: pointer;
   transition: all 0.3s ease;
