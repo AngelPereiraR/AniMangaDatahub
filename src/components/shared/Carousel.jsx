@@ -1,11 +1,8 @@
-import React, { useContext, useState } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
+import React, { useState } from "react";
 import Card from "./Card";
 import "./Carousel.css";
 
 const Carousel = ({ data, cardNumbers, type }) => {
-  const { darkMode } = useContext(ThemeContext);
-
   // Filtrar elementos únicos
   const uniqueData = data.data.filter(
     (item, index, self) =>
@@ -48,7 +45,7 @@ const Carousel = ({ data, cardNumbers, type }) => {
         {visibleCards.map((result) => (
           <Card
             key={result.mal_id}
-            title={result.title}
+            title={result.title_english ? result.title_english : result.title}
             image={
               result.images.webp.large_image_url !== null
                 ? result.images.webp.large_image_url
