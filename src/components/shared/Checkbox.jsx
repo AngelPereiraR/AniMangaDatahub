@@ -8,10 +8,10 @@ const Checkbox = ({ name, onChange, onBlur, clickMode = 1 }) => {
     let newState;
     if (clickMode === 1) {
       // Un clic: alternar entre marcado y desmarcado
-      newState = state === "✔" ? null : "✔";
+      newState = state === true ? null : true;
     } else if (clickMode === 2) {
       // Dos clics: alternar entre '✔', '✘' y desmarcado
-      newState = state === "✔" ? "✘" : state === "✘" ? null : "✔";
+      newState = state === true ? false : state === false ? null : true;
     }
     setState(newState);
 
@@ -35,19 +35,29 @@ const Checkbox = ({ name, onChange, onBlur, clickMode = 1 }) => {
     onBlur(event); // Disparar onBlur con el evento simulado
   };
 
+  // Determinar el contenido a mostrar basado en el estado
+  const renderState = () => {
+    if (state === true) {
+      return "✔"; // Mostrar un check
+    } else if (state === false) {
+      return "✘"; // Mostrar un cross
+    }
+    return null; // No mostrar nada si el estado es null
+  };
+
   return (
     <div
-      className={`checkbox ${state === "✔" ? "checkbox--checked" : ""} ${
-        state === "✘" ? "checkbox--crossed" : ""
+      className={`checkbox ${state === true ? "checkbox--checked" : ""} ${
+        state === false ? "checkbox--crossed" : ""
       }`}
       onClick={handleClick}
       onBlur={handleBlur}
       tabIndex="0"
       role="checkbox"
-      aria-checked={state === "✔"}
+      aria-checked={state === true}
       name={name}
     >
-      {state}
+      {renderState()} {/* Renderizar el símbolo basado en el estado */}
     </div>
   );
 };
