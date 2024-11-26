@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client"; // Importa createRoot para renderizar la aplicación en el DOM
-import "./index.css"; // Archivo de estilos globales
+import "./scss/index.scss"; // Archivo de estilos globales
 import { RouterProvider } from "react-router-dom"; // Componente RouterProvider para gestionar las rutas de la aplicación
 import { router } from "./router/index.jsx"; // Importa la configuración de las rutas desde un archivo router/index.jsx
 import { Suspense } from "react";
