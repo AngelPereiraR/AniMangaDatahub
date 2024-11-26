@@ -1,23 +1,25 @@
 import { createBrowserRouter } from "react-router-dom";
+import { lazy } from "react";
 // Importación de componentes y páginas necesarias para las rutas
 import LayoutPublic from "../layouts/LayoutPublic";
-import Error404 from "../pages/errors/Error404";
 import Home from "../pages/Home";
-import Login from "../pages/auth/Login";
-import Register from "../pages/auth/Register";
-import Profile from "../pages/auth/Profile";
-import EditProfile from "../pages/auth/EditProfile";
-import Anime from "../pages/info/Anime";
-import SearchAnime from "../pages/results/SearchAnime";
-import TopAnimes from "../pages/results/TopAnimes";
-import AnimesBySeason from "../pages/results/AnimesBySeason";
-import Manga from "../pages/info/Manga";
-import SearchManga from "../pages/results/SearchManga";
-import TopMangas from "../pages/results/TopMangas";
-import MangasBySeason from "../pages/results/MangasBySeason";
-import Contact from "../pages/auth/Contact";
-import Seiyuu from "../pages/info/Seiyuu";
-import Character from "../pages/info/Character";
+
+const Error404 = lazy(() => import("../pages/errors/Error404"));
+const Login = lazy(() => import("../pages/auth/Login"));
+const Register = lazy(() => import("../pages/auth/Register"));
+const Profile = lazy(() => import("../pages/auth/Profile"));
+const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
+const Anime = lazy(() => import("../pages/info/Anime"));
+const SearchAnime = lazy(() => import("../pages/results/SearchAnime"));
+const TopAnimes = lazy(() => import("../pages/results/TopAnimes"));
+const AnimesBySeason = lazy(() => import("../pages/results/AnimesBySeason"));
+const Manga = lazy(() => import("../pages/info/Manga"));
+const SearchManga = lazy(() => import("../pages/results/SearchManga"));
+const TopMangas = lazy(() => import("../pages/results/TopMangas"));
+const MangasBySeason = lazy(() => import("../pages/results/MangasBySeason"));
+const Contact = lazy(() => import("../pages/auth/Contact"));
+const Seiyuu = lazy(() => import("../pages/info/Seiyuu"));
+const Character = lazy(() => import("../pages/info/Character"));
 
 // Definición del router con las rutas principales y anidadas
 export const router = createBrowserRouter([
