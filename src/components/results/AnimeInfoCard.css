@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 24rem;
+  height: 24rem;
   margin: auto;
   border-radius: 1rem;
   overflow: hidden;
@@ -40,17 +41,17 @@
   align-items: flex-start;
   background-color: var(--secondary-300);
   color: var(--primary-800);
+  min-height: 16rem;
 }
 
 .anime-info-card__title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem;
+  padding: 3rem;
   background-color: var(--primary-800);
   color: var(--secondary-50);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 .anime-info-card__title--dark {
   background-color: var(--neutral-900);
 }

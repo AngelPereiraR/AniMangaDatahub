@@ -11,7 +11,6 @@ const AnimeInfoCard = ({
   firstEpisode,
   episodes,
   duration,
-  themes,
 }) => {
   const { darkMode } = useContext(ThemeContext);
   const navigate = useNavigate();
@@ -26,6 +25,7 @@ const AnimeInfoCard = ({
         className={`anime-info-card__title ${
           darkMode ? "anime-info-card__title--dark" : ""
         }`}
+        title={title}
       >
         {title}
       </h2>
@@ -49,7 +49,8 @@ const AnimeInfoCard = ({
               darkMode ? "anime-info-card__valoration--dark" : ""
             }`}
           >
-            <i className="fa-solid fa-star"></i> {valoration}
+            <i className="fa-solid fa-star"></i>{" "}
+            {valoration !== null ? valoration : "---"}
           </div>
           <div
             className={`anime-info-card__details ${
@@ -57,43 +58,23 @@ const AnimeInfoCard = ({
             }`}
           >
             <div>
-              <p className="details__title">Primer episodio</p>
+              <p className="details__title">Primer episodio: </p>
               <p className="details__info">{firstEpisode}</p>
             </div>
             <div>
-              <p className="details__title">Episodios</p>
-              <p className="details__info">{episodes}</p>
+              <span className="details__title">Episodios: </span>
+              <span className="details__info">
+                {episodes !== null ? episodes : "--"}
+              </span>
             </div>
             <div>
-              <p className="details__title">Duración</p>
-              <p className="details__info">{duration}</p>
+              <span className="details__title">Duración: </span>
+              <span className="details__info">
+                {duration !== "Unknown" ? duration : "--"}
+              </span>
             </div>
           </div>
-          {themes.length > 0 ? (
-            <div
-              className={`anime-info-card__themes ${
-                darkMode ? "anime-info-card__themes--dark" : ""
-              }`}
-            >
-              <p className="themes__title">Temas</p>
-              <p>
-                {themes.map((theme) => {
-                  return (
-                    <span
-                      className={`themes__theme ${
-                        darkMode ? "themes__theme--dark" : ""
-                      }`}
-                      key={theme.name}
-                    >
-                      {theme.name}{" "}
-                    </span>
-                  );
-                })}
-              </p>
-            </div>
-          ) : (
-            ""
-          )}
+
           <div
             className={`anime-info-card__add ${
               darkMode ? "anime-info-card__add--dark" : ""

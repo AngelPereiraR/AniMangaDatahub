@@ -90,7 +90,6 @@ const AnimesBySeason = () => {
           <AnimeInfoCard
             key={anime.mal_id}
             title={anime.title_english || anime.title}
-            themes={anime.themes}
             image={anime.images.webp.image_url}
             duration={anime.duration}
             episodes={anime.episodes}
