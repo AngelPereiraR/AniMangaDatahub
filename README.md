@@ -36,21 +36,29 @@ Este proyecto es una aplicación web desarrollada con React y Vite. Proporciona 
 
 El proyecto está organizado en las siguientes carpetas:
 
-- `assets/`: Contiene imágenes y recursos estáticos.
-- `components/`: Contiene componentes reutilizables organizados en subcarpetas como:
+- `assets/`: Contiene imágenes y recursos estáticos utilizados en la aplicación.
+- `components/`: Contiene componentes reutilizables, organizados en subcarpetas como:
   - `auth/`: Componentes relacionados con autenticación.
-  - `layouts/`: Elementos estructurales como Navbar, Footer, etc.
   - `info/`: Componentes para mostrar detalles específicos.
-  - `shared/`: Componentes comunes como botones, tarjetas y calificaciones.
-- `context/`: Contexto global de React para el manejo del tema o estado compartido.
-- `layouts/`: Plantillas generales que se aplican en múltiples páginas del proyecto.
-- `pages/`: Páginas principales de la aplicación clasificadas por categorías:
-  - `auth/`: Registro, inicio de sesión, perfil y contacto.
-  - `info/`: Páginas de detalles de anime, manga, personajes y seiyuus.
-  - `results/`: Búsquedas y listados de anime/manga.
-  - `errors/`: Páginas para errores.
-- `router/`: Configuración de las rutas de la aplicación.
-- `src/`: Archivos principales del proyecto (`App.jsx`, `index.jsx`, etc.).
+  - `layouts/`: Componentes estructurales reutilizables.
+  - `results/`: Componentes para resultados de búsqueda o listados.
+  - `shared/`: Componentes comunes como botones y tarjetas.
+- `config/`: Configuración específica de la aplicación.
+- `context/`: Contexto global de React para manejo de estados compartidos.
+- `hooks/`: Hooks personalizados para lógica reutilizable.
+- `layouts/`: Plantillas generales reutilizables en múltiples páginas.
+- `pages/`: Páginas principales de la aplicación, organizadas por secciones:
+  - `auth/`: Registro, inicio de sesión y contacto.
+  - `info/`: Páginas de detalles como anime, manga o personajes.
+  - `results/`: Listados y páginas de búsqueda.
+  - `errors/`: Páginas para mostrar errores.
+- `router/`: Configuración de las rutas principales de la aplicación.
+- `scss/`: Estilos organizados en:
+  - `base/`: Estilos base como resets y variables globales.
+  - `components/`: Estilos para los componentes reutilizables.
+  - `pages/`: Estilos específicos de cada página.
+  - `utilities/`: Estilos de utilidades globales.
+- `src/`: Archivos principales del proyecto (App.jsx, main.jsx, etc.).
 
 ## Enrutado
 
@@ -90,9 +98,76 @@ La aplicación utiliza `react-router-dom` para manejar las rutas. A continuació
 - **Errores**:
   - Página 404 personalizada para rutas no encontradas.
 
-## API utilizada
+## Integración de API y Comunicación Asíncrona
 
-Esta aplicación utiliza la [API de Jikan](https://docs.api.jikan.moe/) para obtener información actualizada sobre animes, mangas, personajes y "seiyuus". La API es una herramienta de acceso público basada en los datos de MyAnimeList.
+Este proyecto utiliza la API pública de [Jikan](https://docs.api.jikan.moe/), una API no oficial para MyAnimeList, con el fin de obtener datos en tiempo real sobre animes y mangas. La integración y comunicación asíncrona se han implementado siguiendo los principios de React, haciendo uso de hooks personalizados (`useFetch`) y contextos para gestionar el estado global.
+
+### Detalles de la Implementación
+
+1. Hook personalizado `useFetch`
+
+Este hook se ha creado para encapsular la lógica de solicitudes HTTP y manejar el ciclo de vida de la carga de datos (loading, éxito, error).
+Se utiliza para realizar peticiones `GET` a los endpoints de Jikan y retorna los datos procesados, junto con indicadores de carga (`loading`) y errores (`error`).
+Ejemplo de uso:
+
+```javascript
+const { data, loading, error } = useFetch(
+  "https://api.jikan.moe/v4/seasons/now?continuing"
+);
+```
+
+2. Contextos para Configuración Global
+
+- `FormModeContext` y `EditScreenContext`: Se emplean para manejar estados globales como el modo de formulario y la pantalla de edición, lo cual asegura una experiencia de usuario consistente al navegar entre páginas.
+- `ScreenWidthContext`: Permite adaptar dinámicamente la cantidad de elementos mostrados en componentes como carruseles, dependiendo del tamaño de la pantalla del usuario (diseño responsivo).
+
+3.  Gestión de Temporadas y Fechas
+
+- En la página de animes por temporada, se calcula la temporada actual (`Winter`, `Spring`, `Summer`, `Fall`) en función del mes actual, y se permite al usuario navegar entre temporadas y años utilizando botones de navegación.
+- Se generan las URL dinámicamente para realizar las solicitudes de datos de la temporada correspondiente.
+
+4.  Pagos y Paginación
+
+- La API de Jikan soporta paginación, y esto se refleja en el componente que muestra los animes por temporada:
+  - Se usa un estado (currentPage) para rastrear la página actual.
+  - Botones de paginación permiten moverse entre páginas, actualizando la URL de la solicitud según corresponda.
+
+5.  Componentes para la Interfaz de Usuario
+
+- Los datos obtenidos de la API se utilizan para renderizar componentes dinámicos como:
+  - `Carousel`: Muestra un carrusel con los animes o mangas más recientes, adaptándose al tamaño de pantalla.
+  - `AnimeInfoCard`: Renderiza información detallada sobre cada anime, incluyendo título, imagen, episodios, duración y valoración.
+
+6. Manejo de Errores y Carga
+
+- Mientras los datos están siendo cargados, se muestra un mensaje de "Cargando...".
+- Si ocurre un error al realizar la solicitud, se muestra un mensaje informativo en la interfaz:
+
+```javascript
+if (loading) return <div>Cargando...</div>;
+if (error) return <p>Error!!!</p>;
+```
+
+### Ejemplo de Flujo
+
+- Inicio (Home):
+  En la página principal (`Home.jsx`), se realizan dos solicitudes simultáneas para:
+
+  - Obtener los animes de la temporada actual:
+    Endpoint: `https://api.jikan.moe/v4/seasons/now?continuing`
+  - Obtener los mangas actualmente en publicación:
+    Endpoint: `https://api.jikan.moe/v4/manga?status=publishing&order_by=start_date&sort=desc`
+
+  Los datos se procesan y se muestran en carruseles dinámicos. Además, si el usuario no está autenticado, se muestran botones para iniciar sesión o registrarse.
+
+- Animes por Temporada:
+  En la página `AnimesBySeason`, el usuario puede navegar entre temporadas y años para explorar los animes correspondientes. Los datos se cargan y se renderizan dinámicamente, con paginación incluida.
+
+### Ventajas de la Implementación
+
+- Reutilización de Código: El hook `useFetch` permite simplificar la lógica de solicitudes HTTP y puede ser reutilizado en cualquier parte del proyecto.
+- Escalabilidad: La implementación modular y basada en contextos facilita la ampliación del proyecto y la integración de nuevas funcionalidades.
+- Experiencia de Usuario: La carga dinámica y los indicadores de estado (loading, error) mejoran la interacción del usuario al manejar datos en tiempo real.
 
 ## Requisitos previos
 
