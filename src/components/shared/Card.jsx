@@ -18,7 +18,11 @@ const Card = ({ image, title, mal_id, type }) => {
         onClick={handleCardClick}
         className="card__image"
       />
-      <p className="card__title">{title}</p>
+      <div className="card__title-container">
+        <p className="title-container__title" title={title}>
+          {title}
+        </p>
+      </div>
     </div>
   );
 };

@@ -17,7 +17,7 @@
   display: block;
 }
 
-.card__title {
+.card__title-container {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -25,17 +25,26 @@
   padding: 1rem;
   background-color: var(--secondary-500);
   color: var(--primary-900);
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: initial;
   -webkit-border-radius: 0 0 1rem 1rem;
   -moz-border-radius: 0 0 1rem 1rem;
   -ms-border-radius: 0 0 1rem 1rem;
   -o-border-radius: 0 0 1rem 1rem;
 }
 
-.card--dark .card__title {
+.title-container__title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: initial;
+  max-height: calc(3 * 0.9em + 2rem);
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3; /* Limita a 3 líneas */
+  -webkit-box-orient: vertical;
+}
+
+.card--dark .card__title-container {
   background-color: var(--neutral-900);
   color: var(--secondary-50);
 }
