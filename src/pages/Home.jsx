@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { FormModeContext } from "../context/FormModeContext";
 import { EditScreenContext } from "../context/EditScreenContext";
 import Button from "../components/shared/Button";
-import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import Heading from "../components/shared/Heading";

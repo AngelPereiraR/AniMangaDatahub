@@ -3,7 +3,6 @@ import { FormModeContext } from "../../context/FormModeContext";
 import { EditScreenContext } from "../../context/EditScreenContext";
 import Button from "../../components/shared/Button";
 import { useNavigate } from "react-router-dom";
-import "./Error404.css";
 import image from "./../../assets/error404-mash.png";
 
 const Error404 = () => {

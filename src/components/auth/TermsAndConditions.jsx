@@ -1,5 +1,4 @@
 import React from "react";
-import "./TermsAndConditions.css";
 import Checkbox from "../shared/Checkbox";
 
 const TermsAndConditions = ({ name, onChange, onBlur, errorMessage }) => {

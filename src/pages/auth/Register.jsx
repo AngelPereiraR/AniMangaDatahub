@@ -10,7 +10,6 @@ import { UserContext } from "../../context/UserContext";
 import { register, login } from "../../config/Firebase";
 import TermsAndConditions from "../../components/auth/TermsAndConditions";
 import { useNavigate, NavLink } from "react-router-dom";
-import "./Register.css";
 
 const Register = () => {
   const { updateFormMode } = useContext(FormModeContext);

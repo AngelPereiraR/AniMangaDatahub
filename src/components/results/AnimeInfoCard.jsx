@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useNavigate } from "react-router-dom"; // Importar el hook de navegación
-import "./AnimeInfoCard.css";
 
 const AnimeInfoCard = ({
   mal_id,

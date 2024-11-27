@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Card from "./Card";
-import "./Carousel.css";
 
 const Carousel = ({ data, cardNumbers, type }) => {
   // Filtrar elementos únicos

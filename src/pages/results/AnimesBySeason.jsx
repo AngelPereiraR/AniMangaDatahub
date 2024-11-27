@@ -4,7 +4,6 @@ import { FormModeContext } from "../../context/FormModeContext";
 import { useFetch } from "../../hooks/useFetch";
 import Heading from "../../components/shared/Heading";
 import AnimeInfoCard from "../../components/results/AnimeInfoCard";
-import "./AnimesBySeason.css";
 
 const seasons = ["Winter", "Spring", "Summer", "Fall"]; // Temporadas en inglés
 

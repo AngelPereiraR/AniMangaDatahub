@@ -6,7 +6,6 @@ import Rating from "../../components/shared/Rating";
 import Button from "../../components/shared/Button";
 import { Bounce, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Contact.css";
 import { FormModeContext } from "../../context/FormModeContext";
 import { useNavigate } from "react-router-dom";
 import { EditScreenContext } from "../../context/EditScreenContext";

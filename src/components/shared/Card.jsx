@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
-import "./Card.css";
 
 const Card = ({ image, title, mal_id, type }) => {
   const { darkMode } = useContext(ThemeContext);

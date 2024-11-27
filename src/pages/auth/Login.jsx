@@ -9,7 +9,6 @@ import { FormModeContext } from "../../context/FormModeContext";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate, NavLink } from "react-router-dom";
 import { login } from "../../config/Firebase";
-import "./Login.css";
 
 const Login = () => {
   const { updateFormMode } = useContext(FormModeContext);

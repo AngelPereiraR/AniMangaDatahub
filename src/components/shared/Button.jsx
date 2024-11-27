@@ -1,5 +1,4 @@
 import React from "react";
-import "./Button.css";
 
 // Componente Button que renderiza un botón con variantes usando BEM
 const Button = ({ label, onClick, variant = "primary", className = "" }) => {

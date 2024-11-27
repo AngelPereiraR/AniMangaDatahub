@@ -1,4 +1,25 @@
-@import "./utilities/variables";
-@import "./utilities/mixins";
+@use "./utilities/variables";
+@use "./utilities/mixins";
 
-@import "./base/reset";
+@use "./base/reset";
+
+@use "./components/auth/input";
+@use "./components/auth/termsAndConditions";
+@use "./components/layouts/dropdown";
+@use "./components/layouts/footer";
+@use "./components/layouts/navbar";
+@use "./components/layouts/searchBar";
+@use "./components/results/animeInfoCard";
+@use "./components/shared/button";
+@use "./components/shared/card";
+@use "./components/shared/carousel";
+@use "./components/shared/checkbox";
+@use "./components/shared/heading";
+@use "./components/shared/rating";
+
+@use "./pages/auth/contact";
+@use "./pages/auth/login";
+@use "./pages/auth/register";
+@use "./pages/errors/error404";
+@use "./pages/results/animesBySeason";
+@use "./pages/home";

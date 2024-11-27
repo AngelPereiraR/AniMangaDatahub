@@ -1,5 +1,4 @@
 import React, { useState } from "react"; // Importación de React
-import "./Input.css"; // Importación de los estilos específicos del componente
 
 // Componente Input que renderiza un input o textarea dependiendo del tipo
 const Input = ({

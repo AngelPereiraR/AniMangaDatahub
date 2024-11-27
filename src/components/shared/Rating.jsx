@@ -1,5 +1,4 @@
 import React from "react";
-import "./Rating.css";
 
 const Rating = ({ value, onChange, darkMode }) => {
   // Maneja el evento cuando el mouse entra sobre una estrella

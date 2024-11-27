@@ -1,5 +1,4 @@
 import React, { useContext } from "react"; // Importación de React
-import "./Footer.css"; // Importación de los estilos CSS específicos del pie de página
 import { NavLink } from "react-router-dom"; // Importación de NavLink para navegación interna
 import { ThemeContext } from "../../context/ThemeContext";
 

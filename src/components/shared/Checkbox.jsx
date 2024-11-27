@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Checkbox.css";
 
 const Checkbox = ({ name, onChange, onBlur, clickMode = 1 }) => {
   const [state, setState] = useState(null); // Manejar '✔', '✘' o null según los clics

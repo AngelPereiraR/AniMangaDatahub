@@ -2,7 +2,6 @@ import React, { useContext } from "react"; // Importación de React y el hook us
 import { NavLink } from "react-router-dom"; // Importación de NavLink para navegación interna
 import SearchBar from "./SearchBar"; // Importación del componente SearchBar
 import { ThemeContext } from "../../context/ThemeContext"; // Contexto para gestionar el tema oscuro
-import "./Navbar.css"; // Estilos específicos del componente Navbar
 import { FormModeContext } from "../../context/FormModeContext";
 import { ScreenWidthContext } from "../../context/ScreenWidthContext";
 import { UserContext } from "../../context/UserContext";

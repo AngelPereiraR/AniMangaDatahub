@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Heading.css";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const Heading = ({ className, title, hasMore, isDeployable, url }) => {

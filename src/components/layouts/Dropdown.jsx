@@ -1,5 +1,4 @@
 import React, { useContext } from "react"; // Importación de React y del hook useContext
-import "./Dropdown.css"; // Importación de los estilos CSS específicos del componente
 import { ThemeContext } from "../../context/ThemeContext"; // Importación del contexto de tema
 
 // Componente Dropdown, recibe una función `onChange` como prop

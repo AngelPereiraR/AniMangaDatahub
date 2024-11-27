@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react"; // Importación de React y hooks
-import "./SearchBar.css"; // Importación de los estilos específicos del componente
 import { useNavigate } from "react-router-dom"; // Importación de useNavigate para la navegación programática
 import Dropdown from "./Dropdown"; // Importación del componente Dropdown para selección de filtros
 import { ThemeContext } from "../../context/ThemeContext"; // Contexto para gestionar el tema oscuro
