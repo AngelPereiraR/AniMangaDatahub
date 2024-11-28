@@ -71,12 +71,12 @@
   .dropdown__select {
     width: 11.25rem;
     @include mixins.font(
-      --font-size-big-normal-desktop,
-      --font-weight-big-normal-desktop
+      --font-size-normal-desktop,
+      --font-weight-normal-desktop
     );
   }
 
   .dropdown__icon {
-    font-size: var(--font-size-big-normal-desktop);
+    font-size: var(--font-size-normal-desktop);
   }
 }

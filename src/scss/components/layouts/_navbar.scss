@@ -23,8 +23,8 @@
 .navbar__bottom-row {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -118,7 +118,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4.25rem;
+  width: 3.5rem;
   height: 2.5rem;
   background-color: var(--switch-bg);
   border-radius: 1.5625rem;
@@ -131,20 +131,28 @@
 
 .navbar__dark-mode-switch .navbar__switch {
   position: absolute;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: var(--switch-circle);
   border-radius: 50%;
   @include mixins.transition;
-  transform: translateX(-0.625rem);
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateX(-0.5rem);
+  -webkit-transform: translateX(-0.5rem);
+  -moz-transform: translateX(-0.5rem);
+  -ms-transform: translateX(-0.5rem);
+  -o-transform: translateX(-0.5rem);
 }
 
 .navbar__dark-mode-switch .navbar__switch--dark {
-  transform: translateX(0.625rem);
   background-color: var(--switch-circle-dark);
+  transform: translateX(0.5rem);
+  -webkit-transform: translateX(0.5rem);
+  -moz-transform: translateX(0.5rem);
+  -ms-transform: translateX(0.5rem);
+  -o-transform: translateX(0.5rem);
 }
 
 .navbar__dark-mode-switch .navbar__switch {
