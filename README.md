@@ -200,6 +200,8 @@ O con Yarn:
 yarn install
 ```
 
+4. Copia el archivo `.env.template` y renómbralo a `.env`. Añádele tus variables de entorno.
+
 ## Ejecución del proyecto
 
 1. Inicia el servidor de desarrollo:
