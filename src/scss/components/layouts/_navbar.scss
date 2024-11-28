@@ -1,7 +1,7 @@
 @use "../../utilities/mixins";
 
 .navbar__logo {
-  height: 2.8125rem;
+  height: 3rem;
 }
 
 .navbar {
@@ -23,8 +23,8 @@
 .navbar__bottom-row {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -222,18 +222,21 @@
 
   .navbar__links .navbar__link {
     @include mixins.font(
+      --font-size-normal-mobile,
+      --font-weight-normal-mobile
+    );
+  }
+
+  .navbar__links .navbar__search-link {
+    @include mixins.font(
       --font-size-subtitle-mobile,
       --font-weight-subtitle-mobile
     );
   }
 
-  .navbar__links .navbar__search-link {
-    @include mixins.font(--font-size-menu-mobile, --font-weight-menu-mobile);
-  }
-
   .navbar__home h1 {
     margin-left: 0.5rem;
-    @include mixins.font(--font-size-title-mobile, --font-weight-title-mobile);
+    @include mixins.font(--font-size-menu-mobile, --font-weight-menu-mobile);
   }
 
   .navbar__search {
@@ -244,8 +247,8 @@
   .navbar__dark-mode-toggle {
     margin-right: 1rem;
     @include mixins.font(
-      --font-size-subtitle-mobile,
-      --font-weight-subtitle-mobile
+      --font-size-normal-mobile,
+      --font-weight-normal-mobile
     );
     cursor: pointer;
   }
@@ -269,36 +272,36 @@
 
   .navbar__links .navbar__link {
     @include mixins.font(
+      --font-size-big-normal-desktop,
+      --font-weight-big-normal-desktop
+    );
+  }
+
+  .navbar__links .navbar__search-link {
+    @include mixins.font(
       --font-size-subtitle-desktop,
       --font-weight-subtitle-desktop
     );
   }
 
-  .navbar__links .navbar__search-link {
-    @include mixins.font(--font-size-menu-desktop, --font-weight-menu-desktop);
-  }
-
   .navbar__home h1 {
     margin-left: 1rem;
-    @include mixins.font(
-      --font-size-title-desktop,
-      --font-weight-title-desktop
-    );
+    @include mixins.font(--font-size-menu-desktop, --font-weight-menu-desktop);
   }
 
   .navbar__dark-mode-toggle {
     margin-right: 2rem;
     @include mixins.font(
-      --font-size-subtitle-desktop,
-      --font-weight-subtitle-desktop
+      --font-size-big-normal-desktop,
+      --font-weight-big-normal-desktop
     );
     cursor: pointer;
   }
 
   .navbar__dropdown-menu a {
     @include mixins.font(
-      --font-size-big-normal-desktop,
-      --font-weight-big-normal-desktop
+      --font-size-normal-desktop,
+      --font-weight-normal-desktop
     );
   }
 }
