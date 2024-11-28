@@ -4,11 +4,10 @@
   padding: 1.25rem;
   margin: 3rem;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-    url("./../../assets/contact.jpg");
+    url("./../assets/contact.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 2rem;
-  margin-top: 25vh;
 }
 
 .contact__heading {
@@ -37,11 +36,5 @@
 @media (min-width: 1051px) {
   .contact__heading {
     @include mixins.font(--font-size-menu-desktop, --font-weight-menu-desktop);
-  }
-}
-
-@media (min-width: 1921px) {
-  .contact {
-    margin-top: 20vh;
   }
 }

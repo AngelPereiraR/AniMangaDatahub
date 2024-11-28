@@ -60,20 +60,12 @@
 }
 
 @media (max-width: 1050px) {
-  .animes-season__main {
-    margin-top: 23vh;
-  }
-
   .main__animes {
     grid-template-columns: 2fr;
   }
 }
 
 @media (min-width: 1051px) {
-  .animes-season__main {
-    margin-top: 19vh;
-  }
-
   .main__animes {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -86,10 +78,6 @@
 }
 
 @media (min-width: 1921px) {
-  .animes-season__main {
-    margin-top: 16vh;
-  }
-
   .main__animes {
     grid-template-columns: repeat(4, 1fr);
   }

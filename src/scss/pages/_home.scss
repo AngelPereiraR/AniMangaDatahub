@@ -8,7 +8,6 @@
     url("./../assets/home.jpg");
   background-size: cover;
   background-position: center;
-  margin-top: 25vh;
 }
 
 .main-intro {
@@ -37,7 +36,6 @@
 
   .home-main {
     height: 35vh;
-    margin-top: 22vh;
   }
 }
 
@@ -55,7 +53,6 @@
 
   .home-main {
     height: 55vh;
-    margin-top: 18vh;
   }
 }
 
@@ -63,11 +60,5 @@
   .intro-title {
     font-size: var(--font-size-title-desktop);
     font-weight: var(--font-weight-title-desktop);
-  }
-}
-
-@media (min-width: 1921px) {
-  .home-main {
-    margin-top: 15vh;
   }
 }
