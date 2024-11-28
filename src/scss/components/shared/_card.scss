@@ -32,15 +32,16 @@
 }
 
 .title-container__title {
+  height: 2.5rem;
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
   cursor: initial;
-  max-height: calc(3 * 0.9em + 2rem);
+  max-height: calc(2 * 0.9em + 2rem);
   overflow: hidden;
   display: -webkit-box;
-  line-clamp: 3;
-  -webkit-line-clamp: 3; /* Limita a 3 líneas */
+  line-clamp: 2;
+  -webkit-line-clamp: 2; /* Limita a 2 líneas */
   -webkit-box-orient: vertical;
 }
 

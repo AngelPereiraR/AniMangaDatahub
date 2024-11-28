@@ -61,16 +61,16 @@ const AnimeInfoCard = ({
               <p className="details__info">{firstEpisode}</p>
             </div>
             <div>
-              <span className="details__title">Episodios: </span>
-              <span className="details__info">
+              <p className="details__title">Episodios: </p>
+              <p className="details__info">
                 {episodes !== null ? episodes : "--"}
-              </span>
+              </p>
             </div>
             <div>
-              <span className="details__title">Duración: </span>
-              <span className="details__info">
+              <p className="details__title">Duración: </p>
+              <p className="details__info">
                 {duration !== "Unknown" ? duration : "--"}
-              </span>
+              </p>
             </div>
           </div>
 

@@ -280,8 +280,8 @@
 
   .navbar__links .navbar__link {
     @include mixins.font(
-      --font-size-big-normal-desktop,
-      --font-weight-big-normal-desktop
+      --font-size-subtitle-desktop,
+      --font-weight-subtitle-desktop
     );
   }
 
