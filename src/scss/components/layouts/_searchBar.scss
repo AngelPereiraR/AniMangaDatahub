@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .search-container {
   display: flex;
   align-items: center;
@@ -18,7 +20,7 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: 0.0625rem 0.25rem 0.3125rem 0.25rem var(--secondary-500);
-  transition: all 0.3s ease;
+  @include mixins.transition;
 }
 
 .search-bar--dark {
@@ -30,7 +32,7 @@
 .search-bar__input {
   color: var(--primary-800);
   background-color: var(--secondary-50);
-  transition: all 0.3s ease;
+  @include mixins.transition;
   border: none;
 }
 
@@ -51,7 +53,7 @@
   color: var(--primary-400);
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .search-container {
     margin-top: 1rem;
   }
@@ -66,7 +68,7 @@
   }
 }
 
-@media (min-width: 951px) {
+@media (min-width: 1051px) {
   .search-bar__input {
     width: 18.75rem;
     font-size: var(--font-size-big-normal-desktop);

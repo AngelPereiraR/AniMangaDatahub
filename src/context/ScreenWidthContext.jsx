@@ -3,11 +3,11 @@ import { createContext, useEffect, useState } from "react";
 export const ScreenWidthContext = createContext();
 
 export const ScreenWidthProvider = ({ children }) => {
-  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 950);
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 1050);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsWideScreen(window.innerWidth > 950);
+      setIsWideScreen(window.innerWidth > 1050);
     };
 
     // Agregar un event listener para actualizar el estado en cambios de tamaño

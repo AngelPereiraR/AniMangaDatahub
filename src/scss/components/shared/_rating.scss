@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .rating-container {
   display: flexbox;
   justify-content: space-between;
@@ -10,7 +12,7 @@
   font-size: 1.875rem;
   color: #ccc;
   cursor: pointer;
-  transition: color 0.3s ease;
+  @include mixins.transition;
 }
 
 .rating-container__star--filled {

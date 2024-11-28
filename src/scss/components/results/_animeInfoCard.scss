@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .anime-info-card {
   display: flex;
   flex-direction: column;
@@ -130,25 +132,31 @@
   background-color: var(--neutral-900);
 }
 
-@media (max-width: 950px) {
-  .anime-info-card__title {
-    font-size: var(--font-size-subtitle-mobile);
-    font-weight: var(--font-weight-subtitle-mobile);
+@media (max-width: 1050px) {
+  .anime-info-card {
+    width: 20rem;
+    height: 23rem;
+  }
+
+  .anime-info-card__image,
+  .anime-info-card__content {
+    min-width: 10rem;
+  }
+
+  .anime-info-card__title,
+  .themes__title,
+  .anime-info-card__valoration {
+    @include mixins.font(
+      --font-size-subtitle-mobile,
+      --font-weight-subtitle-mobile
+    );
   }
 
   .anime-info-card__content {
-    font-size: var(--font-size-normal-mobile);
-    font-weight: var(--font-weight-normal-mobile);
-  }
-
-  .themes__title {
-    font-size: var(--font-size-subtitle-mobile);
-    font-weight: var(--font-weight-subtitle-mobile);
-  }
-
-  .anime-info-card__valoration {
-    font-size: var(--font-size-subtitle-mobile);
-    font-weight: var(--font-weight-subtitle-mobile);
+    @include mixins.font(
+      --font-size-normal-mobile,
+      --font-weight-normal-mobile
+    );
   }
 
   .details__title {
@@ -156,25 +164,21 @@
   }
 }
 
-@media (min-width: 951px) {
-  .anime-info-card__title {
-    font-size: var(--font-size-subtitle-desktop);
-    font-weight: var(--font-weight-subtitle-desktop);
+@media (min-width: 1051px) {
+  .anime-info-card__title,
+  .themes__title,
+  .anime-info-card__valoration {
+    @include mixins.font(
+      --font-size-subtitle-desktop,
+      --font-weight-subtitle-desktop
+    );
   }
 
   .anime-info-card__content {
-    font-size: var(--font-size-big-normal-desktop);
-    font-weight: var(--font-weight-big-normal-desktop);
-  }
-
-  .themes__title {
-    font-size: var(--font-size-subtitle-desktop);
-    font-weight: var(--font-weight-subtitle-desktop);
-  }
-
-  .anime-info-card__valoration {
-    font-size: var(--font-size-subtitle-desktop);
-    font-weight: var(--font-weight-subtitle-desktop);
+    @include mixins.font(
+      --font-size-big-normal-desktop,
+      --font-weight-big-normal-desktop
+    );
   }
 
   .details__title {

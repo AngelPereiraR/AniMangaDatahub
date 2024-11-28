@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .footer {
   width: 100%;
   background-color: var(--primary-700);
@@ -26,7 +28,7 @@
 .footer__contact {
   color: var(--neutral-100);
   font-family: var(--heading-font-family);
-  transition: all 1000ms;
+  @include mixins.transition;
 }
 
 .footer__contact {
@@ -52,7 +54,7 @@
   margin-right: 0.5rem;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .footer {
     font-size: var(--font-size-subtitle-mobile);
   }
@@ -62,7 +64,7 @@
   }
 }
 
-@media (min-width: 951px) {
+@media (min-width: 1051px) {
   .footer {
     font-size: var(--font-size-subtitle-desktop);
   }

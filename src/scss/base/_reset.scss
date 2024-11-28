@@ -1,3 +1,5 @@
+@use "../utilities/mixins";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -24,11 +26,7 @@ h6,
 }
 
 html {
-  transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
+  @include mixins.transition;
 }
 
 html.dark {
@@ -36,13 +34,13 @@ html.dark {
   color: var(--neutral-50);
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .login-main {
     min-height: 84.5vh;
   }
 }
 
-@media (min-width: 951px) {
+@media (min-width: 1051px) {
   .login-main {
     min-height: 83.3vh;
   }

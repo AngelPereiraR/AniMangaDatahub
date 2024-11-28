@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .navbar__logo {
   height: 2.8125rem;
 }
@@ -58,7 +60,7 @@
 .navbar__search-link {
   display: inline-block;
   list-style-type: none;
-  transition: all 0.3s;
+  @include mixins.transition;
 }
 
 .navbar__link {
@@ -133,7 +135,7 @@
   height: 1.75rem;
   background-color: var(--switch-circle);
   border-radius: 50%;
-  transition: all 0.3s ease;
+  @include mixins.transition;
   transform: translateX(-0.625rem);
   display: flex;
   align-items: center;
@@ -187,7 +189,7 @@
   padding: 0.5rem 1rem;
   color: var(--secondary-50);
   font-family: var(--heading-font-family);
-  transition: all 0.3s ease;
+  @include mixins.transition;
 }
 
 .navbar__dropdown-menu a:hover {
@@ -199,7 +201,7 @@
   display: none;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .navbar__links .navbar__search-link {
     margin-right: 1rem;
   }
@@ -219,19 +221,19 @@
   }
 
   .navbar__links .navbar__link {
-    font-size: var(--font-size-subtitle-mobile);
-    font-weight: var(--font-weight-subtitle-mobile);
+    @include mixins.font(
+      --font-size-subtitle-mobile,
+      --font-weight-subtitle-mobile
+    );
   }
 
   .navbar__links .navbar__search-link {
-    font-size: var(--font-size-menu-mobile);
-    font-weight: var(--font-weight-menu-mobile);
+    @include mixins.font(--font-size-menu-mobile, --font-weight-menu-mobile);
   }
 
   .navbar__home h1 {
     margin-left: 0.5rem;
-    font-size: var(--font-size-title-mobile);
-    font-weight: var(--font-weight-title-mobile);
+    @include mixins.font(--font-size-title-mobile, --font-weight-title-mobile);
   }
 
   .navbar__search {
@@ -241,18 +243,22 @@
 
   .navbar__dark-mode-toggle {
     margin-right: 1rem;
-    font-size: var(--font-size-subtitle-mobile);
-    font-weight: var(--font-weight-subtitle-mobile);
+    @include mixins.font(
+      --font-size-subtitle-mobile,
+      --font-weight-subtitle-mobile
+    );
     cursor: pointer;
   }
 
   .navbar__dropdown-menu a {
-    font-size: var(--font-size-normal-mobile);
-    font-weight: var(--font-weight-normal-mobile);
+    @include mixins.font(
+      --font-size-normal-mobile,
+      --font-weight-normal-mobile
+    );
   }
 }
 
-@media (min-width: 951px) {
+@media (min-width: 1051px) {
   .navbar__links .navbar__search-link {
     margin-right: 2rem;
   }
@@ -262,30 +268,37 @@
   }
 
   .navbar__links .navbar__link {
-    font-size: var(--font-size-subtitle-desktop);
-    font-weight: var(--font-weight-subtitle-desktop);
+    @include mixins.font(
+      --font-size-subtitle-desktop,
+      --font-weight-subtitle-desktop
+    );
   }
 
   .navbar__links .navbar__search-link {
-    font-size: var(--font-size-menu-desktop);
-    font-weight: var(--font-weight-menu-desktop);
+    @include mixins.font(--font-size-menu-desktop, --font-weight-menu-desktop);
   }
 
   .navbar__home h1 {
     margin-left: 1rem;
-    font-size: var(--font-size-title-desktop);
-    font-weight: var(--font-weight-title-desktop);
+    @include mixins.font(
+      --font-size-title-desktop,
+      --font-weight-title-desktop
+    );
   }
 
   .navbar__dark-mode-toggle {
     margin-right: 2rem;
-    font-size: var(--font-size-subtitle-desktop);
-    font-weight: var(--font-weight-subtitle-desktop);
+    @include mixins.font(
+      --font-size-subtitle-desktop,
+      --font-weight-subtitle-desktop
+    );
     cursor: pointer;
   }
 
   .navbar__dropdown-menu a {
-    font-size: var(--font-size-big-normal-desktop);
-    font-weight: var(--font-weight-big-normal-desktop);
+    @include mixins.font(
+      --font-size-big-normal-desktop,
+      --font-weight-big-normal-desktop
+    );
   }
 }

@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .error__main {
   display: flex;
   flex-direction: row;
@@ -23,10 +25,12 @@
   margin-left: 4rem;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .main__title {
-    font-size: var(--font-size-error404-mobile);
-    font-weight: var(--font-weight-title-mobile);
+    @include mixins.font(
+      --font-size-error404-mobile,
+      --font-weight-title-mobile
+    );
   }
 
   .error__main {
@@ -53,10 +57,12 @@
   }
 }
 
-@media (min-width: 951px) {
+@media (min-width: 1051px) {
   .main__title {
-    font-size: var(--font-size-error404-desktop);
-    font-weight: var(--font-weight-title-desktop);
+    @include mixins.font(
+      --font-size-error404-desktop,
+      --font-weight-title-desktop
+    );
   }
 
   .error__main {
@@ -65,8 +71,10 @@
   }
 
   .main__message {
-    font-size: var(--font-size-subtitle-desktop);
-    font-weight: var(--font-weight-subtitle-desktop);
+    @include mixins.font(
+      --font-size-subtitle-desktop,
+      --font-weight-subtitle-desktop
+    );
   }
 }
 

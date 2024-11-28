@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .input-container {
   margin-bottom: 1rem;
   width: 50%;
@@ -12,8 +14,10 @@
   color: var(--secondary-50);
   margin-left: 0.5rem;
   padding: 0 0.5rem;
-  font-size: var(--font-size-subtitle-desktop);
-  font-weight: var(--font-weight-subtitle-desktop);
+  @include mixins.font(
+    --font-size-subtitle-desktop,
+    --font-weight-subtitle-desktop
+  );
   font-family: var(--heading-font-family);
 }
 
@@ -25,10 +29,12 @@
   margin-top: 0.3125rem;
   background-color: var(--neutral-50);
   color: var(--primary-800);
-  transition: all 0.3s ease;
+  @include mixins.transition;
   box-sizing: border-box;
-  font-size: var(--font-size-big-normal-desktop);
-  font-weight: var(--font-weight-big-normal-desktop);
+  @include mixins.font(
+    --font-size-big-normal-desktop,
+    --font-weight-big-normal-desktop
+  );
   font-family: var(--heading-font-family);
 }
 
@@ -76,14 +82,18 @@
   outline: none;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .input-container__field {
-    font-size: var(--font-size-normal-mobile);
-    font-weight: var(--font-weight-normal-mobile);
+    @include mixins.font(
+      --font-size-normal-mobile,
+      --font-weight-normal-mobile
+    );
   }
 
   .input-container__legend {
-    font-size: var(--font-size-subtitle-mobile);
-    font-weight: var(--font-weight-subtitle-mobile);
+    @include mixins.font(
+      --font-size-subtitle-mobile,
+      --font-size-subtitle-mobile
+    );
   }
 }

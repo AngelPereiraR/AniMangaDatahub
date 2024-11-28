@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -17,7 +19,7 @@
   position: relative;
   width: 100%;
   box-shadow: 0.0625rem 0.25rem 0.3125rem 0.25rem var(--secondary-500);
-  transition: all 0.3s ease;
+  @include mixins.transition;
 }
 
 .dropdown__select--dark {
@@ -51,11 +53,13 @@
   font-family: var(--heading-font-family);
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .dropdown__select {
     width: 9.375rem;
-    font-size: var(--font-size-normal-mobile);
-    font-weight: var(--font-weight-normal-mobile);
+    @include mixins.font(
+      --font-size-normal-mobile,
+      --font-weight-normal-mobile
+    );
   }
 
   .dropdown__icon {
@@ -63,11 +67,13 @@
   }
 }
 
-@media (min-width: 951px) {
+@media (min-width: 1051px) {
   .dropdown__select {
     width: 11.25rem;
-    font-size: var(--font-size-big-normal-desktop);
-    font-weight: var(--font-weight-big-normal-desktop);
+    @include mixins.font(
+      --font-size-big-normal-desktop,
+      --font-weight-big-normal-desktop
+    );
   }
 
   .dropdown__icon {

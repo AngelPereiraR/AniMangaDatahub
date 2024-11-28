@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .termsAndConditions {
   display: flex;
   flex-direction: column;
@@ -17,16 +19,20 @@
   margin-top: 0.5rem;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .termsAndConditions__error-message {
-    font-size: var(--font-size-normal-mobile);
-    font-weight: var(--font-weight-normal-mobile);
+    @include mixins.font(
+      --font-size-normal-mobile,
+      --font-weight-normal-mobile
+    );
   }
 }
 
-@media (min-width: 951px) {
+@media (min-width: 1051px) {
   .termsAndConditions__error-message {
-    font-size: var(--font-size-normal-desktop);
-    font-weight: var(--font-weight-normal-desktop);
+    @include mixins.font(
+      --font-size-normal-desktop,
+      --font-weight-normal-desktop
+    );
   }
 }

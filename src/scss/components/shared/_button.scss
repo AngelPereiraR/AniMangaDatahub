@@ -1,15 +1,19 @@
+@use "../../utilities/mixins";
+
 .button {
   width: 50%;
   padding: 0.625rem 1.25rem;
-  font-size: var(--font-size-subtitle-desktop);
-  font-weight: var(--font-weight-subtitle-desktop);
+  @include mixins.font(
+    --font-size-subtitle-desktop,
+    --font-weight-subtitle-desktop
+  );
   font-family: var(--heading-font-family);
   border-radius: 0.5rem;
   cursor: pointer;
   border: none;
   display: inline-block;
   text-align: center;
-  transition: all 0.3s ease;
+  @include mixins.transition;
 }
 
 .button--primary {
@@ -36,7 +40,7 @@
   box-shadow: 0.0625rem 0.125rem 0.3125rem 0.3125rem var(--primary-800);
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .button {
     font-size: var(--font-size-subtitle-mobile);
   }

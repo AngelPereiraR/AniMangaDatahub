@@ -1,3 +1,5 @@
+@use "../../utilities/mixins";
+
 .login {
   padding: 1.25rem;
   margin: 3rem;
@@ -52,17 +54,18 @@
   font-weight: var(--font-weight-title-desktop);
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
   .login__heading {
-    font-size: var(--font-size-menu-mobile);
-    font-weight: var(--font-weight-menu-mobile);
+    @include mixins.font(--font-size-menu-mobile, --font-weight-menu-mobile);
   }
 
   .links__list {
     display: flex;
     flex-direction: column;
-    font-size: var(--font-size-normal-mobile);
-    font-weight: var(--font-weight-normal-mobile);
+    @include mixins.font(
+      --font-size-normal-mobile,
+      --font-weight-normal-mobile
+    );
   }
 
   .links__list {
@@ -70,16 +73,17 @@
   }
 }
 
-@media (min-width: 951px) {
+@media (min-width: 1051px) {
   .login__heading {
-    font-size: var(--font-size-menu-desktop);
-    font-weight: var(--font-weight-menu-desktop);
+    @include mixins.font(--font-size-menu-desktop, --font-weight-menu-desktop);
   }
 
   .links__list {
     display: flex;
     justify-content: space-between;
-    font-size: var(--font-size-normal-desktop);
-    font-weight: var(--font-weight-normal-desktop);
+    @include mixins.font(
+      --font-size-normal-desktop,
+      --font-weight-normal-desktop
+    );
   }
 }
