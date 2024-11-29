@@ -10,6 +10,7 @@
 @use "./components/layouts/navbar";
 @use "./components/layouts/searchBar";
 @use "./components/results/animeInfoCard";
+@use "./components/results/mangaInfoCard";
 @use "./components/shared/button";
 @use "./components/shared/card";
 @use "./components/shared/carousel";
@@ -22,4 +23,5 @@
 @use "./pages/auth/register";
 @use "./pages/errors/error404";
 @use "./pages/results/animesBySeason";
+@use "./pages/results/mangasBySeason";
 @use "./pages/home";

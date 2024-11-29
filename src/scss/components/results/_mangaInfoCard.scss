@@ -1,10 +1,10 @@
 @use "../../utilities/mixins";
 
-.anime-info-card {
+.manga-info-card {
   display: flex;
   flex-direction: column;
   width: 24rem;
-  height: 25rem;
+  height: 24rem;
   margin: auto;
   border-radius: 1rem;
   overflow: hidden;
@@ -16,25 +16,25 @@
   cursor: pointer;
 }
 
-.anime-info-card__section {
+.manga-info-card__section {
   display: flex;
   flex-direction: row;
 }
 
-.anime-info-card__info {
+.manga-info-card__info {
   display: flex;
   flex-direction: column;
 }
 
-.anime-info-card__image {
+.manga-info-card__image {
   flex: 0 0 50%;
   width: 100%;
-  height: 17rem;
+  height: 16rem;
   min-width: 12rem;
   object-fit: cover;
 }
 
-.anime-info-card__content {
+.manga-info-card__content {
   flex: 1;
   display: flex;
   min-width: 12rem;
@@ -43,10 +43,10 @@
   align-items: flex-start;
   background-color: var(--secondary-300);
   color: var(--primary-800);
-  min-height: 16rem;
+  height: 16rem;
 }
 
-.anime-info-card__title {
+.manga-info-card__title {
   padding: 3rem;
   background-color: var(--primary-800);
   color: var(--secondary-50);
@@ -54,16 +54,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.anime-info-card__title--dark {
+.manga-info-card__title--dark {
   background-color: var(--neutral-900);
 }
 
-.anime-info-card__valoration,
-.anime-info-card__details {
+.manga-info-card__valoration,
+.manga-info-card__details {
   padding: 1rem;
 }
 
-.anime-info-card__valoration {
+.manga-info-card__valoration {
   background-color: var(--primary-800);
   color: var(--secondary-50);
   margin: 0.5rem 1rem;
@@ -74,7 +74,7 @@
   -o-border-radius: 1rem;
 }
 
-.anime-info-card__add {
+.manga-info-card__add {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,39 +92,39 @@
   gap: 1rem;
 }
 
-.anime-info-card__content--dark {
+.manga-info-card__content--dark {
   background-color: var(--neutral-700);
   color: var(--secondary-50);
 }
 
-.anime-info-card__add--dark {
+.manga-info-card__add--dark {
   background-color: var(--neutral-900);
   color: var(--secondary-50);
 }
 
-.anime-info-card__valoration--dark {
+.manga-info-card__valoration--dark {
   background-color: var(--neutral-900);
 }
 
 @media (max-width: 1050px) {
-  .anime-info-card {
+  .manga-info-card {
     width: 20rem;
     height: 23rem;
   }
 
-  .anime-info-card__image,
-  .anime-info-card__content {
+  .manga-info-card__image,
+  .manga-info-card__content {
     min-width: 10rem;
   }
 
-  .anime-info-card__title .anime-info-card__valoration {
+  .manga-info-card__title .manga-info-card__valoration {
     @include mixins.font(
       --font-size-subtitle-mobile,
       --font-weight-subtitle-mobile
     );
   }
 
-  .anime-info-card__content {
+  .manga-info-card__content {
     @include mixins.font(
       --font-size-normal-mobile,
       --font-weight-normal-mobile
@@ -137,15 +137,15 @@
 }
 
 @media (min-width: 1051px) {
-  .anime-info-card__title,
-  .anime-info-card__valoration {
+  .manga-info-card__title,
+  .manga-info-card__valoration {
     @include mixins.font(
       --font-size-subtitle-desktop,
       --font-weight-subtitle-desktop
     );
   }
 
-  .anime-info-card__content {
+  .manga-info-card__content {
     @include mixins.font(
       --font-size-big-normal-desktop,
       --font-weight-big-normal-desktop

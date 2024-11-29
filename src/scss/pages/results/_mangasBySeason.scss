@@ -1,0 +1,84 @@
+.mangas-season__main {
+  margin: 1rem 0;
+}
+
+.main__mangas {
+  display: grid;
+  gap: 2rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-500);
+  color: var(--secondary-50);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: var(--neutral-300);
+  cursor: not-allowed;
+}
+
+.pagination button.active {
+  background-color: var(--primary-800);
+  font-weight: bold;
+}
+
+.season-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.season-selector button {
+  background-color: var(--primary-500);
+  color: var(--secondary-50);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.season-selector button:hover {
+  background-color: var(--primary-700);
+}
+
+.season-selector span {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+@media (max-width: 1050px) {
+  .main__mangas {
+    grid-template-columns: 2fr;
+  }
+}
+
+@media (min-width: 1051px) {
+  .main__mangas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1350px) {
+  .main__mangas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1921px) {
+  .main__mangas {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -64,6 +64,28 @@ const AnimesBySeason = () => {
 
   const totalPages = data.pagination.last_visible_page;
 
+  // Lógica para calcular páginas visibles
+  const getVisiblePages = () => {
+    const maxButtons = 7;
+    const pages = [];
+    const half = Math.floor(maxButtons / 2);
+
+    let start = Math.max(currentPage - half, 1);
+    let end = Math.min(start + maxButtons - 1, totalPages);
+
+    if (end - start < maxButtons - 1) {
+      start = Math.max(end - maxButtons + 1, 1);
+    }
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    return pages;
+  };
+
+  const visiblePages = getVisiblePages();
+
   return (
     <main className="animes-season__main">
       <Heading
@@ -105,13 +127,13 @@ const AnimesBySeason = () => {
         >
           Anterior
         </button>
-        {Array.from({ length: totalPages }, (_, index) => (
+        {visiblePages.map((page) => (
           <button
-            key={index + 1}
-            className={currentPage === index + 1 ? "active" : ""}
-            onClick={() => changePage(index + 1)}
+            key={page}
+            className={currentPage === page ? "active" : ""}
+            onClick={() => changePage(page)}
           >
-            {index + 1}
+            {page}
           </button>
         ))}
         <button
