@@ -146,7 +146,12 @@ const Register = () => {
                   <ErrorMessage name="termsAndConditions" component="p" />
                 }
               />
-              <Button label="Registrarse" type="submit" variant="primary" />
+              <Button
+                label="Registrarse"
+                type="submit"
+                variant="primary"
+                className="width-50"
+              />
               <nav className="form__links">
                 <ul className="links__list">
                   <li>

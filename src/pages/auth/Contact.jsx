@@ -139,7 +139,12 @@ const Contact = () => {
                 />
               </fieldset>
               {/* Botón de Envío */}
-              <Button label="Enviar" type="submit" variant="primary" />
+              <Button
+                label="Enviar"
+                type="submit"
+                variant="primary"
+                className="width-50"
+              />
             </Form>
           )}
         </Formik>

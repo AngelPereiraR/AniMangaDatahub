@@ -1,7 +1,7 @@
 @use "../../utilities/mixins";
 
 .button {
-  width: 50%;
+  width: 100%;
   padding: 0.625rem 1.25rem;
   @include mixins.font(
     --font-size-subtitle-desktop,
@@ -14,6 +14,10 @@
   display: inline-block;
   text-align: center;
   @include mixins.transition;
+}
+
+.width-50 {
+  width: 50%;
 }
 
 .button--primary {

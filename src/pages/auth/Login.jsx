@@ -101,7 +101,12 @@ const Login = () => {
                 onBlur={handleBlur}
                 errorMessage={<ErrorMessage name="password" component="p" />}
               />
-              <Button label="Iniciar sesión" type="submit" variant="primary" />
+              <Button
+                label="Iniciar sesión"
+                type="submit"
+                variant="primary"
+                className="width-50"
+              />
               <nav className="form__links">
                 <ul className="links__list">
                   <li>

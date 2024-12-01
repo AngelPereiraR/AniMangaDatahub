@@ -1,0 +1,222 @@
+@use "../../utilities/mixins";
+
+.top-animes__main {
+  margin: 1rem;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.menu-item {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--neutral-400);
+  border-radius: 5px;
+  background-color: var(--neutral-50);
+  color: var(--neutral-700);
+  white-space: nowrap;
+  cursor: pointer;
+  @include mixins.transition;
+  font-family: var(--normal-text-font-family);
+  font-size: var(--font-size-normal-desktop);
+}
+
+.menu-item:hover {
+  background-color: var(--neutral-200);
+}
+
+.menu-item.active {
+  background-color: var(--secondary-50);
+  color: var(--primary-800);
+  font-weight: bold;
+  border: 1px solid var(--primary-800);
+}
+
+/* Tema oscuro */
+.menu-container--dark {
+  background-color: var(
+    --neutral-800
+  ); /* Fondo del contenedor en modo oscuro */
+}
+
+.menu-item--dark {
+  background-color: var(--neutral-700);
+  color: var(--neutral-50);
+  border: 1px solid var(--neutral-600);
+}
+
+.menu-item--dark:hover {
+  background-color: var(--neutral-600);
+}
+
+.menu-item--dark.active {
+  background-color: var(--neutral-900);
+  color: var(--neutral-50);
+  border: 1px solid var(--neutral-500);
+}
+
+/* Contenedor de la tabla */
+.main__animes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.anime-rank {
+  display: flex;
+  flex-direction: column; /* Acomoda el rango e ícono en columna */
+  align-items: center;
+}
+
+.add-to-list-icon {
+  margin-top: 5px;
+  background: none;
+  border: none;
+  color: var(--secondary-400); /* Color del ícono */
+  cursor: pointer;
+  font-size: 1.2rem; /* Tamaño del ícono */
+  transition: color 0.3s ease;
+}
+
+.add-to-list-icon:hover {
+  color: var(--neutral-50); /* Color al pasar el mouse */
+}
+
+.add-to-list-icon:focus {
+  outline: none; /* Elimina el borde de enfoque */
+}
+
+/* Tabla */
+.anime-table {
+  width: 90%; /* Ajustar al ancho deseado */
+  max-width: 1200px; /* Ancho máximo para evitar que se extienda demasiado */
+  border-collapse: collapse;
+  margin: auto;
+  font-size: 0.9rem;
+  text-align: left;
+
+  th,
+  th td {
+    padding: 0.8rem;
+    text-align: center; /* Centrar contenido dentro de las celdas */
+    font-family: var(--heading-font-family);
+  }
+
+  td {
+    padding: 0.8rem;
+    font-family: var(--heading-font-family);
+  }
+
+  th {
+    background-color: var(--primary-800);
+    color: var(--secondary-50);
+    font-weight: bold;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: var(--secondary-50);
+
+    td,
+    p {
+      color: var(--primary-800);
+    }
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: var(--primary-800);
+
+    td,
+    p {
+      color: var(--secondary-50);
+    }
+  }
+
+  tbody tr:hover {
+    background-color: var(--primary-100);
+  }
+
+  @media (max-width: 1050px) {
+    th,
+    td,
+    h3 {
+      font-size: var(--font-size-subtitle-mobile);
+      font-weight: var(--font-weight-subtitle-mobile);
+    }
+
+    p {
+      font-size: var(--font-size-normal-mobile);
+      font-weight: var(--font-weight-normal-mobile);
+    }
+  }
+
+  @media (min-width: 1051px) {
+    th,
+    td,
+    td div h3 {
+      font-size: var(--font-size-subtitle-desktop);
+      font-weight: var(--font-weight-subtitle-desktop);
+    }
+
+    p {
+      font-size: var(--font-size-big-normal-desktop);
+      font-weight: var(--font-weight-big-normal-desktop);
+    }
+  }
+
+  .anime-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-start;
+
+    .anime-image {
+      width: 5rem;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  }
+}
+
+.anime-table--dark {
+  th {
+    background-color: var(--neutral-900); /* Cabecera en modo oscuro */
+    color: var(--secondary-50); /* Color del texto de la cabecera */
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: var(--neutral-700); /* Fondo impar */
+    color: var(--secondary-50); /* Texto */
+
+    td,
+    p {
+      background-color: inherit; /* Mantiene el color del fondo de las filas */
+      color: var(--secondary-50); /* Texto de las celdas */
+    }
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: var(--neutral-900); /* Fondo par */
+    color: var(--secondary-50); /* Texto */
+
+    td,
+    p {
+      background-color: inherit; /* Mantiene el color del fondo de las filas */
+      color: var(--secondary-50); /* Texto de las celdas */
+    }
+  }
+
+  tbody tr:hover {
+    background-color: var(--neutral-600); /* Fondo al pasar el mouse */
+  }
+}
