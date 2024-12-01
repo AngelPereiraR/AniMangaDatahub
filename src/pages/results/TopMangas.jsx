@@ -6,6 +6,7 @@ import { FormModeContext } from "../../context/FormModeContext";
 import { ScreenWidthContext } from "../../context/ScreenWidthContext";
 import { useFetch } from "../../hooks/useFetch";
 import Button from "../../components/shared/Button";
+import { Link } from "react-router-dom";
 
 const menuOptions = [
   { label: "Todos los Mangas", endpoint: "top/manga?" },
@@ -122,21 +123,23 @@ const TopMangas = () => {
                   </div>
                 </td>
                 <td>
-                  <div className="manga-title">
-                    <img
-                      src={manga.images.webp.image_url}
-                      alt={manga.title}
-                      className="manga-image"
-                    />
-                    <div>
-                      <h3>{manga.title_english || manga.title}</h3>
-                      <p>
-                        {manga.synopsis
-                          ? `${manga.synopsis.slice(0, 200)}...`
-                          : "Sin descripción"}
-                      </p>
+                  <Link key={manga.mal_id} to={`/manga/${manga.mal_id}`}>
+                    <div className="manga-title">
+                      <img
+                        src={manga.images.webp.image_url}
+                        alt={manga.title}
+                        className="manga-image"
+                      />
+                      <div>
+                        <h3>{manga.title_english || manga.title}</h3>
+                        <p>
+                          {manga.synopsis
+                            ? `${manga.synopsis.slice(0, 200)}...`
+                            : "Sin descripción"}
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </td>
                 {isWideScreen && <td>⭐ {manga.score || "N/A"}</td>}
                 {isWideScreen && (

@@ -128,7 +128,8 @@
     background-color: var(--secondary-50);
 
     td,
-    p {
+    p,
+    h3 {
       color: var(--primary-800);
     }
   }
@@ -137,13 +138,20 @@
     background-color: var(--primary-800);
 
     td,
-    p {
+    p,
+    h3 {
       color: var(--secondary-50);
     }
   }
 
   tbody tr:hover {
     background-color: var(--primary-100);
+
+    td,
+    p,
+    h3 {
+      color: var(--secondary-50);
+    }
   }
 
   @media (max-width: 1050px) {
@@ -199,7 +207,8 @@
     color: var(--secondary-50); /* Texto */
 
     td,
-    p {
+    p,
+    h3 {
       background-color: inherit; /* Mantiene el color del fondo de las filas */
       color: var(--secondary-50); /* Texto de las celdas */
     }
@@ -210,7 +219,8 @@
     color: var(--secondary-50); /* Texto */
 
     td,
-    p {
+    p,
+    h3 {
       background-color: inherit; /* Mantiene el color del fondo de las filas */
       color: var(--secondary-50); /* Texto de las celdas */
     }

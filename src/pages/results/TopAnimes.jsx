@@ -6,6 +6,7 @@ import { FormModeContext } from "../../context/FormModeContext";
 import { ScreenWidthContext } from "../../context/ScreenWidthContext";
 import { useFetch } from "../../hooks/useFetch";
 import Button from "../../components/shared/Button";
+import { Link } from "react-router-dom";
 
 const menuOptions = [
   { label: "Todos los Animes", endpoint: "top/anime?" },
@@ -120,21 +121,23 @@ const TopAnimes = () => {
                   </div>
                 </td>
                 <td>
-                  <div className="anime-title">
-                    <img
-                      src={anime.images.webp.image_url}
-                      alt={anime.title}
-                      className="anime-image"
-                    />
-                    <div>
-                      <h3>{anime.title_english || anime.title}</h3>
-                      <p>
-                        {anime.synopsis
-                          ? `${anime.synopsis.slice(0, 200)}...`
-                          : "Sin descripción"}
-                      </p>
+                  <Link key={anime.mal_id} to={`/anime/${anime.mal_id}`}>
+                    <div className="anime-title">
+                      <img
+                        src={anime.images.webp.image_url}
+                        alt={anime.title}
+                        className="anime-image"
+                      />
+                      <div>
+                        <h3>{anime.title_english || anime.title}</h3>
+                        <p>
+                          {anime.synopsis
+                            ? `${anime.synopsis.slice(0, 200)}...`
+                            : "Sin descripción"}
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </td>
                 {isWideScreen && <td>⭐ {anime.score || "N/A"}</td>}
                 {isWideScreen && (
