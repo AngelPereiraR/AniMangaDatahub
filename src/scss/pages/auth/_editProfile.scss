@@ -1,0 +1,181 @@
+@use "../../utilities/mixins";
+
+.edit-profile {
+  padding: 1.25rem;
+  margin: 3rem;
+  margin-bottom: 5rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("./../assets/edit-profile.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 2rem;
+  box-sizing: border-box;
+
+  &__heading {
+    color: var(--secondary-50);
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .date-selectors {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 50%;
+
+    label {
+      color: var(--secondary-50);
+      font-size: var(--font-size-subtitle-desktop);
+      font-weight: var(--font-weight-subtitle-desktop);
+      font-family: var(--heading-font-family);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    &__fields {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+
+      .select-field {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid var(--secondary-50);
+        border-radius: 0.5rem;
+        background-color: transparent;
+        color: var(--secondary-50);
+        font-family: var(--heading-font-family);
+        font-size: var(--font-size-normal-desktop);
+        appearance: none;
+        outline: none;
+        cursor: pointer;
+
+        &:focus {
+          border-color: var(--primary-800);
+        }
+
+        &::placeholder {
+          color: var(--secondary-50);
+        }
+      }
+
+      .select-field option {
+        color: var(--primary-800);
+        background-color: var(--shades-50);
+      }
+    }
+  }
+
+  .error-message {
+    color: var(--primary-50);
+    font-size: var(--font-size-normal-desktop);
+    font-weight: var(--font-weight-title-desktop);
+    margin-top: 0.25rem;
+  }
+
+  .button.primary {
+    margin-top: 2rem;
+  }
+
+  &__link {
+    display: block;
+    margin-top: 1.5rem;
+    color: var(--secondary-50);
+    text-align: center;
+    text-decoration: none;
+    font-family: var(--heading-font-family);
+    font-size: var(--font-size-normal-desktop);
+
+    &:hover {
+      color: var(--primary-50);
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  .edit-profile {
+    &__heading {
+      @include mixins.font(--font-size-menu-mobile, --font-weight-menu-mobile);
+    }
+
+    .date-selectors {
+      label {
+        font-size: var(--font-size-subtitle-mobile);
+        font-weight: var(--font-weight-subtitle-mobile);
+      }
+
+      &__fields {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .select-field {
+        font-size: var(--font-size-normal-mobile);
+        padding: 0.25rem;
+      }
+    }
+
+    .error-message {
+      @include mixins.font(
+        --font-size-normal-mobile,
+        --font-weight-title-mobile
+      );
+    }
+
+    &__link {
+      @include mixins.font(
+        --font-size-normal-mobile,
+        --font-weight-normal-mobile
+      );
+    }
+  }
+}
+
+@media (min-width: 1051px) {
+  .edit-profile {
+    &__heading {
+      @include mixins.font(
+        --font-size-menu-desktop,
+        --font-weight-menu-desktop
+      );
+    }
+
+    .date-selectors {
+      label {
+        font-size: var(--font-size-subtitle-desktop);
+        font-weight: var(--font-weight-subtitle-desktop);
+      }
+
+      &__fields {
+        flex-direction: row;
+        gap: 1rem;
+      }
+
+      .select-field {
+        font-size: var(--font-size-normal-desktop);
+        padding: 0.5rem;
+      }
+    }
+
+    .error-message {
+      @include mixins.font(
+        --font-size-normal-desktop,
+        --font-weight-title-desktop
+      );
+    }
+
+    &__link {
+      @include mixins.font(
+        --font-size-normal-desktop,
+        --font-weight-normal-desktop
+      );
+    }
+  }
+}
