@@ -1,0 +1,94 @@
+.character-seiyuu-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--neutral-200);
+  border-radius: 8px;
+  margin: 1rem;
+  width: 100%;
+  background-color: var(--neutral-50);
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &--dark {
+    background-color: var(--neutral-800);
+    color: var(--secondary-50);
+    border-color: var(--neutral-700);
+  }
+
+  &--light {
+    background-color: var(--neutral-50);
+    color: var(--neutral-800);
+    border-color: var(--neutral-200);
+
+    &__voice-actor-name,
+    &__character-name {
+      color: var(--neutral-800); // Colores oscuros en el tema claro
+    }
+
+    &__voice-actor-nationality,
+    &__character-role {
+      color: var(--neutral-600); // Gris oscuro en modo claro
+    }
+  }
+
+  &__voice-actor,
+  &__character {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__voice-actor-image,
+  &__character-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    @media (max-width: 1050px) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__voice-actor-info,
+  &__character-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__voice-actor-info {
+    align-items: flex-start;
+  }
+
+  &__character-info {
+    align-items: flex-end;
+  }
+
+  &__voice-actor-name,
+  &__character-name {
+    font-family: var(--normal-text-font-family);
+    font-size: var(--font-size-normal-desktop);
+    font-weight: var(--font-weight-title-desktop);
+
+    @media (max-width: 1050px) {
+      font-size: var(--font-size-normal-mobile);
+      font-weight: var(--font-weight-title-mobile);
+    }
+  }
+
+  &__voice-actor-nationality,
+  &__character-role {
+    font-family: var(--normal-text-font-family);
+    font-size: var(--font-size-normal-desktop);
+    font-weight: var(--font-weight-normal-desktop);
+    color: var(--neutral-400);
+
+    @media (max-width: 1050px) {
+      font-size: var(--font-size-normal-mobile);
+      font-weight: var(--font-weight-normal-mobile);
+    }
+  }
+}

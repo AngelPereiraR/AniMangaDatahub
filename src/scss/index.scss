@@ -5,6 +5,7 @@
 
 @use "./components/auth/input";
 @use "./components/auth/termsAndConditions";
+@use "./components/info/characterSeiyuuCard";
 @use "./components/layouts/dropdown";
 @use "./components/layouts/footer";
 @use "./components/layouts/navbar";
@@ -23,6 +24,7 @@
 @use "./pages/auth/login";
 @use "./pages/auth/register";
 @use "./pages/errors/error404";
+@use "./pages/info/anime";
 @use "./pages/results/animesBySeason";
 @use "./pages/results/mangasBySeason";
 @use "./pages/results/topAnimes";

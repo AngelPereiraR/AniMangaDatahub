@@ -80,7 +80,7 @@ const EditProfile = () => {
         draggable: true,
         transition: Bounce,
       });
-      navigate("/anime/profile");
+      navigate("/profile");
     } catch (error) {
       toast.error("Hubo un error al actualizar el perfil. Intenta de nuevo.", {
         position: "bottom-right",

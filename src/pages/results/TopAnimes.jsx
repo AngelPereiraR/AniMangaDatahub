@@ -29,7 +29,7 @@ const TopAnimes = () => {
   const { isWideScreen } = useContext(ScreenWidthContext);
 
   const { data, loading, error } = useFetch(
-    `https://api.jikan.moe/v4/${activeOption.endpoint}&page=${currentPage}&limit=10`
+    `https://api.jikan.moe/v4/${activeOption.endpoint}&page=${currentPage}&limit=24`
   );
 
   useEffect(() => {
