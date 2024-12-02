@@ -95,7 +95,7 @@ const TopMangas = () => {
           ))}
         </ul>
       </nav>
-      <section className="main__mangas">
+      <section className="main-table__mangas">
         <table className={`manga-table ${darkMode ? "manga-table--dark" : ""}`}>
           <thead>
             <tr>

@@ -93,7 +93,7 @@ const TopAnimes = () => {
           ))}
         </ul>
       </nav>
-      <section className="main__animes">
+      <section className="main-table__animes">
         <table className={`anime-table ${darkMode ? "anime-table--dark" : ""}`}>
           <thead>
             <tr>
