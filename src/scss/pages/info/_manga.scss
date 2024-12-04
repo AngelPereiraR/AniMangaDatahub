@@ -1,4 +1,4 @@
-.anime-page {
+.manga-page {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -13,7 +13,7 @@
       flex-direction: row;
     }
 
-    .anime-page__image {
+    .manga-page__image {
       max-width: 400px;
       width: 100%;
       object-fit: cover;
@@ -21,12 +21,12 @@
       flex-shrink: 0;
     }
 
-    .anime-page__info {
+    .manga-page__info {
       display: flex;
       flex-direction: column;
       flex: 1;
 
-      .anime-page__title {
+      .manga-page__title {
         font-size: 2rem;
         margin-bottom: 1rem;
       }
@@ -35,7 +35,7 @@
         margin: 1rem;
       }
 
-      .anime-page__buttons {
+      .manga-page__buttons {
         display: flex;
         margin-top: 1rem;
         gap: 1rem;
@@ -66,8 +66,8 @@
       flex-direction: row;
     }
 
-    .anime-page__synopsis,
-    .anime-page__background {
+    .manga-page__synopsis,
+    .manga-page__background {
       flex: 1;
       margin: 0;
 
@@ -78,29 +78,31 @@
   }
 
   &__characters {
-    .anime-page__character-list {
+    .manga-page__character-list {
       display: grid;
       gap: 1rem;
 
-      @media (min-width: 1051px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      &--expanded {
+        @media (min-width: 1051px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
 
-      @media (max-width: 1050px) {
-        grid-template-columns: 1fr;
+        @media (max-width: 1050px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     }
   }
 }
 
 @media (min-width: 1051px) {
-  .anime-page {
+  .manga-page {
     min-height: 79.1vh;
   }
 }
 
 @media (min-width: 1921px) {
-  .anime-page {
+  .manga-page {
     min-height: 82.85vh;
   }
 }

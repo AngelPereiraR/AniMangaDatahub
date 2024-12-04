@@ -1,4 +1,4 @@
-.anime-page {
+.character-page {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -13,7 +13,7 @@
       flex-direction: row;
     }
 
-    .anime-page__image {
+    .character-page__image {
       max-width: 400px;
       width: 100%;
       object-fit: cover;
@@ -21,12 +21,12 @@
       flex-shrink: 0;
     }
 
-    .anime-page__info {
+    .character-page__info {
       display: flex;
       flex-direction: column;
       flex: 1;
 
-      .anime-page__title {
+      .character-page__title {
         font-size: 2rem;
         margin-bottom: 1rem;
       }
@@ -35,7 +35,7 @@
         margin: 1rem;
       }
 
-      .anime-page__buttons {
+      .character-page__buttons {
         display: flex;
         margin-top: 1rem;
         gap: 1rem;
@@ -66,8 +66,10 @@
       flex-direction: row;
     }
 
-    .anime-page__synopsis,
-    .anime-page__background {
+    .character-page__synopsis,
+    .character-page__background,
+    .character-page__anime,
+    .character-page__manga {
       flex: 1;
       margin: 0;
 
@@ -78,7 +80,7 @@
   }
 
   &__characters {
-    .anime-page__character-list {
+    .character-page__character-list {
       display: grid;
       gap: 1rem;
 
@@ -94,13 +96,13 @@
 }
 
 @media (min-width: 1051px) {
-  .anime-page {
+  .character-page {
     min-height: 79.1vh;
   }
 }
 
 @media (min-width: 1921px) {
-  .anime-page {
+  .character-page {
     min-height: 82.85vh;
   }
 }

@@ -21,16 +21,6 @@
     background-color: var(--neutral-50);
     color: var(--neutral-800);
     border-color: var(--neutral-200);
-
-    &__voice-actor-name,
-    &__character-name {
-      color: var(--neutral-800); // Colores oscuros en el tema claro
-    }
-
-    &__voice-actor-nationality,
-    &__character-role {
-      color: var(--neutral-600); // Gris oscuro en modo claro
-    }
   }
 
   &__voice-actor,
@@ -38,6 +28,12 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
+    &--left {
+      .character-seiyuu-card__character-info {
+        align-items: flex-start; // Alinear a la izquierda
+      }
+    }
   }
 
   &__voice-actor-image,
@@ -73,6 +69,14 @@
     font-size: var(--font-size-normal-desktop);
     font-weight: var(--font-weight-title-desktop);
 
+    &--dark {
+      color: var(--secondary-50);
+    }
+
+    &--light {
+      color: var(--neutral-800);
+    }
+
     @media (max-width: 1050px) {
       font-size: var(--font-size-normal-mobile);
       font-weight: var(--font-weight-title-mobile);
@@ -89,6 +93,52 @@
     @media (max-width: 1050px) {
       font-size: var(--font-size-normal-mobile);
       font-weight: var(--font-weight-normal-mobile);
+    }
+  }
+
+  &__anime,
+  &__manga {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+
+    img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+
+      @media (max-width: 1050px) {
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .character-seiyuu-card__anime-name,
+      .character-seiyuu-card__manga-name {
+        font-family: var(--normal-text-font-family);
+        font-size: var(--font-size-big-normal-desktop);
+        font-weight: var(--font-weight-big-normal-desktop);
+
+        &--dark {
+          color: var(--secondary-50);
+        }
+
+        &--light {
+          color: var(--neutral-800);
+        }
+
+        @media (max-width: 1050px) {
+          font-size: var(--font-size-normal-mobile);
+          font-weight: var(--font-weight-normal-mobile);
+        }
+      }
     }
   }
 }
