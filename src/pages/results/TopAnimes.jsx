@@ -132,7 +132,9 @@ const TopAnimes = () => {
                         <h3>{anime.title_english || anime.title}</h3>
                         <p>
                           {anime.synopsis
-                            ? `${anime.synopsis.slice(0, 200)}...`
+                            ? `${anime.synopsis.slice(0, 200)}${
+                                anime.synopsis.length > 200 ? "..." : ""
+                              }`
                             : "Sin descripción"}
                         </p>
                       </div>
@@ -154,7 +156,7 @@ const TopAnimes = () => {
       <div className="pagination">
         <button
           onClick={() => changePage(currentPage - 1)}
-          disabled={!data.pagination.has_previous_page}
+          disabled={data.pagination.current_page === 1}
         >
           Anterior
         </button>

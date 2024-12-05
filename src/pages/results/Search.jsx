@@ -3,7 +3,7 @@ import { EditScreenContext } from "../../context/EditScreenContext";
 import { FormModeContext } from "../../context/FormModeContext";
 import { ThemeContext } from "../../context/ThemeContext";
 import Heading from "../../components/shared/Heading";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Dropdown from "../../components/layouts/Dropdown";
 import { useFetch } from "../../hooks/useFetch";
 
@@ -11,20 +11,19 @@ const menuOptions = [
   { label: "Animes", endpoint: "anime" },
   { label: "Mangas", endpoint: "manga" },
   { label: "Personajes", endpoint: "characters" },
-  { label: "Personas", endpoint: "people" },
 ];
 
-const SearchAnime = () => {
+const Search = () => {
   const { darkMode } = useContext(ThemeContext);
   const [searchTerm, setSearchTerm] = useState("");
-  const [dropdownValue, setDropdownValue] = useState(menuOptions[0].endpoint);
+  const [dropdownValue, setDropdownValue] = useState("");
   const { updateEditScreen } = useContext(EditScreenContext);
   const { updateFormMode } = useContext(FormModeContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams] = useSearchParams();
 
   const query = searchParams.get("query") || "";
-  const filtered = searchParams.get("filtered") || "";
+  const [filtered, setFiltered] = useState(searchParams.get("filtered") || "");
   const [finalUrl, setFinalUrl] = useState("");
   const [timeoutId, setTimeoutId] = useState(null);
   const [showFilters, setShowFilters] = useState(false); // Estado para mostrar/ocultar filtros
@@ -35,23 +34,31 @@ const SearchAnime = () => {
     ageRating: "", // Valoración de Edad
     startDate: "", // Fecha de inicio
     endDate: "", // Fecha de fin
-    safeMode: false, // Modo seguro
+    sfw: false, // Modo seguro
   });
   const navigate = useNavigate();
 
   useEffect(() => {
     setSearchTerm(query);
-    if (filtered !== "") setDropdownValue(filtered);
+    if (filtered !== "" && filtered !== null) {
+      setDropdownValue(filtered);
+    } else if (filtered === "") {
+      setFiltered(null);
+      setDropdownValue("anime");
+    }
     updateEditScreen(false);
     updateFormMode(false);
     updateUrlParams();
-  }, [query, filtered, searchTerm, dropdownValue]);
+  }, [query, filtered, searchTerm, dropdownValue, finalUrl]);
 
   const updateUrlParams = () => {
     const params = new URLSearchParams();
 
     if (searchTerm) params.set("query", searchTerm);
-    if (dropdownValue) params.set("filtered", dropdownValue);
+    if (filtered) {
+      params.set("filtered", filtered);
+      setFiltered(null);
+    } else if (dropdownValue) params.set("filtered", dropdownValue);
     Object.keys(filterValues).forEach((key) => {
       if (filterValues[key]) params.set(key, filterValues[key]);
     });
@@ -63,26 +70,27 @@ const SearchAnime = () => {
 
   const handleDropdownChange = (e) => {
     setDropdownValue(e.target.value);
+    debounceSearch(e.target.value);
   };
 
   const handleSearchInputChange = (e) => {
     setSearchTerm(e.target.value);
-    debounceSearch(e.target.value);
+    debounceSearch();
   };
 
-  const debounceSearch = (searchTerm) => {
+  const debounceSearch = (value) => {
     if (timeoutId) {
       clearTimeout(timeoutId);
     }
 
     const newTimeoutId = setTimeout(() => {
-      setFinalUrl(buildUrl(searchTerm));
-    }, 3000);
+      setFinalUrl(buildUrl(value));
+    }, 2000);
 
     setTimeoutId(newTimeoutId);
   };
 
-  const buildUrl = () => {
+  const buildUrl = (search, page) => {
     const filters = new URLSearchParams();
 
     if (searchTerm) filters.set("q", searchTerm);
@@ -94,13 +102,17 @@ const SearchAnime = () => {
     if (filterValues.startDate)
       filters.set("start_date", filterValues.startDate);
     if (filterValues.endDate) filters.set("end_date", filterValues.endDate);
-    if (filterValues.safeMode) filters.set("safe_mode", filterValues.safeMode);
+    if (filterValues.sfw) filters.set("sfw", filterValues.sfw);
 
-    return `https://api.jikan.moe/v4/${dropdownValue}?${filters.toString()}&limit=24&page=${currentPage}`;
+    return `https://api.jikan.moe/v4/${
+      search !== undefined ? search : dropdownValue
+    }?${filters.toString()}&limit=24&page=${
+      page !== undefined ? page : currentPage
+    }`;
   };
 
-  const handleSearchButtonClick = () => {
-    setFinalUrl(buildUrl(searchTerm));
+  const handleSearch = () => {
+    setFinalUrl(buildUrl(searchTerm, undefined));
     if (timeoutId) {
       clearTimeout(timeoutId);
     }
@@ -115,7 +127,177 @@ const SearchAnime = () => {
       ...prevValues,
       [filterName]: value,
     }));
+    debounceSearch();
   };
+
+  const changePage = (newPage) => {
+    setCurrentPage(newPage);
+    setFinalUrl(buildUrl(undefined, newPage));
+  };
+
+  const renderTable = () => {
+    if (!data || !data.data) return null;
+
+    const rows = data.data.map((item, index) => {
+      switch (dropdownValue) {
+        case "anime":
+          return (
+            <tr className="table__row" key={index}>
+              <td className="table__cell">
+                <Link to={`/anime/${item.mal_id}`}>
+                  <img
+                    src={item.images.jpg.image_url}
+                    alt={item.title}
+                    className="table__image"
+                  />
+                </Link>
+              </td>
+              <td className="table__cell">
+                <Link to={`/anime/${item.mal_id}`}>
+                  <h3 className="table__title">
+                    {item.title_english || item.title}
+                  </h3>
+                  <p className="table__description">
+                    {item.synopsis
+                      ? `${item.synopsis.slice(0, 200)}${
+                          item.synopsis.length > 200 ? "..." : ""
+                        }`
+                      : "Sin descripción"}
+                  </p>
+                </Link>
+              </td>
+            </tr>
+          );
+        case "manga":
+          return (
+            <tr className="table__row" key={index}>
+              <td className="table__cell">
+                <Link to={`/manga/${item.mal_id}`}>
+                  <img
+                    src={item.images.jpg.image_url}
+                    alt={item.title}
+                    className="table__image"
+                  />
+                </Link>
+              </td>
+              <td className="table__cell">
+                <Link to={`/manga/${item.mal_id}`}>
+                  <h3 className="table__title">
+                    {item.title_english || item.title}
+                  </h3>
+                  <p className="table__description">
+                    {item.synopsis
+                      ? `${item.synopsis.slice(0, 200)}${
+                          item.synopsis.length > 200 ? "..." : ""
+                        }`
+                      : "Sin descripción"}
+                  </p>
+                </Link>
+              </td>
+            </tr>
+          );
+        case "characters":
+          return (
+            <tr className="table__row" key={index}>
+              <td className="table__cell">
+                <Link to={`/characters/${item.mal_id}`}>
+                  <img
+                    src={item.images.jpg.image_url}
+                    alt={item.name}
+                    className="table__image"
+                  />
+                </Link>
+              </td>
+              <td className="table__cell">
+                <Link to={`/characters/${item.mal_id}`}>
+                  <p className="table__title">{item.name}</p>
+                  <p className="table__description">
+                    {item.about
+                      ? `${item.about.slice(0, 200)}${
+                          item.about.length > 200 ? "..." : ""
+                        }`
+                      : "Sin descripción"}
+                  </p>
+                </Link>
+              </td>
+            </tr>
+          );
+        default:
+          return null;
+      }
+    });
+
+    return (
+      <section className="table-container">
+        <table className={`table ${darkMode ? "table--dark" : ""}`}>
+          <thead className="table__header">
+            <tr className="table__header-row">
+              <th className="table__header-cell">Imagen</th>
+              <th className="table__header-cell">
+                {dropdownValue === "characters" ? "Nombre" : "Título"}
+              </th>
+            </tr>
+          </thead>
+          <tbody className="table__body">{rows}</tbody>
+        </table>
+        <div className="pagination">
+          <button
+            onClick={() => changePage(currentPage - 1)}
+            disabled={data.pagination.current_page === 1}
+            className="pagination__button"
+          >
+            Anterior
+          </button>
+          {visiblePages.map((page) => (
+            <button
+              key={page}
+              className={`pagination__button ${
+                currentPage === page ? "active" : ""
+              }`}
+              onClick={() => changePage(page)}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            onClick={() => changePage(currentPage + 1)}
+            disabled={!data.pagination.has_next_page}
+            className="pagination__button"
+          >
+            Siguiente
+          </button>
+        </div>
+      </section>
+    );
+  };
+
+  let totalPages = null;
+
+  if (data !== null) {
+    totalPages = data.pagination.last_visible_page;
+  }
+
+  // Lógica para calcular páginas visibles
+  const getVisiblePages = () => {
+    const maxButtons = 7;
+    const pages = [];
+    const half = Math.floor(maxButtons / 2);
+
+    let start = Math.max(currentPage - half, 1);
+    let end = Math.min(start + maxButtons - 1, totalPages);
+
+    if (end - start < maxButtons - 1) {
+      start = Math.max(end - maxButtons + 1, 1);
+    }
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    return pages;
+  };
+
+  const visiblePages = getVisiblePages();
 
   return (
     <main className="search-anime">
@@ -129,13 +311,15 @@ const SearchAnime = () => {
             value={searchTerm}
             onChange={handleSearchInputChange}
           />
-          <button type="button" onClick={handleSearchButtonClick}>
+          <button type="button" onClick={handleSearch}>
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
         {(dropdownValue === "anime" || dropdownValue === "manga") && (
           <button
-            className="filters-button"
+            className={`filters-button ${
+              darkMode ? "filters-button--dark" : ""
+            }`}
             onClick={toggleFilters}
             aria-label="Filtros avanzados"
           >
@@ -144,101 +328,152 @@ const SearchAnime = () => {
         )}
       </div>
 
-      {/* Filtros avanzados */}
-      {showFilters &&
-        (dropdownValue === "anime" || dropdownValue === "manga") && (
-          <div className="advanced-filters">
-            <div className="filter">
-              <label>Tipo:</label>
-              {dropdownValue === "anime" ? (
-                <select
-                  onChange={(e) => handleFilterChange("type", e.target.value)}
-                  value={filterValues.type}
-                >
-                  <option value="tv">TV</option>
-                  <option value="movie">Película</option>
-                  <option value="ona">OVA</option>
-                  <option value="special">Especial</option>
-                  <option value="ona">ONA</option>
-                  <option value="music">Música</option>
-                  <option value="cm">CM</option>
-                  <option value="pv">PV</option>
-                  <option value="tv_special">TV Especial</option>
-                </select>
-              ) : (
-                <select
-                  onChange={(e) => handleFilterChange("type", e.target.value)}
-                  value={filterValues.type}
-                >
-                  <option value="manga">Manga</option>
-                  <option value="novel">Novela</option>
-                  <option value="lightnovel">Novela ligera</option>
-                  <option value="oneshot">Oneshot</option>
-                  <option value="doujin">Doujin</option>
-                  <option value="manhwa">Manhwa</option>
-                  <option value="manhua">Manhua</option>
-                </select>
-              )}
-            </div>
-            <div className="filter">
-              <label>Puntuación:</label>
-              <input type="range" min="0" max="10" step="0.1" />
-            </div>
-            <div className="filter">
-              <label>Estado:</label>
-              {dropdownValue === "anime" ? (
-                <select>
-                  <option value="airing">En emisión</option>
-                  <option value="finished">Terminado</option>
-                  <option value="upcoming">Próximo</option>
-                </select>
-              ) : (
-                <select>
-                  <option value="publishing">En publicación</option>
-                  <option value="complete">Completo</option>
-                  <option value="hiatus">En pausa</option>
-                  <option value="discontinued">Abandonado</option>
-                  <option value="upcoming">Próximo</option>
-                </select>
-              )}
-            </div>
-            {dropdownValue === "anime" && (
+      <div className="search__filters-table">
+        {/* Filtros avanzados */}
+        {showFilters &&
+          (dropdownValue === "anime" || dropdownValue === "manga") && (
+            <div
+              className={`advanced-filters ${
+                darkMode ? "advanced-filters--dark" : ""
+              }`}
+            >
               <div className="filter">
-                <label>Valoración de Edad:</label>
-                <select>
-                  <option value="g">G - Todas las edades</option>
-                  <option value="pg">PG - Niños</option>
-                  <option value="pg13">
-                    PG-13 - Adolescentes de 13 años o mayores
-                  </option>
-                  <option value="r17">R- 17+ - (Violencia y profanidad)</option>
-                  <option value="r">R+ - Desnudez leve</option>
-                  <option value="rx">Rx - Hentai</option>
+                <label>Tipo:</label>
+                {dropdownValue === "anime" ? (
+                  <select
+                    onChange={(e) => handleFilterChange("type", e.target.value)}
+                    value={filterValues.type}
+                  >
+                    <option value="tv">TV</option>
+                    <option value="movie">Película</option>
+                    <option value="ova">OVA</option>
+                    <option value="special">Especial</option>
+                    <option value="ona">ONA</option>
+                    <option value="music">Música</option>
+                    <option value="cm">CM</option>
+                    <option value="pv">PV</option>
+                    <option value="tv_special">TV Especial</option>
+                  </select>
+                ) : (
+                  <select
+                    onChange={(e) => handleFilterChange("type", e.target.value)}
+                    value={filterValues.type}
+                  >
+                    <option value="manga">Manga</option>
+                    <option value="novel">Novela</option>
+                    <option value="lightnovel">Novela ligera</option>
+                    <option value="oneshot">Oneshot</option>
+                    <option value="doujin">Doujin</option>
+                    <option value="manhwa">Manhwa</option>
+                    <option value="manhua">Manhua</option>
+                  </select>
+                )}
+              </div>
+              <div className="filter">
+                <label>Puntuación:</label>
+                <input
+                  type="range"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  onChange={(e) => handleFilterChange("score", e.target.value)}
+                />
+              </div>
+              <div className="filter">
+                <label>Estado:</label>
+                {dropdownValue === "anime" ? (
+                  <select
+                    onChange={(e) =>
+                      handleFilterChange("status", e.target.value)
+                    }
+                  >
+                    <option value="airing">En emisión</option>
+                    <option value="finished">Terminado</option>
+                    <option value="upcoming">Próximo</option>
+                  </select>
+                ) : (
+                  <select
+                    onChange={(e) =>
+                      handleFilterChange("status", e.target.value)
+                    }
+                  >
+                    <option value="publishing">En publicación</option>
+                    <option value="complete">Completo</option>
+                    <option value="hiatus">En pausa</option>
+                    <option value="discontinued">Abandonado</option>
+                    <option value="upcoming">Próximo</option>
+                  </select>
+                )}
+              </div>
+              {dropdownValue === "anime" && (
+                <div className="filter">
+                  <label>Valoración de Edad:</label>
+                  <select
+                    onChange={(e) =>
+                      handleFilterChange("ageRating", e.target.value)
+                    }
+                  >
+                    <option value="g">G - Todas las edades</option>
+                    <option value="pg">PG - Niños</option>
+                    <option value="pg13">
+                      PG-13 - Adolescentes de 13 años o mayores
+                    </option>
+                    <option value="r17">
+                      R- 17+ - (Violencia y profanidad)
+                    </option>
+                    <option value="r">R+ - Desnudez leve</option>
+                    <option value="rx">Rx - Hentai</option>
+                  </select>
+                </div>
+              )}
+              <div className="filter">
+                <label>Modo seguro</label>
+                <select
+                  onChange={(e) => handleFilterChange("sfw", e.target.value)}
+                >
+                  <option value="false">Sí</option>
+                  <option value="true">No</option>
                 </select>
               </div>
-            )}
-            <div className="filter">
-              <label>Modo seguro</label>
-              <select>
-                <option value="false">Sí</option>
-                <option value="true">No</option>
-              </select>
+              <div className="filter">
+                <label>Fecha de inicio:</label>
+                <input
+                  type="date"
+                  onChange={(e) =>
+                    handleFilterChange("startDate", e.target.value)
+                  }
+                />
+              </div>
+              <div className="filter">
+                <label>Fecha de fin:</label>
+                <input
+                  type="date"
+                  onChange={(e) =>
+                    handleFilterChange("endDate", e.target.value)
+                  }
+                />
+              </div>
             </div>
-            <div className="filter">
-              <label>Fecha de inicio:</label>
-              <input type="date" />
-            </div>
-            <div className="filter">
-              <label>Fecha de fin:</label>
-              <input type="date" />
-            </div>
-          </div>
-        )}
+          )}
 
-      {loading && <p>Cargando...</p>}
-      {!loading && data && <div>{/* Renderizar resultados */}</div>}
+        {loading && (
+          <p className={`loading ${darkMode ? "loading--dark" : ""}`}>
+            Cargando...
+          </p>
+        )}
+        {!loading && data && renderTable()}
+        {!loading && !data && (
+          <p
+            className={`search-anime__no-results ${
+              darkMode ? "search-anime__no-results--dark" : ""
+            }`}
+          >
+            No hay resultados
+          </p>
+        )}
+      </div>
     </main>
   );
 };
 
-export default SearchAnime;
+export default Search;

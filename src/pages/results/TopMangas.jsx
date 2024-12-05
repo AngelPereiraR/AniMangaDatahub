@@ -134,7 +134,9 @@ const TopMangas = () => {
                         <h3>{manga.title_english || manga.title}</h3>
                         <p>
                           {manga.synopsis
-                            ? `${manga.synopsis.slice(0, 200)}...`
+                            ? `${manga.synopsis.slice(0, 200)}${
+                                manga.synopsis.length > 200 ? "..." : ""
+                              }`
                             : "Sin descripción"}
                         </p>
                       </div>
@@ -156,7 +158,7 @@ const TopMangas = () => {
       <div className="pagination">
         <button
           onClick={() => changePage(currentPage - 1)}
-          disabled={!data.pagination.has_previous_page}
+          disabled={data.pagination.current_page === 1}
         >
           Anterior
         </button>

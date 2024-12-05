@@ -24,9 +24,6 @@ const Dropdown = ({ onChange, value }) => {
         <option className="dropdown__option" value="characters">
           Personajes
         </option>
-        <option className="dropdown__option" value="people">
-          Personas
-        </option>
       </select>
       <i
         className={`fa-solid fa-caret-down dropdown__icon ${

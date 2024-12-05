@@ -1,4 +1,18 @@
 .search-anime {
+  min-height: 77.4vh;
+
+  @media (max-width: 1050px) {
+    min-height: 75.1vh;
+  }
+  @media (min-width: 1921px) {
+    min-height: 81.4vh;
+  }
+
+  .search__filters-table {
+    display: flex;
+    padding: 0 2rem;
+  }
+
   .search-bar-container {
     display: flex;
     align-items: center;
@@ -89,20 +103,34 @@
   }
 
   .filters-button {
-    background: #fff;
+    background: transparent;
     border: none;
     border-radius: 50%;
     font-size: 1rem;
     cursor: pointer;
   }
 
+  .filters-button--dark {
+    color: var(--secondary-50);
+  }
+
   .advanced-filters {
     display: flex;
+    width: 40%;
+    max-height: 25rem;
     flex-direction: column;
-    gap: 10px;
+    gap: 2;
     padding: 10px;
+    margin: 2rem auto;
     background-color: var(--secondary-50);
+    border: 2px solid var(--neutral-900);
     border-radius: 5px;
+  }
+
+  .advanced-filters--dark {
+    background-color: var(--neutral-900);
+    color: var(--secondary-50);
+    border-color: var(--neutral-700);
   }
 
   .filter {
@@ -117,5 +145,162 @@
   .filter select,
   .filter input {
     margin-top: 5px;
+  }
+
+  .table-container {
+    margin: 1rem auto;
+    overflow-x: auto;
+
+    .table {
+      width: 90%; /* Ajustar al ancho deseado */
+      max-width: 1200px; /* Ancho máximo para evitar que se extienda demasiado */
+      border-collapse: collapse;
+      margin: auto;
+
+      th,
+      th td {
+        padding: 0.8rem;
+        text-align: center; /* Centrar contenido dentro de las celdas */
+        font-family: var(--heading-font-family);
+      }
+
+      td {
+        padding: 0.8rem;
+        font-family: var(--heading-font-family);
+      }
+
+      th {
+        background-color: var(--primary-800);
+        color: var(--secondary-50);
+        font-weight: bold;
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: var(--secondary-50);
+
+        td,
+        p,
+        h3 {
+          color: var(--primary-800);
+        }
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: var(--primary-800);
+
+        td,
+        p,
+        h3 {
+          color: var(--secondary-50);
+        }
+      }
+
+      tbody tr:hover {
+        background-color: var(--primary-100);
+
+        td,
+        p,
+        h3 {
+          color: var(--secondary-50);
+        }
+      }
+
+      @media (max-width: 1050px) {
+        th,
+        td,
+        h3 {
+          font-size: var(--font-size-subtitle-mobile);
+          font-weight: var(--font-weight-subtitle-mobile);
+        }
+
+        p {
+          font-size: var(--font-size-normal-mobile);
+          font-weight: var(--font-weight-normal-mobile);
+        }
+
+        .table__image {
+          width: 4rem;
+          object-fit: cover;
+          border-radius: 5px;
+          aspect-ratio: 2/3;
+        }
+      }
+
+      @media (min-width: 1051px) {
+        th,
+        td,
+        td div h3 {
+          font-size: var(--font-size-subtitle-desktop);
+          font-weight: var(--font-weight-subtitle-desktop);
+        }
+
+        p {
+          font-size: var(--font-size-big-normal-desktop);
+          font-weight: var(--font-weight-big-normal-desktop);
+        }
+
+        .table__image {
+          width: 6rem;
+          object-fit: cover;
+          border-radius: 5px;
+          aspect-ratio: 2/3;
+        }
+      }
+
+      .table__title {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: flex-start;
+      }
+    }
+    .table--dark {
+      th {
+        background-color: var(--neutral-900); /* Cabecera en modo oscuro */
+        color: var(--secondary-50); /* Color del texto de la cabecera */
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: var(--neutral-700); /* Fondo impar */
+        color: var(--secondary-50); /* Texto */
+
+        td,
+        p,
+        h3 {
+          background-color: inherit; /* Mantiene el color del fondo de las filas */
+          color: var(--secondary-50); /* Texto de las celdas */
+        }
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: var(--neutral-900); /* Fondo par */
+        color: var(--secondary-50); /* Texto */
+
+        td,
+        p,
+        h3 {
+          background-color: inherit; /* Mantiene el color del fondo de las filas */
+          color: var(--secondary-50); /* Texto de las celdas */
+        }
+      }
+
+      tbody tr:hover {
+        background-color: var(--neutral-600); /* Fondo al pasar el mouse */
+      }
+    }
+  }
+
+  &__no-results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    font-size: var(--font-size-subtitle-desktop);
+    font-weight: var(--font-weight-subtitle-desktop);
+    color: var(--neutral-500);
+  }
+
+  &__no-results--dark {
+    color: var(--secondary-50);
   }
 }

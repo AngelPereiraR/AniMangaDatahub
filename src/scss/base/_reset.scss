@@ -34,6 +34,20 @@ html.dark {
   color: var(--neutral-50);
 }
 
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  color: var(--primary-800);
+  font-size: var(--font-size-big-normal-desktop);
+  font-weight: var(--font-weight-big-normal-desktop);
+}
+
+.loading--dark {
+  color: var(--secondary-50);
+}
+
 @media (max-width: 1050px) {
   .login-main {
     min-height: 82.3vh;

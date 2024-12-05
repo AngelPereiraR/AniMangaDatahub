@@ -77,7 +77,7 @@ const MangasBySeason = () => {
       <div className="pagination">
         <button
           onClick={() => changePage(currentPage - 1)}
-          disabled={!data.pagination.has_previous_page}
+          disabled={data.pagination.current_page === 1}
         >
           Anterior
         </button>
