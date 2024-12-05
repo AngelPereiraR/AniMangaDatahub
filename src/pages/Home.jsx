@@ -26,14 +26,14 @@ const Home = () => {
     data: animeData,
     loading: animeLoading,
     error: animeError,
-  } = useFetch("https://api.jikan.moe/v4/seasons/now?continuing");
+  } = useFetch("https://api.jikan.moe/v4/seasons/now?continuing&limit=24");
 
   const {
     data: mangaData,
     loading: mangaLoading,
     error: mangaError,
   } = useFetch(
-    "https://api.jikan.moe/v4/manga?status=publishing&order_by=start_date&sort=desc"
+    "https://api.jikan.moe/v4/manga?status=publishing&order_by=start_date&sort=desc&limit=24"
   );
 
   if (animeLoading || mangaLoading) return <div>Cargando...</div>;

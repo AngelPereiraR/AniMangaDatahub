@@ -7,7 +7,7 @@ import { ThemeContext } from "../../context/ThemeContext"; // Contexto para gest
 const SearchBar = () => {
   // Estado para gestionar el término de búsqueda y el valor del dropdown
   const [searchTerm, setSearchTerm] = useState("");
-  const [dropdownValue, setDropdownValue] = useState("todo");
+  const [dropdownValue, setDropdownValue] = useState("anime");
 
   // Accede al estado darkMode desde el contexto
   const { darkMode } = useContext(ThemeContext);
@@ -20,11 +20,7 @@ const SearchBar = () => {
     e.preventDefault();
     if (searchTerm.trim() !== "") {
       // Navega a la URL de búsqueda con los parámetros correspondientes
-      navigate(
-        `/anime/search?query=${encodeURIComponent(
-          searchTerm
-        )}&filter=${dropdownValue}`
-      );
+      navigate(`/search?query=${searchTerm}&filtered=${dropdownValue}`);
     }
   };
 

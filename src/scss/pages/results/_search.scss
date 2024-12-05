@@ -1,0 +1,121 @@
+.search-anime {
+  .search-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem;
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: var(--secondary-50);
+      border: 3px solid var(--neutral-900);
+      border-radius: 1rem;
+      overflow: hidden;
+      width: auto;
+      -webkit-border-radius: 1rem;
+      -moz-border-radius: 1rem;
+      -ms-border-radius: 1rem;
+      -o-border-radius: 1rem;
+
+      @media (min-width: 1051px) {
+        width: 50vw;
+      }
+
+      input {
+        border: none;
+        padding: 0 0.5rem;
+        font-size: var(--font-size-normal-desktop);
+        flex: 1;
+        outline: none;
+        background-color: transparent;
+
+        &::placeholder {
+          color: var(--neutral-400);
+        }
+
+        @media (max-width: 1050px) {
+          font-size: var(--font-size-normal-mobile);
+        }
+      }
+
+      button {
+        background-color: transparent;
+        color: var(--primary-800);
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: var(--primary-400);
+          color: var(--secondary-50);
+        }
+
+        svg {
+          font-size: var(--font-size-normal-desktop);
+
+          @media (max-width: 1050px) {
+            font-size: var(--font-size-normal-mobile);
+          }
+        }
+      }
+
+      &--dark {
+        background-color: var(--neutral-900);
+        border-color: black;
+
+        input {
+          background-color: transparent;
+          color: var(--neutral-100);
+
+          &::placeholder {
+            color: var(--neutral-500);
+          }
+        }
+
+        button {
+          color: var(--neutral-100);
+
+          &:hover {
+            background-color: var(--neutral-600);
+          }
+        }
+      }
+    }
+  }
+
+  .filters-button {
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .advanced-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--secondary-50);
+    border-radius: 5px;
+  }
+
+  .filter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter label {
+    font-weight: bold;
+  }
+
+  .filter select,
+  .filter input {
+    margin-top: 5px;
+  }
+}

@@ -10,11 +10,10 @@ const Register = lazy(() => import("../pages/auth/Register"));
 const Profile = lazy(() => import("../pages/auth/Profile"));
 const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
 const Anime = lazy(() => import("../pages/info/Anime"));
-const SearchAnime = lazy(() => import("../pages/results/SearchAnime"));
+const Search = lazy(() => import("../pages/results/Search"));
 const TopAnimes = lazy(() => import("../pages/results/TopAnimes"));
 const AnimesBySeason = lazy(() => import("../pages/results/AnimesBySeason"));
 const Manga = lazy(() => import("../pages/info/Manga"));
-const SearchManga = lazy(() => import("../pages/results/SearchManga"));
 const TopMangas = lazy(() => import("../pages/results/TopMangas"));
 const MangasBySeason = lazy(() => import("../pages/results/MangasBySeason"));
 const Contact = lazy(() => import("../pages/auth/Contact"));
@@ -69,10 +68,6 @@ export const router = createBrowserRouter([
             element: <Anime />,
           },
           {
-            path: "/anime/search", // Ruta para buscar animes
-            element: <SearchAnime />,
-          },
-          {
             path: "/anime/top", // Ruta para ver los animes más populares
             element: <TopAnimes />,
           },
@@ -88,10 +83,6 @@ export const router = createBrowserRouter([
           {
             path: "/manga/:id", // Ruta para información de un manga específico
             element: <Manga />,
-          },
-          {
-            path: "/manga/search", // Ruta para buscar mangas
-            element: <SearchManga />,
           },
           {
             path: "/manga/top", // Ruta para ver los mangas más populares
@@ -110,6 +101,10 @@ export const router = createBrowserRouter([
       {
         path: "/character/:id", // Ruta para información de un personaje específico
         element: <Character />,
+      },
+      {
+        path: "/search", // Ruta para realizar búsquedas
+        element: <Search />,
       },
     ],
   },

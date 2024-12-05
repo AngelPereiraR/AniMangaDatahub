@@ -2,7 +2,7 @@ import React, { useContext } from "react"; // Importación de React y del hook u
 import { ThemeContext } from "../../context/ThemeContext"; // Importación del contexto de tema
 
 // Componente Dropdown, recibe una función `onChange` como prop
-const Dropdown = ({ onChange }) => {
+const Dropdown = ({ onChange, value }) => {
   // Uso del contexto para obtener el estado `darkMode` (modo oscuro)
   const { darkMode } = useContext(ThemeContext);
 
@@ -13,20 +13,18 @@ const Dropdown = ({ onChange }) => {
           darkMode ? "dropdown__select--dark" : ""
         }`}
         onChange={onChange}
+        value={value}
       >
-        <option className="dropdown__option" value="todo">
-          Todo
-        </option>
-        <option className="dropdown__option" value="animes">
+        <option className="dropdown__option" value="anime">
           Animes
         </option>
-        <option className="dropdown__option" value="mangas">
+        <option className="dropdown__option" value="manga">
           Mangas
         </option>
-        <option className="dropdown__option" value="personajes">
+        <option className="dropdown__option" value="characters">
           Personajes
         </option>
-        <option className="dropdown__option" value="personas">
+        <option className="dropdown__option" value="people">
           Personas
         </option>
       </select>

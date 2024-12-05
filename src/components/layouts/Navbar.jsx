@@ -152,7 +152,9 @@ const Navbar = () => {
                 >
                   {/* Opciones del dropdown */}
                   <li>
-                    <NavLink to="/anime/search">Búsqueda de Animes</NavLink>
+                    <NavLink to="/search?filtered=anime">
+                      Búsqueda de Animes
+                    </NavLink>
                   </li>
                   <li>
                     <NavLink to="/anime/top">Top Animes</NavLink>
@@ -179,7 +181,9 @@ const Navbar = () => {
                 >
                   {/* Opciones del dropdown */}
                   <li>
-                    <NavLink to="/manga/search">Búsqueda de Mangas</NavLink>
+                    <NavLink to="/search?filtered=manga">
+                      Búsqueda de Mangas
+                    </NavLink>
                   </li>
                   <li>
                     <NavLink to="/manga/top">Top Mangas</NavLink>
