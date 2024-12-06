@@ -53,25 +53,25 @@ const Seiyuu = () => {
   console.log(charactersData.data);
 
   return (
-    <main className="character-page">
+    <main className="seiyuu-page">
       {/* Encabezado con imagen e información principal */}
-      <section className="character-page__header">
+      <section className="seiyuu-page__header">
         {images && (
           <img
-            className="character-page__image"
+            className="seiyuu-page__image"
             src={images.jpg.large_image_url || images.jpg.image_url}
             alt={name}
           />
         )}
-        <div className="character-page__info">
-          <Heading title={name} className="character-page__title" />
+        <div className="seiyuu-page__info">
+          <Heading title={name} className="seiyuu-page__title" />
           {birthday && (
             <p>
               <strong>Cumpleaños:</strong> {birthday.substring(0, 10)}
             </p>
           )}
           {about && about.split("\n").map((line) => <p>{line}</p>)}
-          <div className="character-page__buttons">
+          <div className="seiyuu-page__buttons">
             <Button
               label="Añadir a favoritos"
               variant="secondary"

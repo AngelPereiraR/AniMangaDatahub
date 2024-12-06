@@ -240,33 +240,6 @@ const Search = () => {
           </thead>
           <tbody className="table__body">{rows}</tbody>
         </table>
-        <div className="pagination">
-          <button
-            onClick={() => changePage(currentPage - 1)}
-            disabled={data.pagination.current_page === 1}
-            className="pagination__button"
-          >
-            Anterior
-          </button>
-          {visiblePages.map((page) => (
-            <button
-              key={page}
-              className={`pagination__button ${
-                currentPage === page ? "active" : ""
-              }`}
-              onClick={() => changePage(page)}
-            >
-              {page}
-            </button>
-          ))}
-          <button
-            onClick={() => changePage(currentPage + 1)}
-            disabled={!data.pagination.has_next_page}
-            className="pagination__button"
-          >
-            Siguiente
-          </button>
-        </div>
       </section>
     );
   };
@@ -472,6 +445,35 @@ const Search = () => {
           </p>
         )}
       </div>
+      {data && (
+        <div className="pagination">
+          <button
+            onClick={() => changePage(currentPage - 1)}
+            disabled={data.pagination.current_page === 1}
+            className="pagination__button"
+          >
+            Anterior
+          </button>
+          {visiblePages.map((page) => (
+            <button
+              key={page}
+              className={`pagination__button ${
+                currentPage === page ? "active" : ""
+              }`}
+              onClick={() => changePage(page)}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            onClick={() => changePage(currentPage + 1)}
+            disabled={!data.pagination.has_next_page}
+            className="pagination__button"
+          >
+            Siguiente
+          </button>
+        </div>
+      )}
     </main>
   );
 };

@@ -1,4 +1,4 @@
-.manga-page {
+.seiyuu-page {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -13,7 +13,7 @@
       flex-direction: row;
     }
 
-    .manga-page__image {
+    .seiyuu-page__image {
       max-width: 400px;
       width: 100%;
       object-fit: cover;
@@ -22,12 +22,12 @@
       aspect-ratio: 1/1.5;
     }
 
-    .manga-page__info {
+    .seiyuu-page__info {
       display: flex;
       flex-direction: column;
       flex: 1;
 
-      .manga-page__title {
+      .seiyuu-page__title {
         font-size: var(--font-size-title-desktop);
         font-weight: var(--font-weight-title-desktop);
         margin-bottom: 1rem;
@@ -49,7 +49,7 @@
         }
       }
 
-      .manga-page__buttons {
+      .seiyuu-page__buttons {
         display: flex;
         margin-top: 1rem;
         gap: 1rem;
@@ -87,8 +87,10 @@
       flex-direction: row;
     }
 
-    .manga-page__synopsis,
-    .manga-page__background {
+    .seiyuu-page__synopsis,
+    .seiyuu-page__background,
+    .seiyuu-page__anime,
+    .seiyuu-page__manga {
       flex: 1;
       margin: 0;
 
@@ -105,8 +107,8 @@
     }
   }
 
-  &__characters {
-    .manga-page__character-list {
+  &__seiyuus {
+    .seiyuu-page__seiyuu-list {
       display: grid;
       gap: 1rem;
 
@@ -116,16 +118,6 @@
 
       @media (max-width: 1050px) {
         grid-template-columns: 1fr;
-      }
-
-      &--expanded {
-        @media (min-width: 1051px) {
-          grid-template-columns: repeat(4, 1fr);
-        }
-
-        @media (max-width: 1050px) {
-          grid-template-columns: repeat(2, 1fr);
-        }
       }
 
       p {
@@ -142,13 +134,13 @@
 }
 
 @media (min-width: 1051px) {
-  .manga-page {
+  .seiyuu-page {
     min-height: 79.1vh;
   }
 }
 
 @media (min-width: 1921px) {
-  .manga-page {
+  .seiyuu-page {
     min-height: 82.85vh;
   }
 }

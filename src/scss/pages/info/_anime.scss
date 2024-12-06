@@ -28,12 +28,25 @@
       flex: 1;
 
       .anime-page__title {
-        font-size: 2rem;
+        font-size: var(--font-size-title-desktop);
+        font-weight: var(--font-weight-title-desktop);
         margin-bottom: 1rem;
+
+        @media (max-width: 1050px) {
+          font-size: var(--font-size-title-mobile);
+          font-weight: var(--font-weight-title-mobile);
+        }
       }
 
       p {
         margin: 1rem;
+        font-size: var(--font-size-normal-desktop);
+        font-weight: var(--font-weight-normal-desktop);
+
+        @media (max-width: 1050px) {
+          font-size: var(--font-size-normal-mobile);
+          font-weight: var(--font-weight-normal-mobile);
+        }
       }
 
       .anime-page__buttons {
@@ -54,6 +67,11 @@
 
     p {
       margin: 1rem;
+      font-size: var(--font-size-big-normal-desktop);
+
+      @media (max-width: 1050px) {
+        font-size: var(--font-size-normal-mobile);
+      }
     }
   }
 
@@ -74,6 +92,13 @@
 
       p {
         margin: 1rem;
+        font-size: var(--font-size-big-normal-desktop);
+        font-weight: var(--font-weight-big-normal-desktop);
+
+        @media (max-width: 1050px) {
+          font-size: var(--font-size-normal-mobile);
+          font-weight: var(--font-weight-normal-mobile);
+        }
       }
     }
   }
@@ -89,6 +114,16 @@
 
       @media (max-width: 1050px) {
         grid-template-columns: 1fr;
+      }
+
+      p {
+        font-size: var(--font-size-normal-desktop);
+        font-weight: var(--font-weight-normal-desktop);
+
+        @media (max-width: 1050px) {
+          font-size: var(--font-size-normal-mobile);
+          font-weight: var(--font-weight-normal-mobile);
+        }
       }
     }
   }
