@@ -9,6 +9,8 @@ import { FormModeContext } from "../../context/FormModeContext";
 import { EditScreenContext } from "../../context/EditScreenContext";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate, NavLink } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../config/Firebase";
 
 const EditProfile = () => {
   const { updateFormMode } = useContext(FormModeContext);
@@ -54,23 +56,59 @@ const EditProfile = () => {
       .required("Selecciona un año"),
   });
 
-  const initialValues = {
-    username: user?.username || "",
-    email: user?.email || "",
-    password: user?.password || "",
-    confirmPassword: user?.confirmPassword || "",
-    address: user?.address || "",
-    country: user?.country || "",
-    city: user?.city || "",
-    day: user?.day || "",
-    month: user?.month || "",
-    year: user?.year || "",
-  };
+  const initialValues = (() => {
+    // Obtener usuario desde Firebase
+    const firebaseEmail = user?.email;
+
+    // Cargar datos de usuarios desde localStorage
+    const usersData = JSON.parse(localStorage.getItem("usersData")) || {};
+
+    // Obtener datos específicos del usuario autenticado
+    const localStorageUser = firebaseEmail ? usersData[firebaseEmail] : null;
+
+    // Configurar valores iniciales
+    return {
+      username: user?.displayName || localStorageUser?.username || "",
+      email: firebaseEmail || localStorageUser?.email || "",
+      password: "",
+      confirmPassword: "",
+      address: localStorageUser?.address || "",
+      country: localStorageUser?.country || "",
+      city: localStorageUser?.city || "",
+      day: localStorageUser?.day || "",
+      month: localStorageUser?.month || "",
+      year: localStorageUser?.year || "",
+    };
+  })();
 
   const handleSubmit = async (values) => {
     try {
-      // Simulación de actualización del perfil
-      console.log("Perfil actualizado con éxito:", values);
+      // Actualizar en Firebase si es necesario (por ejemplo, el nombre de usuario)
+      if (user) {
+        await updateProfile(auth.currentUser, {
+          displayName: values.username,
+        });
+      }
+
+      // Obtener los datos actuales del localStorage
+      const usersData = JSON.parse(localStorage.getItem("usersData")) || {};
+
+      // Actualizar o agregar los datos del usuario actual
+      usersData[values.email] = {
+        username: values.username,
+        email: values.email,
+        address: values.address,
+        country: values.country,
+        city: values.city,
+        day: values.day,
+        month: values.month,
+        year: values.year,
+      };
+
+      // Guardar los datos actualizados en el localStorage
+      localStorage.setItem("usersData", JSON.stringify(usersData));
+
+      // Mostrar mensaje de éxito
       toast.success("Perfil actualizado correctamente", {
         position: "bottom-right",
         autoClose: 5000,
@@ -80,8 +118,11 @@ const EditProfile = () => {
         draggable: true,
         transition: Bounce,
       });
+
+      // Navegar al perfil del usuario
       navigate("/profile");
     } catch (error) {
+      console.error(error);
       toast.error("Hubo un error al actualizar el perfil. Intenta de nuevo.", {
         position: "bottom-right",
         autoClose: 5000,
