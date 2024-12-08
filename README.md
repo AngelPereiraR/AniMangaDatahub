@@ -182,13 +182,13 @@ if (error) return <p>Error!!!</p>;
 1. Clona este repositorio en tu máquina local:
 
 ```bash
-git clone https://github.com/usuario/proyecto-react-vite.git
+git clone https://github.com/AngelPereiraR/AniMangaDatahub.git
 ```
 
 2. Accede al directorio del proyecto:
 
 ```bash
-cd proyecto-react-vite
+cd AniMangaDatahub
 ```
 
 3. Instala las dependencias del proyecto:
