@@ -14,7 +14,7 @@ Este proyecto es una aplicación web desarrollada con React y Vite. Proporciona 
    - Permite buscar anime y manga por temporadas, nombres o categorías específicas.
    - Muestra listados como:
      - Mejores animes y mangas.
-     - Búsquedas detalladas por título o género.
+     - Búsquedas detalladas por título u otros filtros.
 
 3. **Información detallada**:
 
@@ -55,6 +55,7 @@ El proyecto está organizado en las siguientes carpetas:
 - `router/`: Configuración de las rutas principales de la aplicación.
 - `scss/`: Estilos organizados en:
   - `base/`: Estilos base como resets y variables globales.
+  - `layouts/`: Estilos para los layouts.
   - `components/`: Estilos para los componentes reutilizables.
   - `pages/`: Estilos específicos de cada página.
   - `utilities/`: Estilos de utilidades globales.
@@ -79,14 +80,12 @@ La aplicación utiliza `react-router-dom` para manejar las rutas. A continuació
 - **Anime**:
 
   - `/anime/:id`: Detalles de un anime específico.
-  - `/anime/search`: Página para buscar animes.
   - `/anime/top`: Listado de los mejores animes.
   - `/anime/season`: Listado de animes por temporada.
 
 - **Manga**:
 
   - `/manga/:id`: Detalles de un manga específico.
-  - `/manga/search`: Página para buscar mangas.
   - `/manga/top`: Listado de los mejores mangas.
   - `/manga/season`: Listado de mangas por temporada.
 
@@ -94,6 +93,8 @@ La aplicación utiliza `react-router-dom` para manejar las rutas. A continuació
 
   - `/seiyuu/:id`: Detalles de un seiyuu.
   - `/character/:id`: Detalles de un personaje.
+
+- **Buscar**: -`/search`: Página para realizar búsquedas.
 
 - **Errores**:
   - Página 404 personalizada para rutas no encontradas.
@@ -163,6 +164,8 @@ if (error) return <p>Error!!!</p>;
 - Animes por Temporada:
   En la página `AnimesBySeason`, el usuario puede navegar entre temporadas y años para explorar los animes correspondientes. Los datos se cargan y se renderizan dinámicamente, con paginación incluida.
 
+- También se puede ver un ejemplo de flujo mediante las capturas que se encuentran en la carpeta `images`.
+
 ### Ventajas de la Implementación
 
 - Reutilización de Código: El hook `useFetch` permite simplificar la lógica de solicitudes HTTP y puede ser reutilizado en cualquier parte del proyecto.
@@ -223,3 +226,21 @@ yarn dev
 - `npm run dev`: Inicia el servidor de desarrollo.
 - `npm run build`: Genera una versión optimizada para producción.
 - `npm run preview`: Previsualiza la aplicación en modo de producción.
+
+## Despliegue
+
+Puedes encontrar la página desplegada en producción en la web [https://animangadatahub.netlify.app/](https://animangadatahub.netlify.app/).
+
+## Reflexión
+
+Durante el desarrollo de este proyecto he tenido varios puntos de aprendizaje. En primer lugar es el uso de SCSS, debido a que no conocía hasta qué punto de profundidad podía alcanzar. En segundo lugar he aprendido a tener una mejor estructura de directorios. Y por supuesto, llegar a un mejor entendimiento de como funciona React.
+
+El principal desafío encontrado fue la lucha contra el límite de 3 peticiones por segundo que tiene la API. En este caso la solución fue intentar no sobrepasar ese límite en peticiones realizadas exactamente al mismo tiempo, por ello, lo máximo alcanzable son 2 peticiones diferentes a la vez.
+
+Otro desafío fue que al principio modulé demasiado el proyecto, por lo que al final han habido componentes que no han terminado de hacer falta. Posteriormente, con futuros proyectos se irá adquiriendo más soltura en este aspecto para seleccionar la cantidad adecuada de módulos en los proyectos.
+
+Por otra parte, se han realizado varias modificaciones enfocadas en el diseño o en algunas funcionalidades, las cuales producen un mejor entendimiento de la aplicación y una menor saturación para el usuario.
+
+## Vídeo de presentación
+
+Para terminar, se puede encontrar un vídeo de presentación del proyecto en la carpeta `videos`.
