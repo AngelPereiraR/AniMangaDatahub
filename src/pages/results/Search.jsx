@@ -22,7 +22,7 @@ const Search = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams] = useSearchParams();
 
-  const query = searchParams.get("query") || "";
+  const [query, setQuery] = useState(searchParams.get("query") || "");
   const [filtered, setFiltered] = useState(searchParams.get("filtered") || "");
   const [finalUrl, setFinalUrl] = useState("");
   const [timeoutId, setTimeoutId] = useState(null);
@@ -39,7 +39,23 @@ const Search = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setSearchTerm(query);
+    if (query && filtered) {
+      setSearchTerm(query);
+      setDropdownValue(filtered);
+      updateUrlParams();
+      // Si query y filtered están presentes, actualiza la URL y realiza la petición
+      setFinalUrl(buildUrl(filtered, currentPage, query));
+    }
+    updateEditScreen(false);
+    updateFormMode(false);
+  }, []);
+
+  useEffect(() => {
+    if (query !== "" && query !== null) {
+      setSearchTerm(query);
+    } else {
+      setQuery(null);
+    }
     if (filtered !== "" && filtered !== null) {
       setDropdownValue(filtered);
     } else if (filtered === "") {
@@ -54,7 +70,10 @@ const Search = () => {
   const updateUrlParams = () => {
     const params = new URLSearchParams();
 
-    if (searchTerm) params.set("query", searchTerm);
+    if (query) {
+      params.set("query", searchTerm);
+      setQuery(null);
+    } else if (searchTerm) params.set("query", searchTerm);
     if (filtered) {
       params.set("filtered", filtered);
       setFiltered(null);
@@ -70,27 +89,31 @@ const Search = () => {
 
   const handleDropdownChange = (e) => {
     setDropdownValue(e.target.value);
-    debounceSearch(e.target.value);
+    debounceSearch(e.target.value, "dropdown");
   };
 
   const handleSearchInputChange = (e) => {
     setSearchTerm(e.target.value);
-    debounceSearch();
+    debounceSearch(e.target.value, "query");
   };
 
-  const debounceSearch = (value) => {
+  const debounceSearch = (value, type) => {
     if (timeoutId) {
       clearTimeout(timeoutId);
     }
 
     const newTimeoutId = setTimeout(() => {
-      setFinalUrl(buildUrl(value));
+      setFinalUrl(
+        type === "dropdown"
+          ? buildUrl(value)
+          : buildUrl(undefined, undefined, value)
+      );
     }, 2000);
 
     setTimeoutId(newTimeoutId);
   };
 
-  const buildUrl = (search, page) => {
+  const buildUrl = (search, page, query) => {
     const filters = new URLSearchParams();
 
     if (searchTerm) filters.set("q", searchTerm);
@@ -106,7 +129,7 @@ const Search = () => {
 
     return `https://api.jikan.moe/v4/${
       search !== undefined ? search : dropdownValue
-    }?${filters.toString()}&limit=24&page=${
+    }?${query ? `q=${query}` : `${filters.toString()}`}&limit=24&page=${
       page !== undefined ? page : currentPage
     }`;
   };
@@ -132,7 +155,7 @@ const Search = () => {
 
   const changePage = (newPage) => {
     setCurrentPage(newPage);
-    setFinalUrl(buildUrl(undefined, newPage));
+    setFinalUrl(buildUrl(undefined, newPage, undefined));
   };
 
   const renderTable = () => {
