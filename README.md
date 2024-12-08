@@ -243,4 +243,4 @@ Por otra parte, se han realizado varias modificaciones enfocadas en el diseño o
 
 ## Vídeo de presentación
 
-Para terminar, se puede encontrar un vídeo de presentación del proyecto en la carpeta `videos`.
+Para terminar, se puede encontrar un vídeo de presentación del proyecto a través del siguiente enlace: [https://drive.google.com/file/d/1QxZ6EqgMigc2KgdWO2Ad9a4azORPCje-/view?usp=sharing](https://drive.google.com/file/d/1QxZ6EqgMigc2KgdWO2Ad9a4azORPCje-/view?usp=sharing).
