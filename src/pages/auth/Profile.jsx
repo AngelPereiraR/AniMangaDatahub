@@ -4,70 +4,119 @@ import { FormModeContext } from "../../context/FormModeContext";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import Heading from "../../components/shared/Heading";
+import Carousel from "../../components/shared/Carousel";
 
 const Profile = () => {
   const { updateFormMode } = useContext(FormModeContext);
   const { updateEditScreen } = useContext(EditScreenContext);
   const { user } = useContext(UserContext);
   const [firebaseEmail, setFirebaseEmail] = useState("");
-  const usersData = JSON.parse(localStorage.getItem("usersData")) || {};
+  const [carouselCardCount, setCarouselCardCount] = useState(4); // Inicialmente 4
 
+  const usersData = JSON.parse(localStorage.getItem("usersData")) || {};
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   const navigate = useNavigate();
 
   useEffect(() => {
     updateFormMode(false);
     updateEditScreen(true);
 
-    console.log(user);
-
     if (user === null) {
       navigate("/login");
+    } else {
+      setFirebaseEmail(user?.email);
     }
 
-    setFirebaseEmail(user?.email);
-  });
+    // Establecer la cantidad de tarjetas a mostrar según el ancho de la pantalla
+    const updateCardCount = () => {
+      const width = window.innerWidth;
+      if (width > 1600) {
+        setCarouselCardCount(6); // Más de 1050px, mostrar 6
+      } else if (width < 710) {
+        setCarouselCardCount(2); // Menos de 600px, mostrar 2
+      } else if (width > 1050 && width < 1600) {
+        setCarouselCardCount(5); // Menos de 600px, mostrar 2
+      } else {
+        setCarouselCardCount(4); // En otro caso, mostrar 4
+      }
+    };
+
+    // Llamar a la función de ajuste del número de tarjetas
+    updateCardCount();
+
+    // Añadir un listener para detectar cambios en el tamaño de la ventana
+    window.addEventListener("resize", updateCardCount);
+
+    // Limpiar el event listener cuando el componente se desmonte
+    return () => {
+      window.removeEventListener("resize", updateCardCount);
+    };
+  }, [updateEditScreen, updateFormMode, navigate, user]);
 
   return (
-    <main>
-      <Heading title="Perfil" className="heading-subtitle" />
-      <Heading title="Nombre de usuario" />
-      {usersData[firebaseEmail] ? (
-        <p>{usersData[firebaseEmail].username}</p>
-      ) : (
-        <p>
-          {user.displayName
-            ? user.displayName
-            : "Por favor, edita tu perfil para mostrar la información requerida"}
-        </p>
-      )}
-      <Heading title="Correo electrónico" />
-      {usersData[firebaseEmail] ? (
-        <p>{usersData[firebaseEmail].email}</p>
-      ) : (
-        <p>{user?.email}</p>
-      )}
-      <Heading title="País" />
-      {usersData[firebaseEmail] ? (
-        <p>{usersData[firebaseEmail].country}</p>
-      ) : (
-        <p>Por favor, edita tu perfil para mostrar la información requerida</p>
-      )}
-      <Heading title="Dirección" />
-      {usersData[firebaseEmail] ? (
-        <p>{usersData[firebaseEmail].address}</p>
-      ) : (
-        <p>Por favor, edita tu perfil para mostrar la información requerida</p>
-      )}
-      <Heading title="Fecha de nacimiento" />
-      {usersData[firebaseEmail] ? (
-        <p>
-          {usersData[firebaseEmail].day} - {usersData[firebaseEmail].month} -{" "}
-          {usersData[firebaseEmail].year}
-        </p>
-      ) : (
-        <p>Por favor, edita tu perfil para mostrar la información requerida</p>
-      )}
-      <Heading title="Favoritos" className="heading-subtitle" />
+    <main className="profile">
+      <Heading title="Perfil" className="profile__heading" />
+
+      <section className="profile__info">
+        <Heading title="Nombre de usuario" />
+        {usersData[firebaseEmail] ? (
+          <p className="profile__info__value">
+            {usersData[firebaseEmail].username}
+          </p>
+        ) : (
+          <p className="profile__info__placeholder">
+            {user?.displayName
+              ? user.displayName
+              : "Por favor, edita tu perfil para mostrar la información requerida"}
+          </p>
+        )}
+
+        <Heading title="Correo electrónico" />
+        {usersData[firebaseEmail] ? (
+          <p className="profile__info__value">
+            {usersData[firebaseEmail].email}
+          </p>
+        ) : (
+          <p className="profile__info__placeholder">{user?.email}</p>
+        )}
+
+        <Heading title="País" />
+        {usersData[firebaseEmail] ? (
+          <p className="profile__info__value">
+            {usersData[firebaseEmail].country}
+          </p>
+        ) : (
+          <p className="profile__info__placeholder">
+            Por favor, edita tu perfil para mostrar la información requerida
+          </p>
+        )}
+
+        <Heading title="Dirección" />
+        {usersData[firebaseEmail] ? (
+          <p className="profile__info__value">
+            {usersData[firebaseEmail].address}
+          </p>
+        ) : (
+          <p className="profile__info__placeholder">
+            Por favor, edita tu perfil para mostrar la información requerida
+          </p>
+        )}
+
+        <Heading title="Fecha de nacimiento" />
+        {usersData[firebaseEmail] ? (
+          <p className="profile__info__value">
+            {usersData[firebaseEmail].day} - {usersData[firebaseEmail].month} -{" "}
+            {usersData[firebaseEmail].year}
+          </p>
+        ) : (
+          <p className="profile__info__placeholder">
+            Por favor, edita tu perfil para mostrar la información requerida
+          </p>
+        )}
+      </section>
+
+      <Heading title="Favoritos" />
+      <Carousel data={favorites} cardNumbers={carouselCardCount} />
     </main>
   );
 };

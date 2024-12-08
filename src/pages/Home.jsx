@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FormModeContext } from "../context/FormModeContext";
 import { EditScreenContext } from "../context/EditScreenContext";
 import Button from "../components/shared/Button";
@@ -14,12 +14,38 @@ const Home = () => {
   const { updateEditScreen } = useContext(EditScreenContext);
   const { isWideScreen } = useContext(ScreenWidthContext);
   const { user } = useContext(UserContext);
+  const [carouselCardCount, setCarouselCardCount] = useState(4); // Inicialmente 4
 
   const navigate = useNavigate();
 
   useEffect(() => {
     updateFormMode(false);
     updateEditScreen(false);
+
+    // Establecer la cantidad de tarjetas a mostrar según el ancho de la pantalla
+    const updateCardCount = () => {
+      const width = window.innerWidth;
+      if (width > 1600) {
+        setCarouselCardCount(6); // Más de 1050px, mostrar 6
+      } else if (width < 710) {
+        setCarouselCardCount(2); // Menos de 600px, mostrar 2
+      } else if (width > 1050 && width < 1600) {
+        setCarouselCardCount(5); // Menos de 600px, mostrar 2
+      } else {
+        setCarouselCardCount(4); // En otro caso, mostrar 4
+      }
+    };
+
+    // Llamar a la función de ajuste del número de tarjetas
+    updateCardCount();
+
+    // Añadir un listener para detectar cambios en el tamaño de la ventana
+    window.addEventListener("resize", updateCardCount);
+
+    // Limpiar el event listener cuando el componente se desmonte
+    return () => {
+      window.removeEventListener("resize", updateCardCount);
+    };
   });
 
   const {
@@ -71,11 +97,7 @@ const Home = () => {
         isDeployable={false}
         url="/anime/season"
       />
-      <Carousel
-        data={animeData}
-        cardNumbers={isWideScreen ? 6 : 2}
-        type="anime"
-      />
+      <Carousel data={animeData} cardNumbers={carouselCardCount} type="anime" />
       <Heading
         title={isWideScreen ? "Últimos mangas en producción" : "Últimos mangas"}
         className="heading-subtitle"
@@ -83,11 +105,7 @@ const Home = () => {
         isDeployable={false}
         url="/manga/season"
       />
-      <Carousel
-        data={mangaData}
-        cardNumbers={isWideScreen ? 6 : 2}
-        type="manga"
-      />
+      <Carousel data={mangaData} cardNumbers={carouselCardCount} type="manga" />
     </main>
   );
 };

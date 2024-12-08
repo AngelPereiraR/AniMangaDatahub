@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { EditScreenContext } from "../../context/EditScreenContext";
 import { FormModeContext } from "../../context/FormModeContext";
@@ -8,10 +8,11 @@ import Button from "../../components/shared/Button";
 import CharacterSeiyuuCard from "../../components/info/CharacterSeiyuuCard";
 
 const Anime = () => {
-  const { id } = useParams(); // Obtiene el ID del anime de la URL
-  const navigate = useNavigate(); // Para redirigir en caso de error
+  const { id } = useParams();
+  const navigate = useNavigate();
   const { updateEditScreen } = useContext(EditScreenContext);
   const { updateFormMode } = useContext(FormModeContext);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
     data: apiData,
@@ -29,16 +30,42 @@ const Anime = () => {
     updateEditScreen(false);
     updateFormMode(false);
 
-    const fetchData = async () => {
-      if (apiError || charactersError) {
-        setError(apiError || charactersError);
-        navigate("/error404");
-        return;
-      }
+    if (apiError || charactersError) {
+      navigate("/error404");
+    }
+  }, [apiError, charactersError, navigate, updateEditScreen, updateFormMode]);
+
+  useEffect(() => {
+    if (apiData?.data) {
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const isFav = favorites.some((anime) => anime.mal_id === parseInt(id));
+      setIsFavorite(isFav);
+    }
+  }, [apiData, id]);
+
+  const handleAddToFavorites = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const newFavorite = {
+      mal_id: apiData.data.mal_id,
+      title: apiData.data.title,
+      image:
+        apiData.data.images.jpg.large_image_url ||
+        apiData.data.images.jpg.image_url,
+      media: "anime",
     };
 
-    fetchData();
-  }, []);
+    if (isFavorite) {
+      const updatedFavorites = favorites.filter(
+        (anime) => anime.mal_id !== apiData.data.mal_id
+      );
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
+    } else {
+      favorites.push(newFavorite);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      setIsFavorite(true);
+    }
+  };
 
   if (apiLoading || charactersLoading) {
     return <div>Cargando...</div>;
@@ -70,7 +97,6 @@ const Anime = () => {
 
   return (
     <main className="anime-page">
-      {/* Encabezado con imagen e información principal */}
       <section className="anime-page__header">
         {images && (
           <img
@@ -122,19 +148,17 @@ const Anime = () => {
           )}
           <div className="anime-page__buttons">
             <Button
-              label="Añadir a lista"
-              onClick={() => console.log("Añadido")}
-            />
-            <Button
-              label="Añadir a favoritos"
+              label={
+                isFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"
+              }
               variant="secondary"
-              onClick={() => console.log("Favorito")}
+              onClick={handleAddToFavorites}
+              className="width-50"
             />
           </div>
         </div>
       </section>
 
-      {/* Ranking */}
       <section>
         <Heading title="Ranking" className="anime-page__ranking-heading" />
         <section className="anime-page__ranking">
@@ -144,7 +168,6 @@ const Anime = () => {
         </section>
       </section>
 
-      {/* Sinopsis y Antecedentes encapsulados */}
       <div className="anime-page__content-row">
         {synopsis && (
           <section className="anime-page__synopsis">
@@ -163,7 +186,6 @@ const Anime = () => {
         )}
       </div>
 
-      {/* Personajes */}
       {charactersData.data.length > 0 && (
         <section className="anime-page__characters">
           <Heading

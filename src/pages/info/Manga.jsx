@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { EditScreenContext } from "../../context/EditScreenContext";
 import { FormModeContext } from "../../context/FormModeContext";
@@ -8,10 +8,11 @@ import Button from "../../components/shared/Button";
 import CharacterSeiyuuCard from "../../components/info/CharacterSeiyuuCard";
 
 const Manga = () => {
-  const { id } = useParams(); // Obtiene el ID del manga de la URL
-  const navigate = useNavigate(); // Para redirigir en caso de error
+  const { id } = useParams();
+  const navigate = useNavigate();
   const { updateEditScreen } = useContext(EditScreenContext);
   const { updateFormMode } = useContext(FormModeContext);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
     data: apiData,
@@ -29,23 +30,49 @@ const Manga = () => {
     updateEditScreen(false);
     updateFormMode(false);
 
-    const fetchData = async () => {
-      if (apiError || charactersError) {
-        setError(apiError || charactersError);
-        navigate("/error404");
-        return;
-      }
+    if (apiError || charactersError) {
+      navigate("/error404");
+    }
+  }, [apiError, charactersError, navigate, updateEditScreen, updateFormMode]);
+
+  useEffect(() => {
+    if (apiData?.data) {
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const isFav = favorites.some((manga) => manga.mal_id === parseInt(id));
+      setIsFavorite(isFav);
+    }
+  }, [apiData, id]);
+
+  const handleAddToFavorites = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const newFavorite = {
+      mal_id: apiData.data.mal_id,
+      title: apiData.data.title,
+      image:
+        apiData.data.images.jpg.large_image_url ||
+        apiData.data.images.jpg.image_url,
+      media: "manga",
     };
 
-    fetchData();
-  }, []);
+    if (isFavorite) {
+      const updatedFavorites = favorites.filter(
+        (manga) => manga.mal_id !== apiData.data.mal_id
+      );
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
+    } else {
+      favorites.push(newFavorite);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      setIsFavorite(true);
+    }
+  };
 
   if (apiLoading || charactersLoading) {
-    return <div>Cargando...</div>; // Indicador de carga
+    return <div>Cargando...</div>;
   }
 
-  if (apiData === null) {
-    return null; // Evita renderizar si no hay datos (caso improbable)
+  if (!apiData) {
+    return null;
   }
 
   const {
@@ -107,13 +134,12 @@ const Manga = () => {
           )}
           <div className="manga-page__buttons">
             <Button
-              label="Añadir a lista"
-              onClick={() => console.log("Añadido")}
-            />
-            <Button
-              label="Añadir a favoritos"
+              label={
+                isFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"
+              }
               variant="secondary"
-              onClick={() => console.log("Favorito")}
+              onClick={handleAddToFavorites}
+              className="width-50"
             />
           </div>
         </div>
@@ -149,27 +175,15 @@ const Manga = () => {
       </div>
 
       {/* Personajes */}
-      {charactersData.data.length > 0 && (
+      {charactersData?.data?.length > 0 && (
         <section className="manga-page__characters">
           <Heading
             title="Personajes principales"
             className="manga-page__characters-heading"
           />
-          <div
-            className={`manga-page__character-list ${
-              charactersData?.data?.every(
-                (character) => !character.voice_actors?.length
-              )
-                ? "manga-page__character-list--expanded"
-                : ""
-            }`}
-          >
+          <div className="manga-page__character-list">
             {charactersData.data
-              ?.sort((a, b) => {
-                if (a.role === "Main" && b.role !== "Main") return -1;
-                if (a.role !== "Main" && b.role === "Main") return 1;
-                return b.favorites - a.favorites;
-              })
+              ?.sort((a, b) => b.favorites - a.favorites)
               .slice(0, 8)
               .map((character) => {
                 const voiceActor = character.voice_actors?.[0];

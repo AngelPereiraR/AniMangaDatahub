@@ -1,0 +1,43 @@
+@use "../../utilities/mixins";
+
+.profile {
+  padding: 0 0 2rem 0;
+
+  &__heading {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--primary-800);
+
+    @include mixins.font(
+      --font-size-title-desktop,
+      --font-weight-title-desktop
+    );
+
+    @media (max-width: 1050px) {
+      @include mixins.font(
+        --font-size-title-mobile,
+        --font-weight-title-mobile
+      );
+    }
+  }
+
+  &__info {
+    margin-bottom: 3.5rem;
+
+    &__label {
+      font-weight: bold;
+      color: var(--secondary-500);
+    }
+
+    &__value {
+      color: var(--primary-500);
+      margin-top: 0.5rem;
+      margin-left: 1rem;
+    }
+
+    &__placeholder {
+      color: var(--secondary-400);
+      font-style: italic;
+    }
+  }
+}

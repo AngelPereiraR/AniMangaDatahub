@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { EditScreenContext } from "../../context/EditScreenContext";
 import { FormModeContext } from "../../context/FormModeContext";
@@ -8,10 +8,11 @@ import Button from "../../components/shared/Button";
 import CharacterSeiyuuCard from "../../components/info/CharacterSeiyuuCard";
 
 const Character = () => {
-  const { id } = useParams(); // Obtiene el ID del personaje de la URL
-  const navigate = useNavigate(); // Para redirigir en caso de error
+  const { id } = useParams();
+  const navigate = useNavigate();
   const { updateEditScreen } = useContext(EditScreenContext);
   const { updateFormMode } = useContext(FormModeContext);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
     data: apiData,
@@ -23,16 +24,44 @@ const Character = () => {
     updateEditScreen(false);
     updateFormMode(false);
 
-    const fetchData = async () => {
-      if (apiError) {
-        setError(apiError);
-        navigate("/error404");
-        return;
-      }
+    if (apiError) {
+      navigate("/error404");
+    }
+  }, [apiError, navigate, updateEditScreen, updateFormMode]);
+
+  useEffect(() => {
+    if (apiData?.data) {
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const isFav = favorites.some(
+        (character) => character.mal_id === parseInt(id)
+      );
+      setIsFavorite(isFav);
+    }
+  }, [apiData, id]);
+
+  const handleAddToFavorites = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const newFavorite = {
+      mal_id: apiData.data.mal_id,
+      title: apiData.data.name,
+      image:
+        apiData.data.images.jpg.large_image_url ||
+        apiData.data.images.jpg.image_url,
+      media: "character",
     };
 
-    fetchData();
-  }, []);
+    if (isFavorite) {
+      const updatedFavorites = favorites.filter(
+        (character) => character.mal_id !== apiData.data.mal_id
+      );
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
+    } else {
+      favorites.push(newFavorite);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      setIsFavorite(true);
+    }
+  };
 
   if (apiLoading) {
     return <div>Cargando...</div>;
@@ -62,12 +91,15 @@ const Character = () => {
               <strong>Apodos:</strong> {nicknames.join(", ")}
             </p>
           )}
-          {about && about.split("\n").map((line) => <p>{line}</p>)}
+          {about &&
+            about.split("\n").map((line, index) => <p key={index}>{line}</p>)}
           <div className="character-page__buttons">
             <Button
-              label="Añadir a favoritos"
+              label={
+                isFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"
+              }
               variant="secondary"
-              onClick={() => console.log("Favorito")}
+              onClick={handleAddToFavorites}
               className="width-50"
             />
           </div>
@@ -80,8 +112,8 @@ const Character = () => {
             title="Actores de voz"
             className="character-page__seiyuu-heading"
           />
-          {voices.map((voice) => (
-            <Link to={`/seiyuu/${voice.person.mal_id}`}>
+          {voices.map((voice, index) => (
+            <Link to={`/seiyuu/${voice.person.mal_id}`} key={index}>
               <CharacterSeiyuuCard voiceActor={voice}></CharacterSeiyuuCard>
             </Link>
           ))}
@@ -95,16 +127,22 @@ const Character = () => {
               title="Animes"
               className="character-page__character-heading"
             />
-            {anime.map((ani) => (
-              <CharacterSeiyuuCard anime={ani.anime}></CharacterSeiyuuCard>
+            {anime.map((ani, index) => (
+              <CharacterSeiyuuCard
+                anime={ani.anime}
+                key={index}
+              ></CharacterSeiyuuCard>
             ))}
           </section>
         )}
         {manga && (
           <section className="character-page__manga">
             <Heading title="Mangas" />
-            {manga.map((man) => (
-              <CharacterSeiyuuCard manga={man.manga}></CharacterSeiyuuCard>
+            {manga.map((man, index) => (
+              <CharacterSeiyuuCard
+                manga={man.manga}
+                key={index}
+              ></CharacterSeiyuuCard>
             ))}
           </section>
         )}
