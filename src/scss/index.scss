@@ -19,6 +19,8 @@
 @use "./components/shared/heading";
 @use "./components/shared/rating";
 
+@use "./layouts/layoutPublic";
+
 @use "./pages/auth/contact";
 @use "./pages/auth/editProfile";
 @use "./pages/auth/login";
