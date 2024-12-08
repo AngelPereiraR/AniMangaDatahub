@@ -30,11 +30,11 @@ const Profile = () => {
     // Establecer la cantidad de tarjetas a mostrar según el ancho de la pantalla
     const updateCardCount = () => {
       const width = window.innerWidth;
-      if (width > 1800) {
+      if (width > 1900) {
         setCarouselCardCount(6);
       } else if (width < 710) {
         setCarouselCardCount(2);
-      } else if (width > 1050 && width < 1800) {
+      } else if (width > 1050 && width < 1901) {
         setCarouselCardCount(5);
       } else {
         setCarouselCardCount(4);
