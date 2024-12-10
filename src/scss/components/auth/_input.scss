@@ -93,7 +93,7 @@
   .input-container__legend {
     @include mixins.font(
       --font-size-subtitle-mobile,
-      --font-size-subtitle-mobile
+      --font-weight-subtitle-mobile
     );
   }
 }
