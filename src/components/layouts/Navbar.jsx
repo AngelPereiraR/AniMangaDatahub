@@ -141,7 +141,7 @@ const Navbar = () => {
                   className={`navbar__search-link ${
                     darkMode ? "navbar__search-link--dark" : ""
                   }`}
-                  to="/anime/search"
+                  to="/search?filtered=anime"
                 >
                   Animes
                 </NavLink>
@@ -170,7 +170,7 @@ const Navbar = () => {
                   className={`navbar__search-link ${
                     darkMode ? "navbar__search-link--dark" : ""
                   }`}
-                  to="/manga/search"
+                  to="/search?filtered=manga"
                 >
                   Mangas
                 </NavLink>
