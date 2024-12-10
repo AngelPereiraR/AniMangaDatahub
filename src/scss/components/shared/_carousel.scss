@@ -3,6 +3,8 @@
   align-items: center;
   position: relative;
   padding: 1rem;
+  animation: move 1s ease;
+  -webkit-animation: move 1s ease;
 }
 
 .carousel-track {

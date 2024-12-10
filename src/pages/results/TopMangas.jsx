@@ -114,7 +114,7 @@ const TopMangas = () => {
                     {!isWideScreen && (
                       <button
                         className="add-to-list-icon"
-                        title="Añadir a la Lista"
+                        title="Añadir a favoritos"
                         onClick={() => console.log(`Añadido ${manga.title}`)}
                       >
                         <i className="fas fa-plus-circle"></i>
@@ -146,7 +146,7 @@ const TopMangas = () => {
                 {isWideScreen && <td>⭐ {manga.score || "N/A"}</td>}
                 {isWideScreen && (
                   <td>
-                    <Button label="Añadir a la Lista" variant="secondary" />
+                    <Button label="Añadir a favoritos" variant="secondary" />
                   </td>
                 )}
               </tr>

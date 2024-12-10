@@ -21,12 +21,14 @@
 .intro-title {
   margin-bottom: 3rem;
   color: var(--secondary-50);
+  animation: opacity0to1 1s ease-in-out;
 }
 
 .intro-buttons {
   width: 100%;
   display: flex;
   gap: 3rem;
+  animation: opacity0to1 1s ease-in-out;
 }
 
 @media (max-width: 1050px) {
