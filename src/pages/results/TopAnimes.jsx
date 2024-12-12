@@ -53,7 +53,7 @@ const TopAnimes = () => {
 
   // Lógica para calcular las páginas visibles
   const getVisiblePages = () => {
-    const maxButtons = 7;
+    const maxButtons = 4;
     const pages = [];
     const half = Math.floor(maxButtons / 2);
 
