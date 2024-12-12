@@ -159,7 +159,7 @@ const Profile = () => {
         )}
       </section>
 
-      <Heading title="Favoritos" />
+      <Heading title="Favoritos" className="profile__heading" />
       <Carousel data={favorites} cardNumbers={carouselCardCount} />
     </main>
   );

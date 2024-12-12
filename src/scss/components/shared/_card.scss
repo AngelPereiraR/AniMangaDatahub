@@ -1,8 +1,7 @@
 .card {
   position: relative;
   border-radius: 1rem;
-  width: 100%;
-  min-width: 18.65rem;
+  width: 16.66%;
   max-height: 16rem;
   box-shadow: 0px 4px 8px var(--secondary-500);
   display: flex;
@@ -10,19 +9,15 @@
   cursor: pointer;
 
   @media (max-width: 710px) {
-    min-width: 8rem;
+    width: 50%;
   }
 
   @media (min-width: 711px) and (max-width: 1050px) {
-    min-width: 8rem;
+    width: 25%;
   }
 
-  @media (min-width: 1051px) and (max-width: 1600px) {
-    min-width: 12rem;
-  }
-
-  @media (min-width: 1601px) and (max-width: 1900px) {
-    min-width: 18rem;
+  @media (min-width: 1051px) and (max-width: 1900px) {
+    width: 20%;
   }
 }
 

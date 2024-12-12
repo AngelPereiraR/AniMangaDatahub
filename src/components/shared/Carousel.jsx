@@ -34,7 +34,9 @@ const Carousel = ({ data, cardNumbers, type = "" }) => {
   return (
     <div className="carousel-container">
       {visibleCards[0] ? (
-        <div>
+        <div style={{ width: "100%" }}>
+          {/* Aquí estamos incluyendo CSS de forma directa con la propiedad style, no es recomendable su uso debido a la poca capacidad de reutilización que tiene para emplearse en otras etiquetas */}
+
           {/* Botón para mostrar tarjetas anteriores */}
           <button
             type="button" // Asegura que no recargue la página
