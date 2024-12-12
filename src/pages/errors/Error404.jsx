@@ -3,7 +3,8 @@ import { FormModeContext } from "../../context/FormModeContext";
 import { EditScreenContext } from "../../context/EditScreenContext";
 import Button from "../../components/shared/Button";
 import { useNavigate } from "react-router-dom";
-import image from "./../../assets/error404-mash.png";
+import image_head from "./../../assets/error404-mash-head.png";
+import image_body from "./../../assets/error404-mash-body.png";
 
 const Error404 = () => {
   const { updateFormMode } = useContext(FormModeContext);
@@ -32,7 +33,12 @@ const Error404 = () => {
       <aside className="main__aside">
         <img
           className="aside__image"
-          src={image}
+          src={image_head}
+          alt="Mash Kyrielight avergonzada de que no se haya podido cargar la página solicitada"
+        />
+        <img
+          className="aside__image"
+          src={image_body}
           alt="Mash Kyrielight avergonzada de que no se haya podido cargar la página solicitada"
         />
       </aside>
