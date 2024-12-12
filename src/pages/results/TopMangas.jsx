@@ -48,8 +48,22 @@ const TopMangas = () => {
     setCurrentPage(newPage);
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching data: {error.message}</p>;
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "50vh",
+        }}
+      >
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
+  if (error) return <Navigate to="/error-404"></Navigate>;
 
   const totalPages = data.pagination.last_visible_page;
 

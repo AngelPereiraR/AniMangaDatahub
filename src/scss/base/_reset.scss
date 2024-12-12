@@ -48,6 +48,15 @@ html.dark {
   color: var(--secondary-50);
 }
 
+.spinner {
+  border: 0.5rem solid rgba(0, 0, 0, 0.1); /* Borde ligero */
+  border-top: 0.5rem solid var(--primary-50); /* Color del borde superior */
+  border-radius: 50%; /* Forma circular */
+  width: 3rem;
+  height: 3rem;
+  animation: spin 1s linear infinite; /* Animación de rotación */
+}
+
 @media (max-width: 1050px) {
   .login-main {
     min-height: 82.3vh;

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FormModeContext } from "../context/FormModeContext";
 import { EditScreenContext } from "../context/EditScreenContext";
 import Button from "../components/shared/Button";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import Heading from "../components/shared/Heading";
 import { useFetch } from "../hooks/useFetch";
@@ -62,8 +62,22 @@ const Home = () => {
     "https://api.jikan.moe/v4/manga?status=publishing&order_by=start_date&sort=desc&limit=24"
   );
 
-  if (animeLoading || mangaLoading) return <div>Cargando...</div>;
-  if (animeError || mangaError) return <p>Error!!!</p>;
+  if (animeLoading || mangaLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "50vh",
+        }}
+      >
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
+  if (animeError || mangaError) return <Navigate to="/error-404"></Navigate>;
 
   return (
     <main>

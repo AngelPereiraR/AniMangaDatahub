@@ -158,7 +158,8 @@
 
     .table {
       width: 90%; /* Ajustar al ancho deseado */
-      max-width: 1200px; /* Ancho máximo para evitar que se extienda demasiado */
+      max-width: 50vw; /* Ancho máximo para evitar que se extienda demasiado */
+      min-width: 50vw;
       border-collapse: collapse;
       margin: auto;
 
@@ -211,6 +212,9 @@
       }
 
       @media (max-width: 1050px) {
+        min-width: 70vw;
+        max-width: 70vw;
+
         th,
         td,
         h3 {

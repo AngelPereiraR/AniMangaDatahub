@@ -3,7 +3,7 @@ import { EditScreenContext } from "../../context/EditScreenContext";
 import { FormModeContext } from "../../context/FormModeContext";
 import { ThemeContext } from "../../context/ThemeContext";
 import Heading from "../../components/shared/Heading";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import Dropdown from "../../components/layouts/Dropdown";
 import { useFetch } from "../../hooks/useFetch";
 
@@ -223,7 +223,7 @@ const Search = () => {
           return (
             <tr className="table__row" key={index}>
               <td className="table__cell">
-                <Link to={`/characters/${item.mal_id}`}>
+                <Link to={`/character/${item.mal_id}`}>
                   <img
                     src={item.images.jpg.image_url}
                     alt={item.name}
@@ -232,7 +232,7 @@ const Search = () => {
                 </Link>
               </td>
               <td className="table__cell">
-                <Link to={`/characters/${item.mal_id}`}>
+                <Link to={`/character/${item.mal_id}`}>
                   <p className="table__title">{item.name}</p>
                   <p className="table__description">
                     {item.about
@@ -453,9 +453,16 @@ const Search = () => {
           )}
 
         {loading && (
-          <p className={`loading ${darkMode ? "loading--dark" : ""}`}>
-            Cargando...
-          </p>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "50vh",
+            }}
+          >
+            <div className="spinner"></div>
+          </div>
         )}
         {!loading && data && renderTable()}
         {!loading && !data && (
