@@ -63,11 +63,15 @@
   .main__aside {
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
   }
 
-  .aside__image {
-    object-fit: contain;
+  .aside__image:first-of-type {
     width: 50%;
+  }
+
+  .aside__image:last-of-type {
+    width: 35%;
   }
 }
 
