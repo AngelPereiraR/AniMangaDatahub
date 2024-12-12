@@ -6,7 +6,6 @@
   &__heading {
     margin-bottom: 1.5rem;
     text-align: center;
-    color: var(--primary-800);
 
     @include mixins.font(
       --font-size-title-desktop,
@@ -33,6 +32,10 @@
       color: var(--primary-500);
       margin-top: 0.5rem;
       margin-left: 1rem;
+
+      &--dark {
+        color: var(--secondary-50);
+      }
     }
 
     &__placeholder {
@@ -40,6 +43,10 @@
       margin-top: 0.5rem;
       margin-left: 1rem;
       font-style: italic;
+
+      &--dark {
+        color: var(--secondary-50);
+      }
     }
   }
 }

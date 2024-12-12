@@ -5,8 +5,10 @@ import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import Heading from "../../components/shared/Heading";
 import Carousel from "../../components/shared/Carousel";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Profile = () => {
+  const { darkMode } = useContext(ThemeContext);
   const { updateFormMode } = useContext(FormModeContext);
   const { updateEditScreen } = useContext(EditScreenContext);
   const { user } = useContext(UserContext);
@@ -60,11 +62,19 @@ const Profile = () => {
       <section className="profile__info">
         <Heading title="Nombre de usuario" />
         {usersData[firebaseEmail] ? (
-          <p className="profile__info__value">
+          <p
+            className={`profile__info__value ${
+              darkMode ? "profile__info__value--dark" : ""
+            }`}
+          >
             {usersData[firebaseEmail].username}
           </p>
         ) : (
-          <p className="profile__info__placeholder">
+          <p
+            className={`profile__info__placeholder ${
+              darkMode ? "profile__info__placeholder--dark" : ""
+            }`}
+          >
             {user?.displayName
               ? user.displayName
               : "Por favor, edita tu perfil para mostrar la información requerida"}
@@ -73,43 +83,77 @@ const Profile = () => {
 
         <Heading title="Correo electrónico" />
         {usersData[firebaseEmail] ? (
-          <p className="profile__info__value">
+          <p
+            className={`profile__info__value ${
+              darkMode ? "profile__info__value--dark" : ""
+            }`}
+          >
             {usersData[firebaseEmail].email}
           </p>
         ) : (
-          <p className="profile__info__placeholder">{user?.email}</p>
+          <p
+            className={`profile__info__placeholder ${
+              darkMode ? "profile__info__placeholder--dark" : ""
+            }`}
+          >
+            {user?.email}
+          </p>
         )}
 
         <Heading title="País" />
         {usersData[firebaseEmail] ? (
-          <p className="profile__info__value">
+          <p
+            className={`profile__info__value ${
+              darkMode ? "profile__info__value--dark" : ""
+            }`}
+          >
             {usersData[firebaseEmail].country}
           </p>
         ) : (
-          <p className="profile__info__placeholder">
+          <p
+            className={`profile__info__placeholder ${
+              darkMode ? "profile__info__placeholder--dark" : ""
+            }`}
+          >
             Por favor, edita tu perfil para mostrar la información requerida
           </p>
         )}
 
         <Heading title="Dirección" />
         {usersData[firebaseEmail] ? (
-          <p className="profile__info__value">
+          <p
+            className={`profile__info__value ${
+              darkMode ? "profile__info__value--dark" : ""
+            }`}
+          >
             {usersData[firebaseEmail].address}
           </p>
         ) : (
-          <p className="profile__info__placeholder">
+          <p
+            className={`profile__info__placeholder ${
+              darkMode ? "profile__info__placeholder--dark" : ""
+            }`}
+          >
             Por favor, edita tu perfil para mostrar la información requerida
           </p>
         )}
 
         <Heading title="Fecha de nacimiento" />
         {usersData[firebaseEmail] ? (
-          <p className="profile__info__value">
+          <p
+            className={`profile__info__value ${
+              darkMode ? "profile__info__value--dark" : ""
+            }`}
+          >
             {usersData[firebaseEmail].day} - {usersData[firebaseEmail].month} -{" "}
             {usersData[firebaseEmail].year}
           </p>
         ) : (
-          <p className="profile__info__placeholder">
+          <p
+            className={`profile__info__placeholder ${
+              darkMode ? "profile__info__placeholder--dark" : ""
+            }`}
+          >
             Por favor, edita tu perfil para mostrar la información requerida
           </p>
         )}
